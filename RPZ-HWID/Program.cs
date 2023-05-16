@@ -337,7 +337,7 @@ namespace HWID_Changer
         public static void Menu()
         {
 
-            Console.WriteLine("\n  Rapunzel Spoofer");
+            Console.WriteLine("\n  SecHex");
             Console.Write("  Select an option: ");
             string input = Console.ReadLine();
 
@@ -427,11 +427,11 @@ namespace HWID_Changer
         {
 
 
-            Console.Title = "Rapunzel V.1.0";
+            Console.Title = "SecHex V.1.0";
             Console.ForegroundColor
           = ConsoleColor.Red;
             Console.Clear();
-            Console.WriteLine("  ┌ HWID CHANGER - Rapunzel  ──────────────────┐       https://github.com/Rapunzel-ware");
+            Console.WriteLine("  ┌ HWID CHANGER - SecHex    ──────────────────┐       https://github.com/SecHex");
             Console.WriteLine("  │ [disk] Spoof HWID                          │");
             Console.WriteLine("  │ [guid] Spoof GUID                          │");
             Console.WriteLine("  │ [mac] Spoof MAC ID                         │");
