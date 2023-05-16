@@ -1,4 +1,4 @@
-#SecHex-Spoofy
+# SecHex-Spoofy
 
 Simple HWID-Changer 🔑︎
 Some Lines of the Code are from @LockBlock-dev 
