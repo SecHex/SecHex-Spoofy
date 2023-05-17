@@ -16,10 +16,10 @@ Some Lines of the Code are from @LockBlock-dev
 + **Guid Spoofing**
 + **MAC ID Spoofing**
 + **GPU ID Spoofing**
-+ **PC-name Spoofing**
-+ **Installation ID Spoofing**
-+ **Ubisoft cache cleaner**
-+ **Valorant cache cleaner**
++ **PC-name Spoofing** */New*
++ **Installation ID Spoofing** */New*
++ **Ubisoft cache cleaner** */New*
++ **Valorant cache cleaner** */New*
 
 
 # Milestones 🏆
