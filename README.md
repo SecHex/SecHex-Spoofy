@@ -22,7 +22,7 @@ Some Lines of the Code are from @LockBlock-dev
 
 
 # Milestones 🏆
-**5 Stars** -***Display Spoofing  ***                             
+**5 Stars** - ***Display Spoofing  ***                             
 **10 Stars** - ***Product ID Spoofing***                                                                 
 **20 Stars** - ***Spoofer with GUI***                                                      
 
