@@ -5,10 +5,10 @@ Some Lines of the Code are from @LockBlock-dev
 
 
 # How to use
-+ Clone the Tool.
-+ Build the Tool.
-+ Run it as Admin.
-+ Choose your option
++ **Clone the Tool.**
++ **Build the Tool.**
++ **Run it as Admin.**
++ **Choose your option**
 
 
 # Functions ⚡
