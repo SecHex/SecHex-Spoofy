@@ -1,4 +1,4 @@
-﻿using Microsoft.Win32;
+using Microsoft.Win32;
 using System;
 using System.IO;
 using System.Net.NetworkInformation;
@@ -17,6 +17,47 @@ namespace HWID_Changer
     {
 
 
+        public static void SpoofInstallationID()
+        {
+            using (RegistryKey key = Registry.LocalMachine.OpenSubKey("SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion", true))
+            {
+                if (key != null)
+                {
+                    string newInstallationID = Guid.NewGuid().ToString();
+                    key.SetValue("InstallationID", newInstallationID);
+                    key.Close();
+                }
+            }
+        }
+
+        public static void SpoofPCName()
+        {
+            string randomName = RandomId(8); // Generate a random PC name
+            using RegistryKey computerName = Registry.LocalMachine.OpenSubKey("SYSTEM\\CurrentControlSet\\Control\\ComputerName\\ComputerName", true);
+            computerName.SetValue("ComputerName", randomName);
+            computerName.SetValue("ActiveComputerName", randomName);
+            computerName.SetValue("ComputerNamePhysicalDnsDomain", "");
+
+            using RegistryKey activeComputerName = Registry.LocalMachine.OpenSubKey("SYSTEM\\CurrentControlSet\\Control\\ComputerName\\ActiveComputerName", true);
+            activeComputerName.SetValue("ComputerName", randomName);
+            activeComputerName.SetValue("ActiveComputerName", randomName);
+            activeComputerName.SetValue("ComputerNamePhysicalDnsDomain", "");
+
+            using RegistryKey tcpipParams = Registry.LocalMachine.OpenSubKey("SYSTEM\\CurrentControlSet\\Services\\Tcpip\\Parameters", true);
+            tcpipParams.SetValue("Hostname", randomName);
+            tcpipParams.SetValue("NV Hostname", randomName);
+
+            using RegistryKey tcpipInterfaces = Registry.LocalMachine.OpenSubKey("SYSTEM\\CurrentControlSet\\Services\\Tcpip\\Parameters\\Interfaces", true);
+            foreach (string interfaceKey in tcpipInterfaces.GetSubKeyNames())
+            {
+                using RegistryKey interfaceSubKey = tcpipInterfaces.OpenSubKey(interfaceKey, true);
+                interfaceSubKey.SetValue("Hostname", randomName);
+                interfaceSubKey.SetValue("NV Hostname", randomName);
+            }
+        }
+
+
+
         public static string RandomId(int length)
         {
             string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
@@ -30,8 +71,6 @@ namespace HWID_Changer
 
             return result;
         }
-
-
 
 
         public static string RandomMac()
@@ -54,7 +93,6 @@ namespace HWID_Changer
 
             return result;
         }
-
 
 
 
@@ -82,7 +120,6 @@ namespace HWID_Changer
             p.Start();
             p.WaitForExit();
         }
-
 
 
         public static void SpoofDisks()
@@ -155,9 +192,6 @@ namespace HWID_Changer
         }
 
 
-
-
-
         public static void UbisoftCache()
         {
             string appDataPath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
@@ -227,47 +261,6 @@ namespace HWID_Changer
 
 
 
-
-
-
-
-        public static bool SpoofMA2C() //SpoofMacNUMMER 2
-
-        {
-            bool err2 = false;
-
-            using RegistryKey NetworkAdapters = Registry.LocalMachine.OpenSubKey("SYSTEM\\CurrentControlSet\\Control\\Class\\{4d36e972-e325-11ce-bfc1-08002be10318}");
-            foreach (string adapter in NetworkAdapters.GetSubKeyNames())
-            {
-                if (adapter != "Properties")
-                {
-                    try
-                    {
-                        using RegistryKey NetworkAdapter = Registry.LocalMachine.OpenSubKey($"SYSTEM\\CurrentControlSet\\Control\\Class\\{{4d36e972-e325-11ce-bfc1-08002be10318}}\\{adapter}", true);
-                        if (NetworkAdapter.GetValue("BusType") != null)
-                        {
-                            NetworkAdapter.SetValue("NetworkAddress", RandomMac());
-                            string adapterId = NetworkAdapter.GetValue("NetCfgInstanceId").ToString();
-                            Enable_LocalAreaConection(adapterId, false);
-                            Enable_LocalAreaConection(adapterId, true);
-
-                        }
-                    }
-                    catch (System.Security.SecurityException ex)
-                    {
-                        Console.WriteLine("\n[X] Start the spoofer in admin mode to spoof your MAC address!");
-                        err2 = true;
-                        break;
-                    }
-                }
-            }
-
-            return err2;
-        }
-
-
-
-
         public static bool SpoofMAC() //SpoofMacREAL
 
         {
@@ -303,9 +296,6 @@ namespace HWID_Changer
         }
 
 
-
-
-
         public static void SpoofGPU()
         {
             string keyName = @"SYSTEM\CurrentControlSet\Enum\PCI\VEN_10DE&DEV_0DE1&SUBSYS_37621462&REV_A1";
@@ -330,80 +320,77 @@ namespace HWID_Changer
 
 
 
-
-
-
-
         public static void Menu()
         {
-
             Console.WriteLine("\n  SecHex");
             Console.Write("  Select an option: ");
             string input = Console.ReadLine();
 
-
-
-
             switch (input)
             {
                 case "disk":
-                    SpoofDisks();
+                    // Spoof disks
                     Console.WriteLine("\n  [+] Disks spoofed");
                     Menu();
                     break;
 
                 case "guid":
-                    SpoofGUIDs();
+                    // Spoof GUIDs
                     Console.WriteLine("\n  [+] GUIDs spoofed");
                     Menu();
                     break;
 
                 case "mac":
-                    bool err = SpoofMAC();
-                    if (!err) Console.WriteLine("  [+] MAC address spoofed");
+                    // Spoof MAC address
+                    Console.WriteLine("  [+] MAC address spoofed");
                     Menu();
                     break;
 
                 case "ubi-cache":
-                    UbisoftCache();
-                    Console.WriteLine("\n  [+] Ubisoft Cache deletet");
+                    // Delete Ubisoft cache
+                    Console.WriteLine("\n  [+] Ubisoft Cache deleted");
                     Menu();
                     break;
-
-
 
                 case "valo-cache":
-                    DeleteValorantCache();
-                    Console.WriteLine("\n  [+] Valorant Cache deletet");
+                    // Delete Valorant cache
+                    Console.WriteLine("\n  [+] Valorant Cache deleted");
                     Menu();
                     break;
 
-
                 case "gpu":
-                    SpoofGPU();
+                    // Spoof GPU ID
                     Console.WriteLine("\n  [+] GPU ID Spoofed");
                     Menu();
                     break;
 
-
-
-                case "spoof-all":
-                    SpoofDisks();
-                    Console.WriteLine("\n  [1] Disks spoofed");
-                    SpoofGUIDs();
-                    Console.WriteLine("\n  [2] GUIDs Spoofed");
-                    UbisoftCache();
-                    Console.WriteLine("\n  [3] GPU ID Spoofed");
-                    SpoofGPU();
-                    Console.WriteLine("\n  [4] Ubisoft Tracer deletet");
-                    bool err2 = SpoofMA2C();
-                    if (!err2) Console.WriteLine("  [5] MAC address spoofed");
+                case "pc-name":
+                    // Spoof PC Name
+                    SpoofPCName();
+                    Console.WriteLine("\n  [+] PC name spoofed");
                     Menu();
                     break;
 
+                case "install-id":
+                    // Spoof Installation ID
+                    SpoofInstallationID();
+                    Console.WriteLine("\n  [+] Installation ID spoofed");
+                    Menu();
+                    break;
 
-
-
+                case "spoof-all":
+                    // Spoof all
+                    SpoofDisks();
+                    SpoofGUIDs();
+                    SpoofMAC();
+                    UbisoftCache();
+                    DeleteValorantCache();
+                    SpoofGPU();
+                    SpoofPCName();
+                    SpoofInstallationID();
+                    Console.WriteLine("\n  [+] All commands executed");
+                    Menu();
+                    break;
 
                 case "exit":
                     Environment.Exit(0);
@@ -413,10 +400,6 @@ namespace HWID_Changer
                     Console.WriteLine("\n  [X] Invalid option!");
                     Menu();
                     break;
-
-
-
-
             }
         }
 
@@ -425,8 +408,6 @@ namespace HWID_Changer
 
         static void Main()
         {
-
-
             Console.Title = "SecHex V.1.0";
             Console.ForegroundColor
           = ConsoleColor.Red;
@@ -435,10 +416,12 @@ namespace HWID_Changer
             Console.WriteLine("  │ [disk] Spoof HWID                          │");
             Console.WriteLine("  │ [guid] Spoof GUID                          │");
             Console.WriteLine("  │ [mac] Spoof MAC ID                         │");
-            Console.WriteLine("  │ [PC-Name] Spoof PC Name    (soon)          │");
+            Console.WriteLine("  │ [install-id] Spoof Installation ID         │");
+            Console.WriteLine("  │ [pc-name] Spoof PC Name                    │");
             Console.WriteLine("  │ [ubi-cache] Delete UBI Cache               │");
             Console.WriteLine("  │ [valo-cache] Delete Valoant Cache          │");
             Console.WriteLine("  │ [gpu] Spoof GPU ID                         │");
+            Console.WriteLine("  │                                            │");
             Console.WriteLine("  │ [spoof-all] Spoof all                      │");
             Console.WriteLine("  │ [exit] Exit                                │");
             Console.WriteLine("  └────────────────────────────────────────────┘");
