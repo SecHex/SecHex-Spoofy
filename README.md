@@ -29,6 +29,16 @@ Some Lines of the Code are from @LockBlock-dev
 ![Screenshot 2023-05-02 200456](https://user-images.githubusercontent.com/96635023/235751072-1c467e2d-7b0b-4715-b196-85404a5f6ff0.png)
 
 # Disclaimer ⚠️
-Use this tool at your own risk! Although it has been tested on a virtual machine, I can not guarantee that it will breaks nothing on your system! I specifically DISCLAIMS LIABILITY FOR INCIDENTAL OR CONSEQUENTIAL DAMAGES and assumes no responsibility or liability for any loss or damage suffered as a result of the use or misuse HWID-Changer. You are responsible for your actions.
+Please read this disclaimer carefully before using the HWID Spoofing Tool ("Tool") available on this GitHub site. By accessing or using the Tool, you agree to be bound by this disclaimer.
 
-This tool is only for testing and academic purposes and can only be used where strict consent has been given. Do not use it for illegal purposes! It is the end user’s responsibility to obey all applicable local, state and federal laws. Developers assume no liability and are not responsible for any misuse or damage caused by this tool and software in general.
+Use at Your Own Risk: The HWID Spoofing Tool is provided for educational and informational purposes only. It is intended to demonstrate the concept of HWID spoofing and its potential applications. However, it is important to understand that the use of this Tool may violate the terms of service or terms of use of certain software or services. Use this Tool at your own risk.
+
+No Guarantees: Although the HWID Spoofing Tool has been tested on a virtual machine and efforts have been made to ensure its functionality, the Tool is provided "as is" without any guarantees or warranties of any kind. I cannot guarantee that the Tool will work flawlessly on all systems or that it will not cause any issues or damages.
+
+Limited Liability: I specifically DISCLAIM LIABILITY FOR INCIDENTAL OR CONSEQUENTIAL DAMAGES arising out of the use or inability to use the HWID Spoofing Tool. In no event shall I be liable for any loss or damage suffered as a result of the use or misuse of the Tool, including but not limited to any direct, indirect, special, or consequential damages.
+
+Responsibility: You are solely responsible for your actions and the consequences that may arise from the use of the HWID Spoofing Tool. It is your responsibility to ensure that your use of the Tool complies with all applicable laws, regulations, and terms of service or terms of use.
+
+Legal Implications: The use of HWID spoofing tools may be illegal or against the terms of service of certain software or services. It is your responsibility to understand and comply with the laws and terms governing the use of such tools in your jurisdiction or in relation to specific software or services.
+
+By using the HWID Spoofing Tool, you acknowledge that you have read, understood, and agreed to this disclaimer. If you do not agree with any part of this disclaimer, do not use the Tool.
