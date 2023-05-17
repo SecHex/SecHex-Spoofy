@@ -12,18 +12,19 @@ Some Lines of the Code are from @LockBlock-dev
 
 
 # Functions ⚡
-+ Disk Spoofing
-+ Guid Spoofing
-+ MAC ID Spoofing
-+ GPU ID Spoofing
-+ PC-name Spoofing [Soon...]
-+ Ubisoft cache cleaner
-+ Valorant cache cleaner
++ **Disk Spoofing**
++ **Guid Spoofing**
++ **MAC ID Spoofing**
++ **GPU ID Spoofing**
++ **PC-name Spoofing**
++ **Installation ID Spoofing**
++ **Ubisoft cache cleaner**
++ **Valorant cache cleaner**
 
 
 # Milestones 🏆
 **5 Stars** - ***Display Spoofing*** ✨                             
-**10 Stars** - ***Product ID Spoofing***  ✨                                                                
+**10 Stars** - ***Soon...***  ✨                                                                
 **20 Stars** - ***Spoofer with GUI*** ✨                                                      
 
 ![Screenshot 2023-05-17 174158 (1)](https://github.com/SecHex/SecHex-Spoofy/assets/96635023/287b5552-59f7-4f71-820d-cb7a4d24c391)
