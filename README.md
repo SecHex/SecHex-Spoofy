@@ -21,13 +21,16 @@ Some Lines of the Code are from @LockBlock-dev
 + **Ubisoft cache cleaner** *[New]*
 + **Valorant cache cleaner** *[New]*
 
+**Design Update** - 20.05.23
 
 # Milestones 🏆
 **5 Stars** - ***Display Spoofing*** ✨                             
 **10 Stars** - ***Soon...***  ✨                                                                
 **20 Stars** - ***Spoofer with GUI*** ✨                                                      
 
-![Screenshot 2023-05-17 174158 (1)](https://github.com/SecHex/SecHex-Spoofy/assets/96635023/287b5552-59f7-4f71-820d-cb7a4d24c391)
+
+![Screenshot 2023-05-20 004850 (1)](https://github.com/SecHex/SecHex-Spoofy/assets/96635023/ef720653-3266-407a-9bdf-f3476fbcba1d)
+
 
 
 # Disclaimer ⚠️
