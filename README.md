@@ -29,7 +29,7 @@ Some Lines of the Code are from @LockBlock-dev
 **20 Stars** - ***Spoofer with GUI*** ✨                                                      
 
 
-![Screenshot 2023-05-20 004850 (1)](https://github.com/SecHex/SecHex-Spoofy/assets/96635023/ef720653-3266-407a-9bdf-f3476fbcba1d)
+![Screenshot 2023-05-20 004850 (2)](https://github.com/SecHex/SecHex-Spoofy/assets/96635023/96c6a657-3d8d-467e-ba4a-35a5dbafcb81)
 
 
 
