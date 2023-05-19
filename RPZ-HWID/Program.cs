@@ -17,6 +17,10 @@ namespace HWID_Changer
     {
 
 
+
+
+
+
         public static void SpoofInstallationID()
         {
             using (RegistryKey key = Registry.LocalMachine.OpenSubKey("SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion", true))
@@ -328,57 +332,58 @@ namespace HWID_Changer
 
             switch (input)
             {
-                case "disk":
+                case "1":
                     // Spoof disks
                     Console.WriteLine("\n  [+] Disks spoofed");
                     Menu();
                     break;
 
-                case "guid":
+                case "2":
                     // Spoof GUIDs
                     Console.WriteLine("\n  [+] GUIDs spoofed");
                     Menu();
                     break;
 
-                case "mac":
+                case "3":
                     // Spoof MAC address
                     Console.WriteLine("  [+] MAC address spoofed");
                     Menu();
                     break;
 
-                case "ubi-cache":
+                case "4":
                     // Delete Ubisoft cache
                     Console.WriteLine("\n  [+] Ubisoft Cache deleted");
                     Menu();
                     break;
 
-                case "valo-cache":
+                case "5":
                     // Delete Valorant cache
                     Console.WriteLine("\n  [+] Valorant Cache deleted");
                     Menu();
                     break;
 
-                case "gpu":
+                case "6":
                     // Spoof GPU ID
                     Console.WriteLine("\n  [+] GPU ID Spoofed");
                     Menu();
                     break;
 
-                case "pc-name":
+                case "7":
                     // Spoof PC Name
                     SpoofPCName();
                     Console.WriteLine("\n  [+] PC name spoofed");
                     Menu();
                     break;
 
-                case "install-id":
+                case "8":
                     // Spoof Installation ID
                     SpoofInstallationID();
                     Console.WriteLine("\n  [+] Installation ID spoofed");
                     Menu();
                     break;
 
-                case "spoof-all":
+
+                case "9":
                     // Spoof all
                     SpoofDisks();
                     SpoofGUIDs();
@@ -408,23 +413,30 @@ namespace HWID_Changer
 
         static void Main()
         {
-            Console.Title = "SecHex V.1.0";
+            Console.Title = "SecHex | V1.1 | Open Source | github/SecHex";
             Console.ForegroundColor
-          = ConsoleColor.Red;
+          = ConsoleColor.Magenta;
             Console.Clear();
-            Console.WriteLine("  ┌ HWID CHANGER - SecHex    ──────────────────┐       https://github.com/SecHex");
-            Console.WriteLine("  │ [disk] Spoof HWID                          │");
-            Console.WriteLine("  │ [guid] Spoof GUID                          │");
-            Console.WriteLine("  │ [mac] Spoof MAC ID                         │");
-            Console.WriteLine("  │ [install-id] Spoof Installation ID         │");
-            Console.WriteLine("  │ [pc-name] Spoof PC Name                    │");
-            Console.WriteLine("  │ [ubi-cache] Delete UBI Cache               │");
-            Console.WriteLine("  │ [valo-cache] Delete Valoant Cache          │");
-            Console.WriteLine("  │ [gpu] Spoof GPU ID                         │");
-            Console.WriteLine("  │                                            │");
-            Console.WriteLine("  │ [spoof-all] Spoof all                      │");
-            Console.WriteLine("  │ [exit] Exit                                │");
-            Console.WriteLine("  └────────────────────────────────────────────┘");
+            Console.WriteLine("███████╗██████╗  ██████╗  ██████╗ ███████╗██╗   ██╗      ");
+            Console.WriteLine("██╔════╝██╔══██╗██╔═══██╗██╔═══██╗██╔════╝╚██╗ ██╔╝      ");
+            Console.WriteLine("███████╗██████╔╝██║   ██║██║   ██║█████╗   ╚████╔╝       ");
+            Console.WriteLine("╚════██║██╔═══╝ ██║   ██║██║   ██║██╔══╝    ╚██╔╝        ");
+            Console.WriteLine("███████║██║     ╚██████╔╝╚██████╔╝██║        ██║         ");
+            Console.WriteLine("╚══════╝╚═╝      ╚═════╝  ╚═════╝ ╚═╝        ╚═╝         ");
+            Console.WriteLine("https://github.com/SecHex                                ");
+            Console.WriteLine("                                            ");
+            Console.WriteLine("[1] Spoof HWID                              ");
+            Console.WriteLine("[2] Spoof GUID                              ");
+            Console.WriteLine("[3] Spoof MAC ID                            ");
+            Console.WriteLine("[4] Spoof Installation ID                   ");
+            Console.WriteLine("[5] Spoof PC Name                           ");
+            Console.WriteLine("[6] Delete UBI Cache                        ");
+            Console.WriteLine("[7] Delete Valoant Cache                    ");
+            Console.WriteLine("[8] Spoof GPU ID                            ");
+            Console.WriteLine("                                            ");
+            Console.WriteLine("[9] Spoof all                               ");
+            Console.WriteLine("[exit] Exit                                 ");
+            Console.WriteLine("  ");
             Console.ForegroundColor
           = ConsoleColor.Green;
             Menu();
