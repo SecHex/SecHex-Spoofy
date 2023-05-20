@@ -18,8 +18,9 @@ Some Lines of the Code are from @LockBlock-dev
 + **GPU ID Spoofing**
 + **PC-name Spoofing** *[New]*
 + **Installation ID Spoofing** *[New]*
-+ **Ubisoft cache cleaner** *[New]*
-+ **Valorant cache cleaner** *[New]*
++ **Ubisoft cache cleaner** 
++ **Valorant cache cleaner** 
++ **Get all System informations** *[New]*
 
 **Design Update** - 20.05.23
 
