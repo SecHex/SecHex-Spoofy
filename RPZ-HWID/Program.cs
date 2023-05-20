@@ -18,9 +18,6 @@ namespace HWID_Changer
 
 
 
-
-
-
         public static void SpoofInstallationID()
         {
             using (RegistryKey key = Registry.LocalMachine.OpenSubKey("SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion", true))
@@ -324,6 +321,132 @@ namespace HWID_Changer
 
 
 
+
+        public static void DisplaySystemData()
+        {
+            Console.WriteLine("System Data:");
+            Console.WriteLine("------------");
+
+            try
+            {
+                // Display HWID
+                using (RegistryKey key = Registry.LocalMachine.OpenSubKey("SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion", true))
+                {
+                    string installationID = key.GetValue("InstallationID") as string;
+                    Console.WriteLine("HWID:              " + installationID);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error retrieving HWID: " + ex.Message);
+            }
+
+            try
+            {
+                // Display GUIDs
+                using (RegistryKey machineGuidKey = Registry.LocalMachine.OpenSubKey("SOFTWARE\\Microsoft\\Cryptography"))
+                {
+                    string machineGuid = machineGuidKey.GetValue("MachineGuid") as string;
+                    Console.WriteLine("Machine GUID:      " + machineGuid);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error retrieving Machine GUID: " + ex.Message);
+            }
+
+            try
+            {
+                // Display MAC ID
+                foreach (NetworkInterface networkInterface in NetworkInterface.GetAllNetworkInterfaces())
+                {
+                    PhysicalAddress physicalAddress = networkInterface.GetPhysicalAddress();
+                    Console.WriteLine("MAC ID (" + networkInterface.Name + "):     " + physicalAddress.ToString());
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error retrieving MAC ID: " + ex.Message);
+            }
+
+            try
+            {
+                // Display Installation ID
+                using (RegistryKey key = Registry.LocalMachine.OpenSubKey("SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion", true))
+                {
+                    string installationID = key.GetValue("InstallationID") as string;
+                    Console.WriteLine("Installation ID:    " + installationID);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error retrieving Installation ID: " + ex.Message);
+            }
+
+            try
+            {
+                // Display PC Name
+                using (RegistryKey computerName = Registry.LocalMachine.OpenSubKey("SYSTEM\\CurrentControlSet\\Control\\ComputerName\\ComputerName"))
+                {
+                    string pcName = computerName.GetValue("ComputerName") as string;
+                    Console.WriteLine("PC Name:           " + pcName);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error retrieving PC Name: " + ex.Message);
+            }
+
+            try
+            {
+                // Display GPU ID
+                using (RegistryKey gpuKey = Registry.LocalMachine.OpenSubKey(@"SYSTEM\CurrentControlSet\Enum\PCI\VEN_10DE&DEV_0DE1&SUBSYS_37621462&REV_A1"))
+                {
+                    string hardwareID = gpuKey.GetValue("HardwareID") as string;
+                    Console.WriteLine("GPU ID:            " + hardwareID);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error retrieving GPU ID: " + ex.Message);
+            }
+
+            try
+            {
+                // Display CPU Information
+                string cpuInfo = string.Empty;
+                using (StreamReader reader = new StreamReader(@"C:\proc\cpuinfo"))
+                {
+                    cpuInfo = reader.ReadToEnd();
+                }
+                Console.WriteLine("CPU Information:   " + cpuInfo);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error retrieving CPU Information: " + ex.Message);
+            }
+
+            try
+            {
+                // Display Memory Information
+                using (StreamReader reader = new StreamReader("/proc/meminfo"))
+                {
+                    string line;
+                    while ((line = reader.ReadLine()) != null)
+                    {
+                        Console.WriteLine("Memory Information: " + line);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error retrieving Memory Information: " + ex.Message);
+            }
+        }
+
+
+
+
         public static void Menu()
         {
             Console.WriteLine("\n  SecHex");
@@ -335,6 +458,7 @@ namespace HWID_Changer
                 case "1":
                     // Spoof disks
                     Console.WriteLine("\n  [+] Disks spoofed");
+
                     Menu();
                     break;
 
@@ -382,8 +506,15 @@ namespace HWID_Changer
                     Menu();
                     break;
 
-
                 case "9":
+                    // get sys data
+                    DisplaySystemData();
+                    Menu();
+                    break;
+
+
+
+                case "10":
                     // Spoof all
                     SpoofDisks();
                     SpoofGUIDs();
@@ -413,7 +544,7 @@ namespace HWID_Changer
 
         static void Main()
         {
-            Console.Title = "SecHex | V1.1 | Open Source | github/SecHex";
+            Console.Title = "SecHex | V1.2 | Open Source | github/SecHex";
             Console.ForegroundColor
           = ConsoleColor.Magenta;
             Console.Clear();
@@ -434,7 +565,8 @@ namespace HWID_Changer
             Console.WriteLine("[7] Delete Valoant Cache                    ");
             Console.WriteLine("[8] Spoof GPU ID                            ");
             Console.WriteLine("                                            ");
-            Console.WriteLine("[9] Spoof all                               ");
+            Console.WriteLine("[9] Get System informations                 ");
+            Console.WriteLine("[10] Spoof all                              ");
             Console.WriteLine("[exit] Exit                                 ");
             Console.WriteLine("  ");
             Console.ForegroundColor
