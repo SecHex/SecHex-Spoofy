@@ -320,6 +320,53 @@ namespace HWID_Changer
         }
 
 
+        public static void SpoofEFIVariableId()
+        {
+            try
+            {
+                RegistryKey efiVariables = Registry.LocalMachine.OpenSubKey("SYSTEM\\CurrentControlSet\\Control\\Nsi\\{eb004a03-9b1a-11d4-9123-0050047759bc}\\26", true);
+                if (efiVariables != null)
+                {
+                    string efiVariableId = Guid.NewGuid().ToString();
+                    efiVariables.SetValue("VariableId", efiVariableId);
+                    efiVariables.Close();
+                }
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("\n[X] Start the spoofer in admin mode to spoof your MAC address!");
+            }
+        }
+
+
+
+        public static void SpoofSMBIOSSerialNumber()
+        {
+            try
+            {
+                RegistryKey smbiosData = Registry.LocalMachine.OpenSubKey("HARDWARE\\DESCRIPTION\\System\\BIOS", true);
+
+                if (smbiosData != null)
+                {
+                    string serialNumber = RandomId(10);
+                    smbiosData.SetValue("SystemSerialNumber", serialNumber);
+                    smbiosData.Close();
+                }
+                else
+                {
+                    Console.WriteLine("\n[X] Cant find the SMBIOS");
+                }
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("\n[X] Start the spoofer in admin mode to spoof your MAC address!");
+            }
+        }
+
+
+
+
+
 
 
         public static void DisplaySystemData()
@@ -411,6 +458,7 @@ namespace HWID_Changer
                 Console.WriteLine("Error retrieving GPU ID: " + ex.Message);
             }
 
+
             try
             {
                 // Display CPU Information
@@ -443,6 +491,12 @@ namespace HWID_Changer
                 Console.WriteLine("Error retrieving Memory Information: " + ex.Message);
             }
         }
+
+
+
+
+
+
 
 
 
@@ -506,7 +560,22 @@ namespace HWID_Changer
                     Menu();
                     break;
 
+
                 case "9":
+                    // Spoof EFI
+                    SpoofEFIVariableId();
+                    Menu();
+                    break;
+
+
+                case "10":
+                    // Spoof EFI
+                    SpoofSMBIOSSerialNumber();
+                    Menu();
+                    break;
+
+
+                case "11":
                     // get sys data
                     DisplaySystemData();
                     Menu();
@@ -514,7 +583,7 @@ namespace HWID_Changer
 
 
 
-                case "10":
+                case "12":
                     // Spoof all
                     SpoofDisks();
                     SpoofGUIDs();
@@ -523,6 +592,7 @@ namespace HWID_Changer
                     DeleteValorantCache();
                     SpoofGPU();
                     SpoofPCName();
+                    SpoofEFIVariableId();
                     SpoofInstallationID();
                     Console.WriteLine("\n  [+] All commands executed");
                     Menu();
@@ -544,7 +614,7 @@ namespace HWID_Changer
 
         static void Main()
         {
-            Console.Title = "SecHex | V1.2 | Open Source | github/SecHex";
+            Console.Title = "SecHex | V1.3 | Open Source | github/SecHex";
             Console.ForegroundColor
           = ConsoleColor.Magenta;
             Console.Clear();
@@ -559,14 +629,16 @@ namespace HWID_Changer
             Console.WriteLine("[1] Spoof HWID                              ");
             Console.WriteLine("[2] Spoof GUID                              ");
             Console.WriteLine("[3] Spoof MAC ID                            ");
-            Console.WriteLine("[4] Spoof Installation ID                   ");
-            Console.WriteLine("[5] Spoof PC Name                           ");
-            Console.WriteLine("[6] Delete UBI Cache                        ");
-            Console.WriteLine("[7] Delete Valoant Cache                    ");
-            Console.WriteLine("[8] Spoof GPU ID                            ");
+            Console.WriteLine("[4] Delete UBI Cache                        ");
+            Console.WriteLine("[5] Delete Valoant Cache                    ");
+            Console.WriteLine("[6] Spoof GPU ID                            ");
+            Console.WriteLine("[7] Spoof PC Name                           ");
+            Console.WriteLine("[8] Spoof Installation ID                   ");
+            Console.WriteLine("[9] Spoof EFI                               ");
+            Console.WriteLine("[9] Spoof SMBIOS                            ");
             Console.WriteLine("                                            ");
-            Console.WriteLine("[9] Get System informations                 ");
-            Console.WriteLine("[10] Spoof all                              ");
+            Console.WriteLine("[11] Get System informations                ");
+            Console.WriteLine("[12] Spoof all                              ");
             Console.WriteLine("[exit] Exit                                 ");
             Console.WriteLine("  ");
             Console.ForegroundColor
