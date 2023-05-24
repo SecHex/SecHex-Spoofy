@@ -10,14 +10,10 @@ using System.ComponentModel;
 using System.Runtime.InteropServices;
 
 
-
 namespace HWID_Changer
 {
     class Program
     {
-
-
-
         public static void SpoofInstallationID()
         {
             using (RegistryKey key = Registry.LocalMachine.OpenSubKey("SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion", true))
@@ -366,9 +362,6 @@ namespace HWID_Changer
 
 
 
-
-
-
         public static void DisplaySystemData()
         {
             Console.WriteLine("System Data:");
@@ -491,13 +484,6 @@ namespace HWID_Changer
                 Console.WriteLine("Error retrieving Memory Information: " + ex.Message);
             }
         }
-
-
-
-
-
-
-
 
 
 
@@ -635,7 +621,7 @@ namespace HWID_Changer
             Console.WriteLine("[7] Spoof PC Name                           ");
             Console.WriteLine("[8] Spoof Installation ID                   ");
             Console.WriteLine("[9] Spoof EFI                               ");
-            Console.WriteLine("[9] Spoof SMBIOS                            ");
+            Console.WriteLine("[10] Spoof SMBIOS                            ");
             Console.WriteLine("                                            ");
             Console.WriteLine("[11] Get System informations                ");
             Console.WriteLine("[12] Spoof all                              ");
