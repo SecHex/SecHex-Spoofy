@@ -20,7 +20,11 @@ Some Lines of the Code are from @LockBlock-dev
 + **Installation ID Spoofing** *[New]*
 + **Ubisoft cache cleaner** 
 + **Valorant cache cleaner** 
++ **Spoof EFI Bootloader** *[New]*
++ **Spoof SMBIOS** *[New]*
 + **Get all System informations** *[New]*
+
+
 
 **Design Update** - 20.05.23
 
@@ -30,7 +34,8 @@ Some Lines of the Code are from @LockBlock-dev
 **20 Stars** - ***Spoofer with GUI*** ✨                                                      
 
 
-![Screenshot 2023-05-20 004850 (2)](https://github.com/SecHex/SecHex-Spoofy/assets/96635023/96c6a657-3d8d-467e-ba4a-35a5dbafcb81)
+
+![Screenshot 2023-05-24 200130 (1)](https://github.com/SecHex/SecHex-Spoofy/assets/96635023/0fc62cd3-43d0-4ac6-b5eb-c2c628055fe6)
 
 
 
