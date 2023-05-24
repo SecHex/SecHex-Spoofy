@@ -29,7 +29,7 @@ Some Lines of the Code are from @LockBlock-dev
 **Design Update** - 20.05.23
 
 # Milestones 🏆
-**5 Stars** - ***Display Spoofing*** ✨                             
+**5 Stars** - ***EFI + SMBIOS*** ✅                             
 **10 Stars** - ***Soon...***  ✨                                                                
 **20 Stars** - ***Spoofer with GUI*** ✨                                                      
 
