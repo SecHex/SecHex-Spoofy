@@ -23,7 +23,7 @@ Some Lines of the Code are from @LockBlock-dev
 + **Spoof EFI Bootloader** *[New]* (testing)
 + **Spoof SMBIOS** *[New]* (testing)
 + **Get all System informations** *[New]*
-+ **Registy Check** *[New]*
++ **Registry Check** *[New]*
 
 
 **Design Update** - 20.05.23
