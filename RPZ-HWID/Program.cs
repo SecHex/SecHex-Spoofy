@@ -8,6 +8,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.ComponentModel;
 using System.Runtime.InteropServices;
+using System.Timers;
+using Microsoft.Win32;
+
 
 
 namespace HWID_Changer
@@ -52,7 +55,6 @@ namespace HWID_Changer
                 interfaceSubKey.SetValue("NV Hostname", randomName);
             }
         }
-
 
 
         public static string RandomId(int length)
@@ -235,6 +237,7 @@ namespace HWID_Changer
                 dir.Delete(true);
             }
         }
+
 
 
         public static void DeleteValorantCache()
@@ -487,6 +490,14 @@ namespace HWID_Changer
 
 
 
+
+
+
+
+
+
+
+
         public static void Menu()
         {
             Console.WriteLine("\n  SecHex");
@@ -498,6 +509,7 @@ namespace HWID_Changer
                 case "1":
                     // Spoof disks
                     Console.WriteLine("\n  [+] Disks spoofed");
+                    ClearConsoleAfterDelay();
 
                     Menu();
                     break;
@@ -505,30 +517,35 @@ namespace HWID_Changer
                 case "2":
                     // Spoof GUIDs
                     Console.WriteLine("\n  [+] GUIDs spoofed");
+                    ClearConsoleAfterDelay();
                     Menu();
                     break;
 
                 case "3":
                     // Spoof MAC address
                     Console.WriteLine("  [+] MAC address spoofed");
+                    ClearConsoleAfterDelay();
                     Menu();
                     break;
 
                 case "4":
                     // Delete Ubisoft cache
                     Console.WriteLine("\n  [+] Ubisoft Cache deleted");
+                    ClearConsoleAfterDelay();
                     Menu();
                     break;
 
                 case "5":
                     // Delete Valorant cache
                     Console.WriteLine("\n  [+] Valorant Cache deleted");
+                    ClearConsoleAfterDelay();
                     Menu();
                     break;
 
                 case "6":
                     // Spoof GPU ID
                     Console.WriteLine("\n  [+] GPU ID Spoofed");
+                    ClearConsoleAfterDelay();
                     Menu();
                     break;
 
@@ -536,6 +553,7 @@ namespace HWID_Changer
                     // Spoof PC Name
                     SpoofPCName();
                     Console.WriteLine("\n  [+] PC name spoofed");
+                    ClearConsoleAfterDelay();
                     Menu();
                     break;
 
@@ -543,6 +561,7 @@ namespace HWID_Changer
                     // Spoof Installation ID
                     SpoofInstallationID();
                     Console.WriteLine("\n  [+] Installation ID spoofed");
+                    ClearConsoleAfterDelay();
                     Menu();
                     break;
 
@@ -550,6 +569,7 @@ namespace HWID_Changer
                 case "9":
                     // Spoof EFI
                     SpoofEFIVariableId();
+                    ClearConsoleAfterDelay();
                     Menu();
                     break;
 
@@ -557,6 +577,7 @@ namespace HWID_Changer
                 case "10":
                     // Spoof EFI
                     SpoofSMBIOSSerialNumber();
+                    ClearConsoleAfterDelay();
                     Menu();
                     break;
 
@@ -564,9 +585,9 @@ namespace HWID_Changer
                 case "11":
                     // get sys data
                     DisplaySystemData();
+                    ClearConsoleAfterDelay();
                     Menu();
                     break;
-
 
 
                 case "12":
@@ -581,6 +602,7 @@ namespace HWID_Changer
                     SpoofEFIVariableId();
                     SpoofInstallationID();
                     Console.WriteLine("\n  [+] All commands executed");
+                    ClearConsoleAfterDelay();
                     Menu();
                     break;
 
@@ -590,9 +612,19 @@ namespace HWID_Changer
 
                 default:
                     Console.WriteLine("\n  [X] Invalid option!");
+                    ClearConsoleAfterDelay();
                     Menu();
                     break;
             }
+        }
+
+
+
+        private static void ClearConsoleAfterDelay()
+        {
+            Thread.Sleep(3000); 
+            Console.Clear(); 
+            Main(); 
         }
 
 
@@ -630,7 +662,6 @@ namespace HWID_Changer
             Console.ForegroundColor
           = ConsoleColor.Green;
             Menu();
-
 
         }
     }
