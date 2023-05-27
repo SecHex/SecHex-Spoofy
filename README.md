@@ -29,8 +29,8 @@ Some Lines of the Code are from @LockBlock-dev
 **Design Update** - 20.05.23
 
 # Milestones 🏆
-**5 Stars** - ***EFI + SMBIOS*** ✅                             
-**10 Stars** - ***Soon...***  ✨                                                                
+**5 Stars** - ***EFI*** ✅                             
+**10 Stars** - ***SMBIOS***  ✅                                                                 
 **20 Stars** - ***Spoofer with GUI*** ✨                                                      
 
 
