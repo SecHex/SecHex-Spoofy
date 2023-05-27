@@ -17,6 +17,95 @@ namespace HWID_Changer
 {
     class Program
     {
+
+
+        public static void CheckRegistryKeys()
+        {
+            try
+            {
+                CheckRegistryKey("SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion", "InstallationID");
+                CheckRegistryKey("SYSTEM\\CurrentControlSet\\Control\\ComputerName\\ComputerName", "ComputerName");
+                CheckRegistryKey("SYSTEM\\CurrentControlSet\\Control\\ComputerName\\ComputerName", "ActiveComputerName");
+                CheckRegistryKey("SYSTEM\\CurrentControlSet\\Control\\ComputerName\\ComputerNamePhysicalDnsDomain", "");
+                CheckRegistryKey("SYSTEM\\CurrentControlSet\\Control\\ComputerName\\ActiveComputerName", "ComputerName");
+                CheckRegistryKey("SYSTEM\\CurrentControlSet\\Control\\ComputerName\\ActiveComputerName", "ActiveComputerName");
+                CheckRegistryKey("SYSTEM\\CurrentControlSet\\Control\\ComputerName\\ActiveComputerName", "ComputerNamePhysicalDnsDomain");
+                CheckRegistryKey("SYSTEM\\CurrentControlSet\\Services\\Tcpip\\Parameters", "Hostname");
+                CheckRegistryKey("SYSTEM\\CurrentControlSet\\Services\\Tcpip\\Parameters", "NV Hostname");
+                CheckRegistryKey("SYSTEM\\CurrentControlSet\\Services\\Tcpip\\Parameters\\Interfaces", "Hostname");
+                CheckRegistryKey("SYSTEM\\CurrentControlSet\\Services\\Tcpip\\Parameters\\Interfaces", "NV Hostname");
+                CheckRegistryKey("HARDWARE\\DEVICEMAP\\Scsi", ""); // ScsiPorts
+                CheckRegistryKey("HARDWARE\\DEVICEMAP\\Scsi\\{port}", ""); // ScsiBuses
+                CheckRegistryKey("HARDWARE\\DEVICEMAP\\Scsi\\{port}\\{bus}\\Target Id 0\\Logical Unit Id 0", "DeviceIdentifierPage");
+                CheckRegistryKey("HARDWARE\\DEVICEMAP\\Scsi\\{port}\\{bus}\\Target Id 0\\Logical Unit Id 0", "Identifier");
+                CheckRegistryKey("HARDWARE\\DEVICEMAP\\Scsi\\{port}\\{bus}\\Target Id 0\\Logical Unit Id 0", "InquiryData");
+                CheckRegistryKey("HARDWARE\\DEVICEMAP\\Scsi\\{port}\\{bus}\\Target Id 0\\Logical Unit Id 0", "SerialNumber");
+                CheckRegistryKey("HARDWARE\\DESCRIPTION\\System\\MultifunctionAdapter\\0\\DiskController\\0\\DiskPeripheral", ""); // DiskPeripherals
+                CheckRegistryKey("HARDWARE\\DESCRIPTION\\System\\MultifunctionAdapter\\0\\DiskController\\0\\DiskPeripheral\\{disk}", "Identifier");
+                CheckRegistryKey("SYSTEM\\CurrentControlSet\\Control\\IDConfigDB\\Hardware Profiles\\0001", "HwProfileGuid");
+                CheckRegistryKey("SOFTWARE\\Microsoft\\Cryptography", "MachineGuid");
+                CheckRegistryKey("SOFTWARE\\Microsoft\\SQMClient", "MachineId");
+                CheckRegistryKey("SYSTEM\\CurrentControlSet\\Control\\SystemInformation", "BIOSReleaseDate");
+                CheckRegistryKey("SYSTEM\\CurrentControlSet\\Control\\SystemInformation", "BIOSVersion");
+                CheckRegistryKey("SYSTEM\\CurrentControlSet\\Control\\SystemInformation", "ComputerHardwareId");
+                CheckRegistryKey("SYSTEM\\CurrentControlSet\\Control\\SystemInformation", "ComputerHardwareIds");
+                CheckRegistryKey("SYSTEM\\CurrentControlSet\\Control\\SystemInformation", "ComputerManufacturer");
+                CheckRegistryKey("SYSTEM\\CurrentControlSet\\Control\\SystemInformation", "ComputerModel");
+                CheckRegistryKey("SYSTEM\\CurrentControlSet\\Control\\SystemInformation", "InstallDate");
+                CheckRegistryKey("SYSTEM\\CurrentControlSet\\Control\\SystemInformation", "SystemBiosMajorVersion");
+                CheckRegistryKey("SYSTEM\\CurrentControlSet\\Control\\SystemInformation", "SystemBiosMinorVersion");
+                CheckRegistryKey("SYSTEM\\CurrentControlSet\\Control\\SystemInformation", "SystemBiosVersion");
+                CheckRegistryKey("SYSTEM\\CurrentControlSet\\Control\\SystemInformation", "SystemManufacturer");
+                CheckRegistryKey("SYSTEM\\CurrentControlSet\\Control\\SystemInformation", "SystemProductName");
+                CheckRegistryKey("SYSTEM\\CurrentControlSet\\Control\\SystemInformation", "SystemSku");
+                CheckRegistryKey("SYSTEM\\CurrentControlSet\\Control\\SystemInformation", "SystemVersion");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Fehler beim Überprüfen des Registry-Schlüssels: " + ex.Message);
+            }
+        }
+
+        public static void CheckRegistryKey(string keyPath, string valueName)
+        {
+            RegistryKey key = Registry.LocalMachine.OpenSubKey(keyPath);
+            if (key != null)
+            {
+                if (!string.IsNullOrEmpty(valueName))
+                {
+                    if (key.GetValue(valueName) == null)
+                    {
+                        Console.WriteLine("Registry-Schlüssel nicht gefunden: " + keyPath + "\\" + valueName);
+                    }
+                }
+                else
+                {
+                    if (key.SubKeyCount == 0)
+                    {
+                        Console.WriteLine("Registry-Schlüssel nicht gefunden: " + keyPath);
+                    }
+                }
+            }
+            else
+            {
+                Console.WriteLine("Registry-Schlüssel nicht gefunden: " + keyPath);
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         public static void SpoofInstallationID()
         {
             using (RegistryKey key = Registry.LocalMachine.OpenSubKey("SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion", true))
@@ -364,7 +453,6 @@ namespace HWID_Changer
 
 
 
-
         public static void DisplaySystemData()
         {
             Console.WriteLine("System Data:");
@@ -483,6 +571,7 @@ namespace HWID_Changer
                 }
             }
             catch (Exception ex)
+
             {
                 Console.WriteLine("Error retrieving Memory Information: " + ex.Message);
             }
@@ -575,7 +664,7 @@ namespace HWID_Changer
 
 
                 case "10":
-                    // Spoof EFI
+                    // Spoof smbios
                     SpoofSMBIOSSerialNumber();
                     ClearConsoleAfterDelay();
                     Menu();
@@ -583,6 +672,14 @@ namespace HWID_Changer
 
 
                 case "11":
+                    // Check registry
+                    CheckRegistryKeys();
+                    ClearConsoleAfterDelay2();
+                    Menu();
+                    break;
+
+
+                case "12":
                     // get sys data
                     DisplaySystemData();
                     ClearConsoleAfterDelay();
@@ -590,7 +687,7 @@ namespace HWID_Changer
                     break;
 
 
-                case "12":
+                case "13":
                     // Spoof all
                     SpoofDisks();
                     SpoofGUIDs();
@@ -627,6 +724,13 @@ namespace HWID_Changer
             Main(); 
         }
 
+        private static void ClearConsoleAfterDelay2()
+        {
+            Thread.Sleep(6000);
+            Console.Clear();
+            Main();
+        }
+
 
 
 
@@ -644,19 +748,16 @@ namespace HWID_Changer
             Console.WriteLine("╚══════╝╚═╝      ╚═════╝  ╚═════╝ ╚═╝        ╚═╝         ");
             Console.WriteLine("https://github.com/SecHex                                ");
             Console.WriteLine("                                            ");
-            Console.WriteLine("[1] Spoof HWID                              ");
-            Console.WriteLine("[2] Spoof GUID                              ");
-            Console.WriteLine("[3] Spoof MAC ID                            ");
-            Console.WriteLine("[4] Delete UBI Cache                        ");
+            Console.WriteLine("[1] Spoof HWID                       [7] Spoof PC Name            ");
+            Console.WriteLine("[2] Spoof GUID                       [8] Spoof Installation ID    ");
+            Console.WriteLine("[3] Spoof MAC ID                     [9] Spoof EFI                ");
+            Console.WriteLine("[4] Delete UBI Cache                 [10] Spoof SMBIOS            ");
             Console.WriteLine("[5] Delete Valoant Cache                    ");
             Console.WriteLine("[6] Spoof GPU ID                            ");
-            Console.WriteLine("[7] Spoof PC Name                           ");
-            Console.WriteLine("[8] Spoof Installation ID                   ");
-            Console.WriteLine("[9] Spoof EFI                               ");
-            Console.WriteLine("[10] Spoof SMBIOS                            ");
             Console.WriteLine("                                            ");
-            Console.WriteLine("[11] Get System informations                ");
-            Console.WriteLine("[12] Spoof all                              ");
+            Console.WriteLine("[11] Check Registry Paths                   ");
+            Console.WriteLine("[12] Get System informations                ");
+            Console.WriteLine("[13] Spoof all                              ");
             Console.WriteLine("[exit] Exit                                 ");
             Console.WriteLine("  ");
             Console.ForegroundColor
