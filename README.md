@@ -17,13 +17,13 @@ Some Lines of the Code are from @LockBlock-dev
 + **MAC ID Spoofing**
 + **GPU ID Spoofing**
 + **PC-name Spoofing** *[New]*
-+ **Installation ID Spoofing** *[New]*
++ **Installation ID Spoofing** *[New]* (testing)
 + **Ubisoft cache cleaner** 
 + **Valorant cache cleaner** 
-+ **Spoof EFI Bootloader** *[New]*
-+ **Spoof SMBIOS** *[New]*
++ **Spoof EFI Bootloader** *[New]* (testing)
++ **Spoof SMBIOS** *[New]* (testing)
 + **Get all System informations** *[New]*
-
++ **Registy Check** *[New]*
 
 
 **Design Update** - 20.05.23
@@ -35,7 +35,8 @@ Some Lines of the Code are from @LockBlock-dev
 
 
 
-![Screenshot 2023-05-24 200130 (1)](https://github.com/SecHex/SecHex-Spoofy/assets/96635023/0fc62cd3-43d0-4ac6-b5eb-c2c628055fe6)
+![Screenshot 2023-05-27 232609 (2)](https://github.com/SecHex/SecHex-Spoofy/assets/96635023/c401bd71-b489-4391-bcf6-231dd99353f5)
+
 
 
 
