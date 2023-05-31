@@ -62,7 +62,7 @@ namespace HWID_Changer
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Fehler beim Überprüfen des Registry-Schlüssels: " + ex.Message);
+                Console.WriteLine("Error to check the Registry-Key: " + ex.Message);
             }
         }
 
@@ -75,20 +75,20 @@ namespace HWID_Changer
                 {
                     if (key.GetValue(valueName) == null)
                     {
-                        Console.WriteLine("Registry-Schlüssel nicht gefunden: " + keyPath + "\\" + valueName);
+                        Console.WriteLine("Registry-Key not found: " + keyPath + "\\" + valueName);
                     }
                 }
                 else
                 {
                     if (key.SubKeyCount == 0)
                     {
-                        Console.WriteLine("Registry-Schlüssel nicht gefunden: " + keyPath);
+                        Console.WriteLine("Registry-Key not found: " + keyPath);
                     }
                 }
             }
             else
             {
-                Console.WriteLine("Registry-Schlüssel nicht gefunden: " + keyPath);
+                Console.WriteLine("Registry-Key not found: " + keyPath);
             }
         }
 
