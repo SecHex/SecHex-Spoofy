@@ -456,7 +456,7 @@ namespace HWID_Changer
         public static void DisplaySystemData()
         {
             Console.WriteLine("System Data:");
-            Console.WriteLine("------------");
+            Console.WriteLine("------------------------------------------------");
 
             try
             {
