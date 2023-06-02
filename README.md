@@ -31,7 +31,7 @@ Some Lines of the Code are from @LockBlock-dev
 # Milestones 🏆
 **5 Stars** - ***EFI*** ✅                             
 **10 Stars** - ***SMBIOS***  ✅                                                                 
-**20 Stars** - ***Spoofer with GUI*** ✨                                                      
+**20+ Stars** - ***Spoofer with GUI*** ✨                                                      
 
 
 
