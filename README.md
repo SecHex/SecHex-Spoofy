@@ -35,7 +35,7 @@ Some Lines of the Code are from @LockBlock-dev
 **40+ Stars** - ***GUI Changes + Code overhaul*** ✨         
 
 # GUI VERSION 🏆
-![Screenshot 2023-06-05 175803 (1)](https://github.com/SecHex/SecHex-Spoofy/assets/96635023/82db00d4-6952-4c4b-ba83-07529e505c77)
+![MOSHED-2023-6-5-18-30-23](https://github.com/SecHex/SecHex-Spoofy/assets/96635023/94c4b085-075f-409e-a4f4-cb6264481840)
 # CMD VERSION 🏆
 ![Screenshot 2023-05-27 232609 (2)](https://github.com/SecHex/SecHex-Spoofy/assets/96635023/c401bd71-b489-4391-bcf6-231dd99353f5)
 
