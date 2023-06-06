@@ -42,10 +42,11 @@
             sm = new Siticone.Desktop.UI.WinForms.SiticoneButton();
             req = new Siticone.Desktop.UI.WinForms.SiticoneButton();
             label1 = new Label();
-            pictureBox1 = new PictureBox();
             label2 = new Label();
             label3 = new Label();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            tracercl = new Siticone.Desktop.UI.WinForms.SiticoneButton();
+            pictureBox2 = new PictureBox();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             SuspendLayout();
             // 
             // siticoneControlBox1
@@ -54,7 +55,7 @@
             siticoneControlBox1.Animated = true;
             siticoneControlBox1.BackColor = Color.Transparent;
             siticoneControlBox1.BorderRadius = 12;
-            siticoneControlBox1.FillColor = Color.FromArgb(246, 114, 128);
+            siticoneControlBox1.FillColor = Color.FromArgb(180, 0, 158);
             siticoneControlBox1.IconColor = Color.White;
             siticoneControlBox1.Location = new Point(567, 12);
             siticoneControlBox1.Name = "siticoneControlBox1";
@@ -68,7 +69,7 @@
             siticoneControlBox2.BackColor = Color.Transparent;
             siticoneControlBox2.BorderRadius = 12;
             siticoneControlBox2.ControlBoxType = Siticone.Desktop.UI.WinForms.Enums.ControlBoxType.MinimizeBox;
-            siticoneControlBox2.FillColor = Color.FromArgb(246, 114, 128);
+            siticoneControlBox2.FillColor = Color.FromArgb(180, 0, 158);
             siticoneControlBox2.IconColor = Color.White;
             siticoneControlBox2.Location = new Point(513, 12);
             siticoneControlBox2.Name = "siticoneControlBox2";
@@ -89,12 +90,13 @@
             disk.DisabledState.CustomBorderColor = Color.DarkGray;
             disk.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             disk.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            disk.FillColor = Color.FromArgb(246, 114, 128);
+            disk.FillColor = Color.FromArgb(180, 0, 158);
             disk.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             disk.ForeColor = Color.White;
             disk.Location = new Point(12, 67);
             disk.Name = "disk";
             disk.PressedDepth = 60;
+            disk.ShadowDecoration.Depth = 50;
             disk.Size = new Size(157, 32);
             disk.TabIndex = 2;
             disk.Text = "DISK Spoofing";
@@ -126,7 +128,7 @@
             mac.DisabledState.CustomBorderColor = Color.DarkGray;
             mac.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             mac.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            mac.FillColor = Color.FromArgb(246, 114, 128);
+            mac.FillColor = Color.FromArgb(180, 0, 158);
             mac.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             mac.ForeColor = Color.White;
             mac.Location = new Point(12, 105);
@@ -151,7 +153,7 @@
             pcname.DisabledState.CustomBorderColor = Color.DarkGray;
             pcname.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             pcname.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            pcname.FillColor = Color.FromArgb(246, 114, 128);
+            pcname.FillColor = Color.FromArgb(180, 0, 158);
             pcname.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             pcname.ForeColor = Color.White;
             pcname.Location = new Point(338, 105);
@@ -176,7 +178,7 @@
             winid.DisabledState.CustomBorderColor = Color.DarkGray;
             winid.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             winid.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            winid.FillColor = Color.FromArgb(246, 114, 128);
+            winid.FillColor = Color.FromArgb(180, 0, 158);
             winid.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             winid.ForeColor = Color.White;
             winid.Location = new Point(175, 67);
@@ -201,7 +203,7 @@
             GUID.DisabledState.CustomBorderColor = Color.DarkGray;
             GUID.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             GUID.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            GUID.FillColor = Color.FromArgb(246, 114, 128);
+            GUID.FillColor = Color.FromArgb(180, 0, 158);
             GUID.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             GUID.ForeColor = Color.White;
             GUID.Location = new Point(175, 105);
@@ -226,7 +228,7 @@
             display.DisabledState.CustomBorderColor = Color.DarkGray;
             display.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             display.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            display.FillColor = Color.FromArgb(246, 114, 128);
+            display.FillColor = Color.FromArgb(180, 0, 158);
             display.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             display.ForeColor = Color.White;
             display.Location = new Point(338, 67);
@@ -251,7 +253,7 @@
             efi.DisabledState.CustomBorderColor = Color.DarkGray;
             efi.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             efi.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            efi.FillColor = Color.FromArgb(246, 114, 128);
+            efi.FillColor = Color.FromArgb(180, 0, 158);
             efi.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             efi.ForeColor = Color.White;
             efi.Location = new Point(338, 143);
@@ -276,7 +278,7 @@
             sm.DisabledState.CustomBorderColor = Color.DarkGray;
             sm.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             sm.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            sm.FillColor = Color.FromArgb(246, 114, 128);
+            sm.FillColor = Color.FromArgb(180, 0, 158);
             sm.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             sm.ForeColor = Color.White;
             sm.Location = new Point(12, 143);
@@ -301,7 +303,7 @@
             req.DisabledState.CustomBorderColor = Color.DarkGray;
             req.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             req.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            req.FillColor = Color.FromArgb(246, 114, 128);
+            req.FillColor = Color.FromArgb(180, 0, 158);
             req.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             req.ForeColor = Color.White;
             req.Location = new Point(12, 181);
@@ -323,17 +325,6 @@
             label1.Size = new Size(124, 13);
             label1.TabIndex = 12;
             label1.Text = "sechex.me / sechex.net";
-            // 
-            // pictureBox1
-            // 
-            pictureBox1.BackColor = Color.Transparent;
-            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(231, 143);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(47, 32);
-            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox1.TabIndex = 13;
-            pictureBox1.TabStop = false;
             // 
             // label2
             // 
@@ -359,15 +350,51 @@
             label3.TabIndex = 15;
             label3.Text = "𝕴𝖛𝖆𝖗#5092";
             // 
+            // tracercl
+            // 
+            tracercl.Animated = true;
+            tracercl.AutoRoundedCorners = true;
+            tracercl.BackColor = Color.Transparent;
+            tracercl.BorderColor = Color.White;
+            tracercl.BorderRadius = 15;
+            tracercl.BorderStyle = System.Drawing.Drawing2D.DashStyle.Dash;
+            tracercl.BorderThickness = 1;
+            tracercl.CustomBorderColor = Color.Transparent;
+            tracercl.DisabledState.BorderColor = Color.DarkGray;
+            tracercl.DisabledState.CustomBorderColor = Color.DarkGray;
+            tracercl.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            tracercl.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            tracercl.FillColor = Color.FromArgb(180, 0, 158);
+            tracercl.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            tracercl.ForeColor = Color.White;
+            tracercl.Location = new Point(175, 143);
+            tracercl.Name = "tracercl";
+            tracercl.PressedDepth = 60;
+            tracercl.Size = new Size(157, 32);
+            tracercl.TabIndex = 16;
+            tracercl.Text = "Trace Cleaner (Soon)";
+            // 
+            // pictureBox2
+            // 
+            pictureBox2.BackColor = Color.Transparent;
+            pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
+            pictureBox2.Location = new Point(191, 388);
+            pictureBox2.Name = "pictureBox2";
+            pictureBox2.Size = new Size(34, 32);
+            pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox2.TabIndex = 13;
+            pictureBox2.TabStop = false;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ActiveBorder;
             ClientSize = new Size(627, 431);
+            Controls.Add(tracercl);
             Controls.Add(label3);
             Controls.Add(label2);
-            Controls.Add(pictureBox1);
+            Controls.Add(pictureBox2);
             Controls.Add(label1);
             Controls.Add(req);
             Controls.Add(sm);
@@ -385,7 +412,7 @@
             Name = "Form1";
             Text = "Form1";
             Load += Form1_Load;
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -405,8 +432,9 @@
         private Siticone.Desktop.UI.WinForms.SiticoneButton sm;
         private Siticone.Desktop.UI.WinForms.SiticoneButton req;
         private Label label1;
-        private PictureBox pictureBox1;
         private Label label2;
         private Label label3;
+        private Siticone.Desktop.UI.WinForms.SiticoneButton tracercl;
+        private PictureBox pictureBox2;
     }
 }

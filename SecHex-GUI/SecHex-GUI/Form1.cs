@@ -19,7 +19,7 @@ namespace SecHex_GUI
         private float animationProgress = 0.0f;
         private int steps = 170;
         private Color startColor = Color.FromArgb(23, 23, 23);
-        private Color middleColor = Color.FromArgb(246, 114, 128);
+        private Color middleColor = Color.FromArgb(180, 0, 158);
         private Color endColor = Color.FromArgb(23, 23, 23);
         private Color currentColor;
         private bool isDragging;
