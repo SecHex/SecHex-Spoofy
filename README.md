@@ -39,7 +39,7 @@ Some Lines of the Code are from @LockBlock-dev
 
 
 # CMD VERSION 🏆
-[No Updates for the CMD Version soon!]
+[No Updates for the CMD Version!]
 ![Screenshot 2023-05-27 232609 (2)](https://github.com/SecHex/SecHex-Spoofy/assets/96635023/c401bd71-b489-4391-bcf6-231dd99353f5)
 
 
