@@ -228,6 +228,54 @@ namespace SecHex_GUI
         //sechex.me
         //sechex.me
 
+
+
+
+
+
+
+        private void spoofall_Click(object sender, EventArgs e)
+        {
+            bool registryEntriesExist = false;
+
+            try
+            {
+                req_Click(sender, e);  
+                registryEntriesExist = true;
+            }
+            catch (Exception ex)
+            {
+                ShowNotification("Error executing functions: " + ex.Message, NotificationType.Error);
+            }
+
+            if (registryEntriesExist)
+            {
+                disk_Click(sender, e);
+                mac_Click(sender, e);
+                GUID_Click(sender, e);
+                winid_Click(sender, e);
+                pcname_Click(sender, e);
+                display_Click(sender, e);
+                efi_Click(sender, e);
+                siticoneButton1_Click(sender, e);
+
+                ShowNotification("All functions executed successfully.", NotificationType.Success);
+            }
+            else
+            {
+                ShowNotification("Error: One or more required registry entries are missing.", NotificationType.Error);
+            }
+        }
+
+
+
+
+
+
+
+
+
+
         private void disk_Click(object sender, EventArgs e)
         {
             try
@@ -664,6 +712,15 @@ namespace SecHex_GUI
         //sechex.me
         //sechex.me
 
+        private void tracercl_Click(object sender, EventArgs e)
+        {
+
+        }
+
+
+
+
+
         private void req_Click(object sender, EventArgs e)
         {
             string[] registryEntries = new string[]
@@ -715,6 +772,11 @@ namespace SecHex_GUI
         //sechex.me
         //sechex.me
         //sechex.me
+
+
+
+
+
 
 
         private void Enable_LocalAreaConnection(string adapterId, bool enable)
@@ -774,6 +836,10 @@ namespace SecHex_GUI
         {
 
         }
+
+
+
+
         //sechex.me
         //sechex.me
         //sechex.me

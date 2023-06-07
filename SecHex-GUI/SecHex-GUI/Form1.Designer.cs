@@ -46,6 +46,7 @@
             label3 = new Label();
             tracercl = new Siticone.Desktop.UI.WinForms.SiticoneButton();
             pictureBox2 = new PictureBox();
+            spoofall = new Siticone.Desktop.UI.WinForms.SiticoneButton();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             SuspendLayout();
             // 
@@ -372,7 +373,8 @@
             tracercl.PressedDepth = 60;
             tracercl.Size = new Size(157, 32);
             tracercl.TabIndex = 16;
-            tracercl.Text = "Trace Cleaner (Soon)";
+            tracercl.Text = "Trace Cleaner";
+            tracercl.Click += tracercl_Click;
             // 
             // pictureBox2
             // 
@@ -385,12 +387,38 @@
             pictureBox2.TabIndex = 13;
             pictureBox2.TabStop = false;
             // 
+            // spoofall
+            // 
+            spoofall.Animated = true;
+            spoofall.AutoRoundedCorners = true;
+            spoofall.BackColor = Color.Transparent;
+            spoofall.BorderColor = Color.White;
+            spoofall.BorderRadius = 15;
+            spoofall.BorderStyle = System.Drawing.Drawing2D.DashStyle.Dash;
+            spoofall.BorderThickness = 1;
+            spoofall.CustomBorderColor = Color.Transparent;
+            spoofall.DisabledState.BorderColor = Color.DarkGray;
+            spoofall.DisabledState.CustomBorderColor = Color.DarkGray;
+            spoofall.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            spoofall.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            spoofall.FillColor = Color.FromArgb(180, 0, 158);
+            spoofall.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            spoofall.ForeColor = Color.White;
+            spoofall.Location = new Point(12, 219);
+            spoofall.Name = "spoofall";
+            spoofall.PressedDepth = 60;
+            spoofall.Size = new Size(483, 32);
+            spoofall.TabIndex = 17;
+            spoofall.Text = "Spoof All";
+            spoofall.Click += spoofall_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ActiveBorder;
             ClientSize = new Size(627, 431);
+            Controls.Add(spoofall);
             Controls.Add(tracercl);
             Controls.Add(label3);
             Controls.Add(label2);
@@ -436,5 +464,6 @@
         private Label label3;
         private Siticone.Desktop.UI.WinForms.SiticoneButton tracercl;
         private PictureBox pictureBox2;
+        private Siticone.Desktop.UI.WinForms.SiticoneButton spoofall;
     }
 }
