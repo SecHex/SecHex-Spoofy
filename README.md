@@ -15,9 +15,9 @@ Some Lines of the CMD Version are from @LockBlock-dev
 
 
 # Functions ⚡
-+ **Disk Spoofing** 18.05.23
-+ **Guid Spoofing** 18.05.23
-+ **PC-name Spoofing** 18.05.23
++ **Disk Spoofing** [18.05.23]
++ **Guid Spoofing** [18.05.23]
++ **PC-name Spoofing** [18.05.23]
 + **MAC ID Spoofing** 19.05.23
 + **GPU ID Spoofing** 19.05.23
 ++ **Ubisoft cache cleaner** 19.05.23
