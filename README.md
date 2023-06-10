@@ -27,6 +27,8 @@ Some Lines of the CMD Version are from @LockBlock-dev
 + **Spoof SMBIOS** *[New]* (testing)
 + **Get all System informations** *[New]*
 + **Registry Check** *[New]*
++ **Log System** *[New]*
+
 
 
 **Design Update** - 20.05.23
