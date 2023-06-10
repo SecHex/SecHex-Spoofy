@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Net.NetworkInformation;
+using System.Security.Cryptography;
 using System.Text;
 using System.Windows.Forms;
 //sechex.me
@@ -152,6 +153,26 @@ namespace SecHex_GUI
                 isDragging = false;
             }
         }
+
+
+
+
+        private void SaveLogs(string id, string logBefore, string logAfter)
+        {
+            string logsFolderPath = Path.Combine(Application.StartupPath, "Logs");
+            if (!Directory.Exists(logsFolderPath))
+                Directory.CreateDirectory(logsFolderPath);
+
+            string logFileName = Path.Combine(logsFolderPath, $"{DateTime.Now:yyyy-MM-dd_HH-mm-ss}.txt");
+            string logEntryBefore = $"{DateTime.Now:HH:mm:ss}: ID {id} -  {logBefore} (Before)";
+            string logEntryAfter = $"{DateTime.Now:HH:mm:ss}: ID {id} -  {logAfter} (After)";
+
+            File.AppendAllText(logFileName, logEntryBefore + Environment.NewLine);
+            File.AppendAllText(logFileName, logEntryAfter + Environment.NewLine);
+        }
+
+
+
         //sechex.me
         //sechex.me
         //sechex.me
@@ -240,7 +261,7 @@ namespace SecHex_GUI
 
             try
             {
-                req_Click(sender, e);  
+                req_Click(sender, e);
                 registryEntriesExist = true;
             }
             catch (Exception ex)
@@ -299,13 +320,19 @@ namespace SecHex_GUI
                                                 object deviceTypeValue = ScsuiBus.GetValue("DeviceType");
                                                 if (deviceTypeValue != null && deviceTypeValue.ToString() == "DiskPeripheral")
                                                 {
-                                                    string identifier = RandomId(14);
-                                                    string serialNumber = RandomId(14);
+                                                    string identifierBefore = ScsuiBus.GetValue("Identifier").ToString();
+                                                    string serialNumberBefore = ScsuiBus.GetValue("SerialNumber").ToString();
 
-                                                    ScsuiBus.SetValue("DeviceIdentifierPage", Encoding.UTF8.GetBytes(serialNumber));
-                                                    ScsuiBus.SetValue("Identifier", identifier);
-                                                    ScsuiBus.SetValue("InquiryData", Encoding.UTF8.GetBytes(identifier));
-                                                    ScsuiBus.SetValue("SerialNumber", serialNumber);
+                                                    string identifierAfter = RandomId(14);
+                                                    string serialNumberAfter = RandomId(14);
+                                                    string logBefore = $"DiskPeripheral {bus}\\Target Id 0\\Logical Unit Id 0 - Identifier: {identifierBefore}, SerialNumber: {serialNumberBefore}";
+                                                    string logAfter = $"DiskPeripheral {bus}\\Target Id 0\\Logical Unit Id 0 - Identifier: {identifierAfter}, SerialNumber: {serialNumberAfter}";
+                                                    SaveLogs("disk", logBefore, logAfter);
+
+                                                    ScsuiBus.SetValue("DeviceIdentifierPage", Encoding.UTF8.GetBytes(serialNumberAfter));
+                                                    ScsuiBus.SetValue("Identifier", identifierAfter);
+                                                    ScsuiBus.SetValue("InquiryData", Encoding.UTF8.GetBytes(identifierAfter));
+                                                    ScsuiBus.SetValue("SerialNumber", serialNumberAfter);
                                                 }
                                             }
                                         }
@@ -325,10 +352,7 @@ namespace SecHex_GUI
                         return;
                     }
                 }
-                //sechex.me
-                //sechex.me
-                //sechex.me
-                //sechex.me
+
                 using (RegistryKey DiskPeripherals = Registry.LocalMachine.OpenSubKey("HARDWARE\\DESCRIPTION\\System\\MultifunctionAdapter\\0\\DiskController\\0\\DiskPeripheral"))
                 {
                     if (DiskPeripherals != null)
@@ -339,7 +363,14 @@ namespace SecHex_GUI
                             {
                                 if (DiskPeripheral != null)
                                 {
-                                    DiskPeripheral.SetValue("Identifier", $"{RandomId(8)}-{RandomId(8)}-A");
+                                    string identifierBefore = DiskPeripheral.GetValue("Identifier").ToString();
+
+                                    string identifierAfter = $"{RandomId(8)}-{RandomId(8)}-A";
+                                    string logBefore = $"DiskPeripheral {disk} - Identifier: {identifierBefore}";
+                                    string logAfter = $"DiskPeripheral {disk} - Identifier: {identifierAfter}";
+                                    SaveLogs("disk", logBefore, logAfter);
+
+                                    DiskPeripheral.SetValue("Identifier", identifierAfter);
                                 }
                             }
                         }
@@ -402,8 +433,14 @@ namespace SecHex_GUI
                             {
                                 if (NetworkAdapter.GetValue("BusType") != null)
                                 {
-                                    NetworkAdapter.SetValue("NetworkAddress", RandomMac());
                                     string adapterId = NetworkAdapter.GetValue("NetCfgInstanceId").ToString();
+                                    string macBefore = NetworkAdapter.GetValue("NetworkAddress")?.ToString();
+                                    string macAfter = RandomMac();
+                                    string logBefore = $"MAC Address {adapterId} - Before: {macBefore}";
+                                    string logAfter = $"MAC Address {adapterId} - After: {macAfter}";
+                                    SaveLogs("mac", logBefore, logAfter);
+
+                                    NetworkAdapter.SetValue("NetworkAddress", macAfter);
                                     Enable_LocalAreaConection(adapterId, false);
                                     Enable_LocalAreaConection(adapterId, true);
                                 }
@@ -427,98 +464,99 @@ namespace SecHex_GUI
 
         private void GUID_Click(object sender, EventArgs e)
         {
-            using (RegistryKey HardwareGUID = Registry.LocalMachine.OpenSubKey("SYSTEM\\CurrentControlSet\\Control\\IDConfigDB\\Hardware Profiles\\0001", true))
+            try
             {
-                if (HardwareGUID != null)
+                using (RegistryKey HardwareGUID = Registry.LocalMachine.OpenSubKey("SYSTEM\\CurrentControlSet\\Control\\IDConfigDB\\Hardware Profiles\\0001", true))
                 {
-                    HardwareGUID.SetValue("HwProfileGuid", $"{{{Guid.NewGuid()}}}");
+                    if (HardwareGUID != null)
+                    {
+                        HardwareGUID.SetValue("HwProfileGuid", $"{{{Guid.NewGuid()}}}");
+                        string logBefore = "HwProfileGuid - Before: " + HardwareGUID.GetValue("HwProfileGuid");
+                        string logAfter = "HwProfileGuid - After: " + HardwareGUID.GetValue("HwProfileGuid");
+                        SaveLogs("guid", logBefore, logAfter);
+                    }
+                    else
+                    {
+                        ShowNotification("HardwareGUID key not found.", NotificationType.Error);
+                        return;
+                    }
                 }
-                else
-                {
-                    ShowNotification("HardwareGUID key not found.", NotificationType.Error);
-                    return;
-                }
-            }
-            //sechex.me
-            //sechex.me
-            //sechex.me
-            //sechex.me
-            using (RegistryKey MachineGUID = Registry.LocalMachine.OpenSubKey("SOFTWARE\\Microsoft\\Cryptography", true))
-            {
-                if (MachineGUID != null)
-                {
-                    MachineGUID.SetValue("MachineGuid", Guid.NewGuid().ToString());
-                }
-                else
-                {
-                    ShowNotification("MachineGUID key not found.", NotificationType.Error);
-                    return;
-                }
-            }
-            //sechex.me
-            //sechex.me
-            //sechex.me
-            //sechex.me
-            using (RegistryKey MachineId = Registry.LocalMachine.OpenSubKey("SOFTWARE\\Microsoft\\SQMClient", true))
-            {
-                if (MachineId != null)
-                {
-                    MachineId.SetValue("MachineId", $"{{{Guid.NewGuid()}}}");
-                }
-                else
-                {
-                    ShowNotification("MachineId key not found.", NotificationType.Error);
-                    return;
-                }
-            }
-            //sechex.me
-            //sechex.me
-            //sechex.me
-            //sechex.me
-            using (RegistryKey SystemInfo = Registry.LocalMachine.OpenSubKey("SYSTEM\\CurrentControlSet\\Control\\SystemInformation", true))
-            {
-                if (SystemInfo != null)
-                {
-                    Random rnd = new Random();
-                    int day = rnd.Next(1, 31);
-                    string dayStr = (day < 10) ? $"0{day}" : day.ToString();
 
-                    int month = rnd.Next(1, 13);
-                    string monthStr = (month < 10) ? $"0{month}" : month.ToString();
-
-                    SystemInfo.SetValue("BIOSReleaseDate", $"{dayStr}/{monthStr}/{rnd.Next(2000, 2023)}");
-                    SystemInfo.SetValue("BIOSVersion", RandomId(10));
-                    SystemInfo.SetValue("ComputerHardwareId", $"{{{Guid.NewGuid()}}}");
-                    SystemInfo.SetValue("ComputerHardwareIds", $"{{{Guid.NewGuid()}}}\n{{{Guid.NewGuid()}}}\n{{{Guid.NewGuid()}}}\n");
-                    SystemInfo.SetValue("SystemManufacturer", RandomId(15));
-                    SystemInfo.SetValue("SystemProductName", RandomId(6));
-                }
-                else
+                using (RegistryKey MachineGUID = Registry.LocalMachine.OpenSubKey("SOFTWARE\\Microsoft\\Cryptography", true))
                 {
-                    ShowNotification("SystemInfo key not found.", NotificationType.Error);
-                    return;
+                    if (MachineGUID != null)
+                    {
+                        MachineGUID.SetValue("MachineGuid", Guid.NewGuid().ToString());
+                        string logBefore = "MachineGuid - Before: " + MachineGUID.GetValue("MachineGuid");
+                        string logAfter = "MachineGuid - After: " + MachineGUID.GetValue("MachineGuid");
+                        SaveLogs("guid", logBefore, logAfter);
+                    }
+                    else
+                    {
+                        ShowNotification("MachineGUID key not found.", NotificationType.Error);
+                        return;
+                    }
                 }
+
+                using (RegistryKey MachineId = Registry.LocalMachine.OpenSubKey("SOFTWARE\\Microsoft\\SQMClient", true))
+                {
+                    if (MachineId != null)
+                    {
+                        MachineId.SetValue("MachineId", $"{{{Guid.NewGuid()}}}");
+                        string logBefore = "MachineId - Before: " + MachineId.GetValue("MachineId");
+                        string logAfter = "MachineId - After: " + MachineId.GetValue("MachineId");
+                        SaveLogs("guid", logBefore, logAfter);
+                    }
+                    else
+                    {
+                        ShowNotification("MachineId key not found.", NotificationType.Error);
+                        return;
+                    }
+                }
+
+                using (RegistryKey SystemInfo = Registry.LocalMachine.OpenSubKey("SYSTEM\\CurrentControlSet\\Control\\SystemInformation", true))
+                {
+                    if (SystemInfo != null)
+                    {
+                        Random rnd = new Random();
+                        int day = rnd.Next(1, 31);
+                        string dayStr = (day < 10) ? $"0{day}" : day.ToString();
+
+                        int month = rnd.Next(1, 13);
+                        string monthStr = (month < 10) ? $"0{month}" : month.ToString();
+
+                        int year = rnd.Next(1990, 2023);
+                        string yearStr = year.ToString();
+
+                        string randomDate = $"{monthStr}/{dayStr}/{yearStr}";
+
+                        SystemInfo.SetValue("BIOSReleaseDate", randomDate);
+                        string logBefore = "BIOSReleaseDate - Before: " + SystemInfo.GetValue("BIOSReleaseDate");
+                        string logAfter = "BIOSReleaseDate - After: " + SystemInfo.GetValue("BIOSReleaseDate");
+                        SaveLogs("guid", logBefore, logAfter);
+                    }
+                    else
+                    {
+                        ShowNotification("SystemInformation key not found.", NotificationType.Error);
+                        return;
+                    }
+                }
+
+                ShowNotification("GUIDs successfully generated.", NotificationType.Success);
             }
-            //sechex.me
-            //sechex.me
-            //sechex.me
-            //sechex.me
-            using (RegistryKey Update = Registry.LocalMachine.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\WindowsUpdate", true))
+            catch (Exception ex)
             {
-                if (Update != null)
-                {
-                    Update.SetValue("SusClientId", Guid.NewGuid().ToString());
-                    Update.SetValue("SusClientIdValidation", Encoding.UTF8.GetBytes(RandomId(25)));
-                }
-                else
-                {
-                    ShowNotification("Update key not found.", NotificationType.Error);
-                    return;
-                }
+                ShowNotification("An error occurred: " + ex.Message, NotificationType.Error);
             }
-
-            ShowNotification("SpoofGUIDs Function executed successfully.", NotificationType.Success);
         }
+
+
+
+
+
+
+
+
 
         //sechex.me
         //sechex.me
@@ -531,19 +569,30 @@ namespace SecHex_GUI
 
             try
             {
-                RegistryKey winIDKey = Registry.LocalMachine.OpenSubKey("SOFTWARE\\Microsoft\\Cryptography", true);
+                using (RegistryKey winIDKey = Registry.LocalMachine.OpenSubKey("SOFTWARE\\Microsoft\\Cryptography", true))
+                {
+                    if (winIDKey != null)
+                    {
+                        string winIDBefore = winIDKey.GetValue("MachineGuid").ToString();
+                        byte[] spoofedWinIDBytes = new byte[16];
+                        using (var rng = new RNGCryptoServiceProvider())
+                        {
+                            rng.GetBytes(spoofedWinIDBytes);
+                        }
+                        string spoofedWinID = BitConverter.ToString(spoofedWinIDBytes).Replace("-", "").ToLowerInvariant();
+                        winIDKey.SetValue("MachineGuid", spoofedWinID);
 
-                if (winIDKey != null)
-                {
-                    // Generiere eine zufällige Windows ID
-                    string spoofedWinID = RandomId(10);
-                    winIDKey.SetValue("MachineGuid", spoofedWinID);
-                    ShowNotification("Windows ID spoofed successfully.", NotificationType.Success);
-                }
-                else
-                {
-                    err = true;
-                    ShowNotification("Windows ID spoofing failed: Registry key not found.", NotificationType.Error);
+                        string logBefore = "MachineGuid - Before: " + winIDBefore;
+                        string logAfter = "MachineGuid - After: " + winIDKey.GetValue("MachineGuid");
+                        SaveLogs("guid", logBefore, logAfter);
+
+                        ShowNotification("Windows ID spoofed successfully.", NotificationType.Success);
+                    }
+                    else
+                    {
+                        err = true;
+                        ShowNotification("Windows ID spoofing failed: Registry key not found.", NotificationType.Error);
+                    }
                 }
             }
             catch (Exception ex)
@@ -571,48 +620,82 @@ namespace SecHex_GUI
         //sechex.me
 
 
-
         private void pcname_Click(object sender, EventArgs e)
         {
             try
             {
-                string M = RandomId(8);
-                using (RegistryKey N = Registry.LocalMachine.OpenSubKey("SYSTEM\\CurrentControlSet\\Control\\ComputerName\\ComputerName", true))
+                string originalName;
+                string newName = RandomId(8);
+                using (RegistryKey computerNameKey = Registry.LocalMachine.OpenSubKey("SYSTEM\\CurrentControlSet\\Control\\ComputerName\\ComputerName", true))
                 {
-                    N.SetValue("ComputerName", M);
-                    N.SetValue("ActiveComputerName", M);
-                    N.SetValue("ComputerNamePhysicalDnsDomain", "");
-                }
-                using (RegistryKey O = Registry.LocalMachine.OpenSubKey("SYSTEM\\CurrentControlSet\\Control\\ComputerName\\ActiveComputerName", true))
-                {
-                    O.SetValue("ComputerName", M);
-                    O.SetValue("ActiveComputerName", M);
-                    O.SetValue("ComputerNamePhysicalDnsDomain", "");
-                }
-                using (RegistryKey P = Registry.LocalMachine.OpenSubKey("SYSTEM\\CurrentControlSet\\Services\\Tcpip\\Parameters", true))
-                {
-                    P.SetValue("Hostname", M);
-                    P.SetValue("NV Hostname", M);
-                }
-                using (RegistryKey Q = Registry.LocalMachine.OpenSubKey("SYSTEM\\CurrentControlSet\\Services\\Tcpip\\Parameters\\Interfaces", true))
-                {
-                    if (Q != null)
+                    if (computerNameKey != null)
                     {
-                        foreach (string R in Q.GetSubKeyNames())
+                        originalName = computerNameKey.GetValue("ComputerName").ToString();
+
+                        computerNameKey.SetValue("ComputerName", newName);
+                        computerNameKey.SetValue("ActiveComputerName", newName);
+                        computerNameKey.SetValue("ComputerNamePhysicalDnsDomain", "");
+                    }
+                    else
+                    {
+                        ShowNotification("ComputerName key not found.", NotificationType.Error);
+                        return;
+                    }
+                }
+                using (RegistryKey activeComputerNameKey = Registry.LocalMachine.OpenSubKey("SYSTEM\\CurrentControlSet\\Control\\ComputerName\\ActiveComputerName", true))
+                {
+                    if (activeComputerNameKey != null)
+                    {
+                        activeComputerNameKey.SetValue("ComputerName", newName);
+                        activeComputerNameKey.SetValue("ActiveComputerName", newName);
+                        activeComputerNameKey.SetValue("ComputerNamePhysicalDnsDomain", "");
+                    }
+                    else
+                    {
+                        ShowNotification("ActiveComputerName key not found.", NotificationType.Error);
+                        return;
+                    }
+                }
+
+                using (RegistryKey hostnameKey = Registry.LocalMachine.OpenSubKey("SYSTEM\\CurrentControlSet\\Services\\Tcpip\\Parameters", true))
+                {
+                    if (hostnameKey != null)
+                    {
+                        hostnameKey.SetValue("Hostname", newName);
+                        hostnameKey.SetValue("NV Hostname", newName);
+                    }
+                    else
+                    {
+                        ShowNotification("Hostname key not found.", NotificationType.Error);
+                        return;
+                    }
+                }
+                using (RegistryKey interfacesKey = Registry.LocalMachine.OpenSubKey("SYSTEM\\CurrentControlSet\\Services\\Tcpip\\Parameters\\Interfaces", true))
+                {
+                    if (interfacesKey != null)
+                    {
+                        foreach (string interfaceName in interfacesKey.GetSubKeyNames())
                         {
-                            using (RegistryKey interfaceSubKey = Q.OpenSubKey(R, true))
+                            using (RegistryKey interfaceKey = interfacesKey.OpenSubKey(interfaceName, true))
                             {
-                                interfaceSubKey.SetValue("Hostname", M);
-                                interfaceSubKey.SetValue("NV Hostname", M);
+                                if (interfaceKey != null)
+                                {
+                                    interfaceKey.SetValue("Hostname", newName);
+                                    interfaceKey.SetValue("NV Hostname", newName);
+                                }
                             }
                         }
                     }
                 }
-                ShowNotification("PC Name Function executed successfully.", NotificationType.Success);
+                string logBefore = "ComputerName - Before: " + originalName;
+                string logAfter = "ComputerName - After: " + newName;
+                SaveLogs("pcname", logBefore, logAfter);
+
+                ShowNotification("PC name spoofed successfully.", NotificationType.Success);
             }
             catch (Exception ex)
             {
-                ShowNotification("An error occurred while executing the PC Function: " + ex.Message, NotificationType.Error);
+                ShowNotification("An error occurred while spoofing the PC name: " + ex.Message, NotificationType.Error);
             }
         }
 
@@ -630,16 +713,16 @@ namespace SecHex_GUI
                 {
                     Random rnd = new Random();
                     int displayId = rnd.Next(1, 100);
-
-                    // Ändere die Display ID
                     displaySettings.SetValue("MRU0", $"Display{displayId}");
-
-                    // Spoof die Display ID
                     string spoofedDisplayId = $"SpoofedDisplay{displayId}";
                     displaySettings.SetValue("MRU1", spoofedDisplayId);
                     displaySettings.SetValue("MRU2", spoofedDisplayId);
                     displaySettings.SetValue("MRU3", spoofedDisplayId);
                     displaySettings.SetValue("MRU4", spoofedDisplayId);
+                    string logBefore = "Display ID - Before: " + displayId;
+                    string logAfter = "Display ID - After: " + spoofedDisplayId;
+                    SaveLogs("display", logBefore, logAfter);
+
                     ShowNotification("Display Function executed successfully.", NotificationType.Success);
                 }
                 else
@@ -661,18 +744,24 @@ namespace SecHex_GUI
         {
             try
             {
-                RegistryKey efiVariables = Registry.LocalMachine.OpenSubKey("SYSTEM\\CurrentControlSet\\Control\\Nsi\\{eb004a03-9b1a-11d4-9123-0050047759bc}\\26", true);
+                using (RegistryKey efiVariables = Registry.LocalMachine.OpenSubKey("SYSTEM\\CurrentControlSet\\Control\\Nsi\\{eb004a03-9b1a-11d4-9123-0050047759bc}\\26", true))
+                {
+                    if (efiVariables != null)
+                    {
+                        string efiVariableIdBefore = efiVariables.GetValue("VariableId")?.ToString();
 
-                if (efiVariables != null)
-                {
-                    string efiVariableId = Guid.NewGuid().ToString();
-                    efiVariables.SetValue("VariableId", efiVariableId);
-                    efiVariables.Close();
-                    ShowNotification("EFI Function executed successfully.", NotificationType.Success);
-                }
-                else
-                {
-                    ShowNotification("EFI variables registry key not found.", NotificationType.Error);
+                        string newEfiVariableId = Guid.NewGuid().ToString();
+                        efiVariables.SetValue("VariableId", newEfiVariableId);
+                        string logBefore = "EFI Variable ID - Before: " + efiVariableIdBefore;
+                        string logAfter = "EFI Variable ID - After: " + newEfiVariableId;
+                        SaveLogs("efi", logBefore, logAfter);
+
+                        ShowNotification("EFI Function executed successfully.", NotificationType.Success);
+                    }
+                    else
+                    {
+                        ShowNotification("EFI variables registry key not found.", NotificationType.Error);
+                    }
                 }
             }
             catch (Exception ex)
@@ -689,17 +778,24 @@ namespace SecHex_GUI
         {
             try
             {
-                RegistryKey smbiosData = Registry.LocalMachine.OpenSubKey("HARDWARE\\DESCRIPTION\\System\\BIOS", true);
-                if (smbiosData != null)
+                using (RegistryKey smbiosData = Registry.LocalMachine.OpenSubKey("HARDWARE\\DESCRIPTION\\System\\BIOS", true))
                 {
-                    string serialNumber = RandomId(10);
-                    smbiosData.SetValue("SystemSerialNumber", serialNumber);
-                    smbiosData.Close();
-                    ShowNotification("SMBIOS Function executed successfully.", NotificationType.Success);
-                }
-                else
-                {
-                    ShowNotification("SMBIOS data registry key not found.", NotificationType.Error);
+                    if (smbiosData != null)
+                    {
+                        string serialNumberBefore = smbiosData.GetValue("SystemSerialNumber")?.ToString();
+
+                        string newSerialNumber = RandomId(10);
+                        smbiosData.SetValue("SystemSerialNumber", newSerialNumber);
+                        string logBefore = "SMBIOS SystemSerialNumber - Before: " + serialNumberBefore;
+                        string logAfter = "SMBIOS SystemSerialNumber - After: " + newSerialNumber;
+                        SaveLogs("smbios", logBefore, logAfter);
+
+                        ShowNotification("SMBIOS Function executed successfully.", NotificationType.Success);
+                    }
+                    else
+                    {
+                        ShowNotification("SMBIOS data registry key not found.", NotificationType.Error);
+                    }
                 }
             }
             catch (Exception ex)
@@ -776,9 +872,6 @@ namespace SecHex_GUI
 
 
 
-
-
-
         private void Enable_LocalAreaConnection(string adapterId, bool enable)
         {
             using (var process = new Process())
@@ -836,7 +929,6 @@ namespace SecHex_GUI
         {
 
         }
-
 
 
 

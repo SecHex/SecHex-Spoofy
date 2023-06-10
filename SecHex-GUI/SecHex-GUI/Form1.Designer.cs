@@ -373,7 +373,7 @@
             tracercl.PressedDepth = 60;
             tracercl.Size = new Size(157, 32);
             tracercl.TabIndex = 16;
-            tracercl.Text = "Trace Cleaner";
+            tracercl.Text = "Trace Cleaner (soon)";
             tracercl.Click += tracercl_Click;
             // 
             // pictureBox2
