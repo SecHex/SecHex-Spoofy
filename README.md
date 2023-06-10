@@ -20,14 +20,14 @@ Some Lines of the CMD Version are from @LockBlock-dev
 + **MAC ID Spoofing**
 + **GPU ID Spoofing**
 + **PC-name Spoofing** *[New]*
-+ **Installation ID Spoofing** *[New]* (testing)
++ **Installation ID Spoofing** *[New]* 
 + **Ubisoft cache cleaner** 
 + **Valorant cache cleaner** 
 + **Spoof EFI Bootloader** *[New]* (testing)
 + **Spoof SMBIOS** *[New]* (testing)
 + **Get all System informations** *[New]*
 + **Registry Check** *[New]*
-+ **Log System** *[New]*
++ **Log System** *[New]* (testing)
 
 
 
