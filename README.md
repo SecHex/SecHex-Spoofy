@@ -15,19 +15,19 @@ Some Lines of the CMD Version are from @LockBlock-dev
 
 
 # Functions ⚡
-+ **Disk Spoofing** [18.05.23]
-+ **Guid Spoofing** [18.05.23]
-+ **PC-name Spoofing** [18.05.23]
-+ **MAC ID Spoofing** 19.05.23
-+ **GPU ID Spoofing** 19.05.23
-++ **Ubisoft cache cleaner** 19.05.23
-+ **Valorant cache cleaner** 19.05.23
-+ **Installation ID Spoofing** *[New]* 26.05.23
-+ **Spoof EFI Bootloader** *[New]* (testing) 26.05.23
-+ **Spoof SMBIOS** *[New]* (testing) 26.05.23
-+ **Get all System informations** *[New]* 27.05.23
-+ **Registry Checker** *[New]* 07.06.23
-+ **Log System** *[New]* (testing) 10.06.23
++ **Disk Spoofing** - [18.05.23]
++ **Guid Spoofing** - [18.05.23]
++ **PC-name Spoofing** - [18.05.23]
++ **MAC ID Spoofing** - [19.05.23]
++ **GPU ID Spoofing** - [19.05.23]
+++ **Ubisoft cache cleaner** - [19.05.23]
++ **Valorant cache cleaner** - [19.05.23]
++ **Installation ID Spoofing** *[New]* - [26.05.23]
++ **Spoof EFI Bootloader** *[New]* (testing) - [26.05.23]
++ **Spoof SMBIOS** *[New]* (testing) - [26.05.23]
++ **Get all System informations** *[New]* - [27.05.23]
++ **Registry Checker** *[New]* - [07.06.23]
++ **Log System** *[New]* (testing) - [10.06.23]
 
 
 
