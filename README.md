@@ -48,6 +48,13 @@ Some Lines of the CMD Version are from @LockBlock-dev
 ![Screenshot 2023-05-27 232609 (2)](https://github.com/SecHex/SecHex-Spoofy/assets/96635023/c401bd71-b489-4391-bcf6-231dd99353f5)
 
 
+# Support me 💸
+btc bc1q8dedn4a6msjm6wf7jejmf2g47twrk6wha8u0dl
+eth 0xD97738045E738Cb255e2707473Dae023ef913c0A
+bnb bnb1yxxrkwyvde9c2c8qle6d5gzm5tndyselgjd8xy
+
+
+
 
 
 # Disclaimer ⚠️
