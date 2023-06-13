@@ -23,11 +23,12 @@ Some Lines of the CMD Version are from @LockBlock-dev
 + **Ubisoft cache cleaner** - [19.05.23]                         
 + **Valorant cache cleaner** - [19.05.23]                   
 + **Installation ID Spoofing** *[New]* - [26.05.23]                              
-+ **Spoof EFI Bootloader** *[New]* (testing) - [26.05.23]                              
-+ **Spoof SMBIOS** *[New]* (testing) - [26.05.23]                              
++ **Spoof EFI Bootloader** *[New]* - [26.05.23]                              
++ **Spoof SMBIOS** *[New]* - [26.05.23]                              
 + **Get all System informations** *[New]* - [27.05.23]                              
 + **Registry Checker** *[New]* - [07.06.23]                              
-+ **Log System** *[New]* (testing) - [10.06.23]                              
++ **Log System** *[New]* (testing) - [10.06.23]
++ **Backup System** *[New]* (testing) - [13.06.23]                                      
 
 
 
