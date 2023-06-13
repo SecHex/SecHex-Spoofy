@@ -37,7 +37,7 @@ Some Lines of the CMD Version are from @LockBlock-dev
 **5 Stars** - ***EFI*** ✅                             
 **10 Stars** - ***SMBIOS***  ✅                                                                 
 **20+ Stars** - ***Spoofer with GUI*** ✅       
-**40+ Stars** - ***GUI Changes + Code overhaul*** ✨         
+**50+ Stars** - ***GUI Changes + Code overhaul*** ✨         
 
 # GUI VERSION 🏆
 ![dcrip (1) (2)](https://github.com/SecHex/SecHex-Spoofy/assets/96635023/678b29dc-4110-4d4e-bda1-f7948d5c31fb)
