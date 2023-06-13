@@ -1,4 +1,4 @@
-# SecHex-Spoofy
+# SecHex-Spoofy [1.5]
 
 Simple HWID-Changer 🔑︎
 Some Lines of the CMD Version are from @LockBlock-dev 
@@ -40,7 +40,7 @@ Some Lines of the CMD Version are from @LockBlock-dev
 **50+ Stars** - ***GUI Changes + Code overhaul*** ✨         
 
 # GUI VERSION 🏆
-![dcrip (1) (2)](https://github.com/SecHex/SecHex-Spoofy/assets/96635023/678b29dc-4110-4d4e-bda1-f7948d5c31fb)
+![241434869-c401bd71-b489-4391-bcf6-231dd99353f5 (1)](https://github.com/SecHex/SecHex-Spoofy/assets/96635023/2873ea2b-6485-42ed-b448-0056f2ba7eb1)
 
 
 # CMD VERSION 🏆
