@@ -291,12 +291,6 @@ namespace SecHex_GUI
 
 
 
-
-
-
-
-
-
         private void disk_Click(object sender, EventArgs e)
         {
             try
@@ -352,33 +346,36 @@ namespace SecHex_GUI
                         return;
                     }
                 }
-
-                using (RegistryKey DiskPeripherals = Registry.LocalMachine.OpenSubKey("HARDWARE\\DESCRIPTION\\System\\MultifunctionAdapter\\0\\DiskController\\0\\DiskPeripheral"))
+                using (RegistryKey diskKey = Registry.LocalMachine.OpenSubKey("SYSTEM\\CurrentControlSet\\Enum\\IDE"))
                 {
-                    if (DiskPeripherals != null)
+                    if (diskKey != null)
                     {
-                        foreach (string disk in DiskPeripherals.GetSubKeyNames())
+                        foreach (string controllerId in diskKey.GetSubKeyNames())
                         {
-                            using (RegistryKey DiskPeripheral = Registry.LocalMachine.OpenSubKey($"HARDWARE\\DESCRIPTION\\System\\MultifunctionAdapter\\0\\DiskController\\0\\DiskPeripheral\\{disk}", true))
+                            using (RegistryKey controller = diskKey.OpenSubKey(controllerId))
                             {
-                                if (DiskPeripheral != null)
+                                if (controller != null)
                                 {
-                                    string identifierBefore = DiskPeripheral.GetValue("Identifier").ToString();
+                                    foreach (string diskId in controller.GetSubKeyNames())
+                                    {
+                                        using (RegistryKey disk = controller.OpenSubKey(diskId, true))
+                                        {
+                                            if (disk != null)
+                                            {
+                                                string serialNumberBefore = disk.GetValue("SerialNumber")?.ToString();
 
-                                    string identifierAfter = $"{RandomId(8)}-{RandomId(8)}-A";
-                                    string logBefore = $"DiskPeripheral {disk} - Identifier: {identifierBefore}";
-                                    string logAfter = $"DiskPeripheral {disk} - Identifier: {identifierAfter}";
-                                    SaveLogs("disk", logBefore, logAfter);
+                                                string serialNumberAfter = RandomId(14);
+                                                string logBefore = $"Hard Disk {diskId} - SerialNumber: {serialNumberBefore}";
+                                                string logAfter = $"Hard Disk {diskId} - SerialNumber: {serialNumberAfter}";
+                                                SaveLogs("disk", logBefore, logAfter);
 
-                                    DiskPeripheral.SetValue("Identifier", identifierAfter);
+                                                disk.SetValue("SerialNumber", serialNumberAfter);
+                                            }
+                                        }
+                                    }
                                 }
                             }
                         }
-                    }
-                    else
-                    {
-                        ShowNotification("DiskPeripherals key not found.", NotificationType.Error);
-                        return;
                     }
                 }
 
