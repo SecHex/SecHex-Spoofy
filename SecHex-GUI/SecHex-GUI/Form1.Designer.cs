@@ -44,9 +44,11 @@
             label1 = new Label();
             label2 = new Label();
             label3 = new Label();
-            tracercl = new Siticone.Desktop.UI.WinForms.SiticoneButton();
             pictureBox2 = new PictureBox();
             spoofall = new Siticone.Desktop.UI.WinForms.SiticoneButton();
+            product = new Siticone.Desktop.UI.WinForms.SiticoneButton();
+            tracercl = new Siticone.Desktop.UI.WinForms.SiticoneButton();
+            backup = new Siticone.Desktop.UI.WinForms.SiticoneButton();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             SuspendLayout();
             // 
@@ -56,7 +58,7 @@
             siticoneControlBox1.Animated = true;
             siticoneControlBox1.BackColor = Color.Transparent;
             siticoneControlBox1.BorderRadius = 12;
-            siticoneControlBox1.FillColor = Color.FromArgb(180, 0, 158);
+            siticoneControlBox1.FillColor = Color.FromArgb(113, 113, 113);
             siticoneControlBox1.IconColor = Color.White;
             siticoneControlBox1.Location = new Point(567, 12);
             siticoneControlBox1.Name = "siticoneControlBox1";
@@ -70,7 +72,7 @@
             siticoneControlBox2.BackColor = Color.Transparent;
             siticoneControlBox2.BorderRadius = 12;
             siticoneControlBox2.ControlBoxType = Siticone.Desktop.UI.WinForms.Enums.ControlBoxType.MinimizeBox;
-            siticoneControlBox2.FillColor = Color.FromArgb(180, 0, 158);
+            siticoneControlBox2.FillColor = Color.FromArgb(113, 113, 113);
             siticoneControlBox2.IconColor = Color.White;
             siticoneControlBox2.Location = new Point(513, 12);
             siticoneControlBox2.Name = "siticoneControlBox2";
@@ -84,14 +86,13 @@
             disk.BackColor = Color.Transparent;
             disk.BorderColor = Color.White;
             disk.BorderRadius = 15;
-            disk.BorderStyle = System.Drawing.Drawing2D.DashStyle.Dash;
             disk.BorderThickness = 1;
             disk.CustomBorderColor = Color.Transparent;
             disk.DisabledState.BorderColor = Color.DarkGray;
             disk.DisabledState.CustomBorderColor = Color.DarkGray;
             disk.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             disk.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            disk.FillColor = Color.FromArgb(180, 0, 158);
+            disk.FillColor = Color.FromArgb(113, 113, 113);
             disk.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             disk.ForeColor = Color.White;
             disk.Location = new Point(12, 67);
@@ -100,7 +101,7 @@
             disk.ShadowDecoration.Depth = 50;
             disk.Size = new Size(157, 32);
             disk.TabIndex = 2;
-            disk.Text = "DISK Spoofing";
+            disk.Text = "DISK";
             disk.Click += disk_Click;
             // 
             // sechex
@@ -122,14 +123,13 @@
             mac.BackColor = Color.Transparent;
             mac.BorderColor = Color.White;
             mac.BorderRadius = 15;
-            mac.BorderStyle = System.Drawing.Drawing2D.DashStyle.Dash;
             mac.BorderThickness = 1;
             mac.CustomBorderColor = Color.Transparent;
             mac.DisabledState.BorderColor = Color.DarkGray;
             mac.DisabledState.CustomBorderColor = Color.DarkGray;
             mac.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             mac.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            mac.FillColor = Color.FromArgb(180, 0, 158);
+            mac.FillColor = Color.FromArgb(113, 113, 113);
             mac.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             mac.ForeColor = Color.White;
             mac.Location = new Point(12, 105);
@@ -137,7 +137,7 @@
             mac.PressedDepth = 60;
             mac.Size = new Size(157, 32);
             mac.TabIndex = 4;
-            mac.Text = "MAC Spoofing";
+            mac.Text = "MAC";
             mac.Click += mac_Click;
             // 
             // pcname
@@ -147,14 +147,13 @@
             pcname.BackColor = Color.Transparent;
             pcname.BorderColor = Color.White;
             pcname.BorderRadius = 15;
-            pcname.BorderStyle = System.Drawing.Drawing2D.DashStyle.Dash;
             pcname.BorderThickness = 1;
             pcname.CustomBorderColor = Color.Transparent;
             pcname.DisabledState.BorderColor = Color.DarkGray;
             pcname.DisabledState.CustomBorderColor = Color.DarkGray;
             pcname.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             pcname.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            pcname.FillColor = Color.FromArgb(180, 0, 158);
+            pcname.FillColor = Color.FromArgb(113, 113, 113);
             pcname.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             pcname.ForeColor = Color.White;
             pcname.Location = new Point(338, 105);
@@ -162,7 +161,7 @@
             pcname.PressedDepth = 60;
             pcname.Size = new Size(157, 32);
             pcname.TabIndex = 5;
-            pcname.Text = "PC-Name Spoofing";
+            pcname.Text = "PC-Name";
             pcname.Click += pcname_Click;
             // 
             // winid
@@ -172,14 +171,13 @@
             winid.BackColor = Color.Transparent;
             winid.BorderColor = Color.White;
             winid.BorderRadius = 15;
-            winid.BorderStyle = System.Drawing.Drawing2D.DashStyle.Dash;
             winid.BorderThickness = 1;
             winid.CustomBorderColor = Color.Transparent;
             winid.DisabledState.BorderColor = Color.DarkGray;
             winid.DisabledState.CustomBorderColor = Color.DarkGray;
             winid.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             winid.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            winid.FillColor = Color.FromArgb(180, 0, 158);
+            winid.FillColor = Color.FromArgb(113, 113, 113);
             winid.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             winid.ForeColor = Color.White;
             winid.Location = new Point(175, 67);
@@ -187,7 +185,7 @@
             winid.PressedDepth = 60;
             winid.Size = new Size(157, 32);
             winid.TabIndex = 6;
-            winid.Text = "Win-ID Spoofing";
+            winid.Text = "Windows-ID";
             winid.Click += winid_Click;
             // 
             // GUID
@@ -197,14 +195,13 @@
             GUID.BackColor = Color.Transparent;
             GUID.BorderColor = Color.White;
             GUID.BorderRadius = 15;
-            GUID.BorderStyle = System.Drawing.Drawing2D.DashStyle.Dash;
             GUID.BorderThickness = 1;
             GUID.CustomBorderColor = Color.Transparent;
             GUID.DisabledState.BorderColor = Color.DarkGray;
             GUID.DisabledState.CustomBorderColor = Color.DarkGray;
             GUID.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             GUID.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            GUID.FillColor = Color.FromArgb(180, 0, 158);
+            GUID.FillColor = Color.FromArgb(113, 113, 113);
             GUID.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             GUID.ForeColor = Color.White;
             GUID.Location = new Point(175, 105);
@@ -212,7 +209,7 @@
             GUID.PressedDepth = 60;
             GUID.Size = new Size(157, 32);
             GUID.TabIndex = 7;
-            GUID.Text = "GUID Spoofing";
+            GUID.Text = "GUID ";
             GUID.Click += GUID_Click;
             // 
             // display
@@ -222,14 +219,13 @@
             display.BackColor = Color.Transparent;
             display.BorderColor = Color.White;
             display.BorderRadius = 15;
-            display.BorderStyle = System.Drawing.Drawing2D.DashStyle.Dash;
             display.BorderThickness = 1;
             display.CustomBorderColor = Color.Transparent;
             display.DisabledState.BorderColor = Color.DarkGray;
             display.DisabledState.CustomBorderColor = Color.DarkGray;
             display.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             display.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            display.FillColor = Color.FromArgb(180, 0, 158);
+            display.FillColor = Color.FromArgb(113, 113, 113);
             display.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             display.ForeColor = Color.White;
             display.Location = new Point(338, 67);
@@ -237,7 +233,7 @@
             display.PressedDepth = 60;
             display.Size = new Size(157, 32);
             display.TabIndex = 8;
-            display.Text = "Display Spoofing";
+            display.Text = "Display ID";
             display.Click += display_Click;
             // 
             // efi
@@ -247,14 +243,13 @@
             efi.BackColor = Color.Transparent;
             efi.BorderColor = Color.White;
             efi.BorderRadius = 15;
-            efi.BorderStyle = System.Drawing.Drawing2D.DashStyle.Dash;
             efi.BorderThickness = 1;
             efi.CustomBorderColor = Color.Transparent;
             efi.DisabledState.BorderColor = Color.DarkGray;
             efi.DisabledState.CustomBorderColor = Color.DarkGray;
             efi.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             efi.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            efi.FillColor = Color.FromArgb(180, 0, 158);
+            efi.FillColor = Color.FromArgb(113, 113, 113);
             efi.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             efi.ForeColor = Color.White;
             efi.Location = new Point(338, 143);
@@ -262,7 +257,7 @@
             efi.PressedDepth = 60;
             efi.Size = new Size(157, 32);
             efi.TabIndex = 9;
-            efi.Text = "EFI Spoofing";
+            efi.Text = "EFI";
             efi.Click += efi_Click;
             // 
             // sm
@@ -272,14 +267,13 @@
             sm.BackColor = Color.Transparent;
             sm.BorderColor = Color.White;
             sm.BorderRadius = 15;
-            sm.BorderStyle = System.Drawing.Drawing2D.DashStyle.Dash;
             sm.BorderThickness = 1;
             sm.CustomBorderColor = Color.Transparent;
             sm.DisabledState.BorderColor = Color.DarkGray;
             sm.DisabledState.CustomBorderColor = Color.DarkGray;
             sm.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             sm.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            sm.FillColor = Color.FromArgb(180, 0, 158);
+            sm.FillColor = Color.FromArgb(113, 113, 113);
             sm.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             sm.ForeColor = Color.White;
             sm.Location = new Point(12, 143);
@@ -297,17 +291,16 @@
             req.BackColor = Color.Transparent;
             req.BorderColor = Color.White;
             req.BorderRadius = 15;
-            req.BorderStyle = System.Drawing.Drawing2D.DashStyle.Dash;
             req.BorderThickness = 1;
             req.CustomBorderColor = Color.Transparent;
             req.DisabledState.BorderColor = Color.DarkGray;
             req.DisabledState.CustomBorderColor = Color.DarkGray;
             req.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             req.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            req.FillColor = Color.FromArgb(180, 0, 158);
+            req.FillColor = Color.FromArgb(113, 113, 113);
             req.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             req.ForeColor = Color.White;
-            req.Location = new Point(12, 181);
+            req.Location = new Point(12, 220);
             req.Name = "req";
             req.PressedDepth = 60;
             req.Size = new Size(483, 32);
@@ -351,31 +344,6 @@
             label3.TabIndex = 15;
             label3.Text = "𝕴𝖛𝖆𝖗#5092";
             // 
-            // tracercl
-            // 
-            tracercl.Animated = true;
-            tracercl.AutoRoundedCorners = true;
-            tracercl.BackColor = Color.Transparent;
-            tracercl.BorderColor = Color.White;
-            tracercl.BorderRadius = 15;
-            tracercl.BorderStyle = System.Drawing.Drawing2D.DashStyle.Dash;
-            tracercl.BorderThickness = 1;
-            tracercl.CustomBorderColor = Color.Transparent;
-            tracercl.DisabledState.BorderColor = Color.DarkGray;
-            tracercl.DisabledState.CustomBorderColor = Color.DarkGray;
-            tracercl.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
-            tracercl.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            tracercl.FillColor = Color.FromArgb(180, 0, 158);
-            tracercl.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            tracercl.ForeColor = Color.White;
-            tracercl.Location = new Point(175, 143);
-            tracercl.Name = "tracercl";
-            tracercl.PressedDepth = 60;
-            tracercl.Size = new Size(157, 32);
-            tracercl.TabIndex = 16;
-            tracercl.Text = "Trace Cleaner (soon)";
-            tracercl.Click += tracercl_Click;
-            // 
             // pictureBox2
             // 
             pictureBox2.BackColor = Color.Transparent;
@@ -394,17 +362,16 @@
             spoofall.BackColor = Color.Transparent;
             spoofall.BorderColor = Color.White;
             spoofall.BorderRadius = 15;
-            spoofall.BorderStyle = System.Drawing.Drawing2D.DashStyle.Dash;
             spoofall.BorderThickness = 1;
             spoofall.CustomBorderColor = Color.Transparent;
             spoofall.DisabledState.BorderColor = Color.DarkGray;
             spoofall.DisabledState.CustomBorderColor = Color.DarkGray;
             spoofall.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             spoofall.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            spoofall.FillColor = Color.FromArgb(180, 0, 158);
+            spoofall.FillColor = Color.FromArgb(113, 113, 113);
             spoofall.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             spoofall.ForeColor = Color.White;
-            spoofall.Location = new Point(12, 219);
+            spoofall.Location = new Point(12, 258);
             spoofall.Name = "spoofall";
             spoofall.PressedDepth = 60;
             spoofall.Size = new Size(483, 32);
@@ -412,12 +379,86 @@
             spoofall.Text = "Spoof All";
             spoofall.Click += spoofall_Click;
             // 
+            // product
+            // 
+            product.Animated = true;
+            product.AutoRoundedCorners = true;
+            product.BackColor = Color.Transparent;
+            product.BorderColor = Color.White;
+            product.BorderRadius = 15;
+            product.BorderThickness = 1;
+            product.CustomBorderColor = Color.Transparent;
+            product.DisabledState.BorderColor = Color.DarkGray;
+            product.DisabledState.CustomBorderColor = Color.DarkGray;
+            product.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            product.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            product.FillColor = Color.FromArgb(113, 113, 113);
+            product.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            product.ForeColor = Color.White;
+            product.Location = new Point(12, 181);
+            product.Name = "product";
+            product.PressedDepth = 60;
+            product.Size = new Size(157, 32);
+            product.TabIndex = 18;
+            product.Text = "Product ID";
+            product.Click += product_Click;
+            // 
+            // tracercl
+            // 
+            tracercl.Animated = true;
+            tracercl.AutoRoundedCorners = true;
+            tracercl.BackColor = Color.Transparent;
+            tracercl.BorderColor = Color.White;
+            tracercl.BorderRadius = 15;
+            tracercl.BorderThickness = 1;
+            tracercl.CustomBorderColor = Color.Transparent;
+            tracercl.DisabledState.BorderColor = Color.DarkGray;
+            tracercl.DisabledState.CustomBorderColor = Color.DarkGray;
+            tracercl.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            tracercl.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            tracercl.FillColor = Color.FromArgb(113, 113, 113);
+            tracercl.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            tracercl.ForeColor = Color.White;
+            tracercl.Location = new Point(175, 143);
+            tracercl.Name = "tracercl";
+            tracercl.PressedDepth = 60;
+            tracercl.Size = new Size(157, 32);
+            tracercl.TabIndex = 16;
+            tracercl.Text = "Trace Cleaner (soon)";
+            tracercl.Click += tracercl_Click;
+            // 
+            // backup
+            // 
+            backup.Animated = true;
+            backup.AutoRoundedCorners = true;
+            backup.BackColor = Color.Transparent;
+            backup.BorderColor = Color.White;
+            backup.BorderRadius = 15;
+            backup.BorderThickness = 1;
+            backup.CustomBorderColor = Color.Transparent;
+            backup.DisabledState.BorderColor = Color.DarkGray;
+            backup.DisabledState.CustomBorderColor = Color.DarkGray;
+            backup.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            backup.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            backup.FillColor = Color.FromArgb(113, 113, 113);
+            backup.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            backup.ForeColor = Color.White;
+            backup.Location = new Point(338, 181);
+            backup.Name = "backup";
+            backup.PressedDepth = 60;
+            backup.Size = new Size(157, 32);
+            backup.TabIndex = 19;
+            backup.Text = "Backup";
+            backup.Click += backup_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ActiveBorder;
             ClientSize = new Size(627, 431);
+            Controls.Add(backup);
+            Controls.Add(product);
             Controls.Add(spoofall);
             Controls.Add(tracercl);
             Controls.Add(label3);
@@ -462,8 +503,10 @@
         private Label label1;
         private Label label2;
         private Label label3;
-        private Siticone.Desktop.UI.WinForms.SiticoneButton tracercl;
         private PictureBox pictureBox2;
         private Siticone.Desktop.UI.WinForms.SiticoneButton spoofall;
+        private Siticone.Desktop.UI.WinForms.SiticoneButton product;
+        private Siticone.Desktop.UI.WinForms.SiticoneButton tracercl;
+        private Siticone.Desktop.UI.WinForms.SiticoneButton backup;
     }
 }

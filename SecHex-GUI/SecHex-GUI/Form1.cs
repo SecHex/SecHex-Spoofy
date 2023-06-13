@@ -1,12 +1,9 @@
 using Microsoft.Win32;
-using System;
 using System.Diagnostics;
-using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Net.NetworkInformation;
 using System.Security.Cryptography;
 using System.Text;
-using System.Windows.Forms;
 //sechex.me
 //sechex.me
 //sechex.me
@@ -20,7 +17,7 @@ namespace SecHex_GUI
         private float animationProgress = 0.0f;
         private int steps = 170;
         private Color startColor = Color.FromArgb(23, 23, 23);
-        private Color middleColor = Color.FromArgb(180, 0, 158);
+        private Color middleColor = Color.FromArgb(248, 248, 248);
         private Color endColor = Color.FromArgb(23, 23, 23);
         private Color currentColor;
         private bool isDragging;
@@ -219,6 +216,40 @@ namespace SecHex_GUI
 
             return result;
         }
+
+
+        private string RandomIdprid(int length)
+        {
+            const string digits = "0123456789";
+            const string letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            var random = new Random();
+            var id = new char[length];
+            int dashIndex = 5;
+            int letterIndex = 17;
+            for (int i = 0; i < length; i++)
+            {
+                if (i == dashIndex)
+                {
+                    id[i] = '-';
+                    dashIndex += 6;
+                }
+                else if (i == letterIndex)
+                {
+                    id[i] = letters[random.Next(letters.Length)];
+                }
+                else if (i == letterIndex + 1)
+                {
+                    id[i] = letters[random.Next(letters.Length)];
+                }
+                else
+                {
+                    id[i] = digits[random.Next(digits.Length)];
+                }
+            }
+            return new string(id);
+        }
+
+
         //sechex.me
         //sechex.me
         //sechex.me
@@ -279,6 +310,7 @@ namespace SecHex_GUI
                 display_Click(sender, e);
                 efi_Click(sender, e);
                 siticoneButton1_Click(sender, e);
+                product_Click(sender, e);
 
                 ShowNotification("All functions executed successfully.", NotificationType.Success);
             }
@@ -287,6 +319,9 @@ namespace SecHex_GUI
                 ShowNotification("Error: One or more required registry entries are missing.", NotificationType.Error);
             }
         }
+
+
+
 
 
 
@@ -805,15 +840,74 @@ namespace SecHex_GUI
         //sechex.me
         //sechex.me
 
-        private void tracercl_Click(object sender, EventArgs e)
-        {
 
+        private void product_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                using (RegistryKey productKey = Registry.LocalMachine.OpenSubKey("SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion", true))
+                {
+                    if (productKey != null)
+                    {
+                        string originalProductId = productKey.GetValue("ProductId")?.ToString();
+
+                        string newProductId = RandomIdprid(20);
+                        productKey.SetValue("ProductId", newProductId);
+
+                        string logBefore = "Product ID - Before: " + originalProductId;
+                        string logAfter = "Product ID - After: " + newProductId;
+                        SaveLogs("product", logBefore, logAfter);
+
+                        ShowNotification("Product Function executed successfully.", NotificationType.Success);
+                    }
+                    else
+                    {
+                        ShowNotification("Product registry key not found.", NotificationType.Error);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                ShowNotification("An error occurred while changing the Product ID: " + ex.Message, NotificationType.Error);
+            }
+        }
+        //sechex.me
+        //sechex.me
+        //sechex.me
+        //sechex.me
+
+        private void backup_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string programDirectory = AppDomain.CurrentDomain.BaseDirectory;
+                string backupFolder = Path.Combine(programDirectory, "Backup");
+                string backupPath = Path.Combine(backupFolder, "backup.reg");
+                Directory.CreateDirectory(backupFolder);
+                Process.Start("reg", $"export HKEY_LOCAL_MACHINE\\SYSTEM \"{backupPath}\" /y").WaitForExit();
+                Process.Start("reg", $"export HKEY_LOCAL_MACHINE\\HARDWARE \"{backupPath}\" /y").WaitForExit();
+                Process.Start("reg", $"export HKEY_LOCAL_MACHINE\\SOFTWARE \"{backupPath}\" /y").WaitForExit();
+
+                MessageBox.Show("Registry backup created successfully.", "Backup Successful", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error occurred while creating the registry backup: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
-
-
-
-
+        //sechex.me
+        //sechex.me
+        //sechex.me
+        //sechex.me
+        private void tracercl_Click(object sender, EventArgs e)
+        {
+            //soon...
+        }
+        //sechex.me
+        //sechex.me
+        //sechex.me
+        //sechex.me
         private void req_Click(object sender, EventArgs e)
         {
             string[] registryEntries = new string[]
@@ -865,10 +959,6 @@ namespace SecHex_GUI
         //sechex.me
         //sechex.me
         //sechex.me
-
-
-
-
         private void Enable_LocalAreaConnection(string adapterId, bool enable)
         {
             using (var process = new Process())
@@ -926,9 +1016,10 @@ namespace SecHex_GUI
         {
 
         }
+        private void siticoneButton1_Click_1(object sender, EventArgs e)
+        {
 
-
-
+        }
         //sechex.me
         //sechex.me
         //sechex.me
