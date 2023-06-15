@@ -28,7 +28,8 @@ Some Lines of the CMD Version are from @LockBlock-dev
 + **Get all System informations** *[New]* - [27.05.23]                              
 + **Registry Checker** *[New]* - [07.06.23]                              
 + **Log System** *[New]* (testing) - [10.06.23]
-+ **Backup System** *[New]* (testing) - [13.06.23]                                      
++ **Backup System** *[New]* (testing) - [13.06.23]
++ **Product ID Spoofing** *[New]* (testing) - [14.06.23]                                   
 
 
 
