@@ -40,6 +40,9 @@ Some Lines of the CMD Version are from @LockBlock-dev
 **20+ Stars** - ***Spoofer with GUI*** ✅       
 **50+ Stars** - ***GUI Changes + Code overhaul*** ✨         
 
+▰▰▰▰▰▰▰▰▰▰▰▱▱ 85% finish ❤️
+
+
 # GUI VERSION 🏆
 ![241434869-c401bd71-b489-4391-bcf6-231dd99353f5 (1)](https://github.com/SecHex/SecHex-Spoofy/assets/96635023/2873ea2b-6485-42ed-b448-0056f2ba7eb1)
 
