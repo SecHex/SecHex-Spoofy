@@ -18,28 +18,24 @@ Some Lines of the CMD Version are from @LockBlock-dev
 + **Disk Spoofing** - [18.05.23]                           
     • Retrieves SCSI ports and buses information from the Windows registry.                           
     • Checks if the device type is a disk peripheral.                           
-    • Generates random identifiers and serial numbers for the disk peripheral.                           
-    • Saves the before and after log information.                           
+    • Generates random identifiers and serial numbers for the disk peripheral.                                                 
     • Updates the registry values for the disk peripheral with the new identifiers and serial numbers.
                                             
 + **Guid Spoofing** - [18.05.23]                           
     • Generates new GUIDs (Globally Unique Identifiers) for various registry keys.                           
     • Updates the HwProfileGuid, MachineGuid, and MachineId registry values with new GUIDs.                           
     • Generates a random BIOS release date.                           
-    • Saves the before and after log information.
                                             
 + **PC-name Spoofing** - [18.05.23]                           
     • Spoofs the computer name by updating various registry keys.                           
     • Retrieves the original computer name from the registry.                           
     • Generates a random new computer name.                           
     • Updates the registry values for ComputerName, ActiveComputerName, Hostname, and NV Hostname.                           
-    • Saves the before and after log information.
                                               
 + **MAC ID Spoofing** - [19.05.23]                           
     • Attempts to spoof the MAC address of network adapters.                           
     • Retrieves network adapters information from the Windows registry.                           
-    • Generates a random MAC address.                           
-    • Saves the before and after log information.                           
+    • Generates a random MAC address.                                                    
     • Updates the registry values for the MAC address with the new spoofed address.                           
     • Disables and enables the local area connection to apply the changes.
                                                                            
@@ -61,15 +57,13 @@ Some Lines of the CMD Version are from @LockBlock-dev
     • Retrieves the current EFI Variable ID from the registry.                           
     • Generates a new random EFI Variable ID.                           
     • Updates the registry value with the new EFI Variable ID.                           
-    • Saves the before and after log information.
                                                       
 + **Spoof SMBIOS** - [26.05.23]                           
     • Opens the registry key for SMBIOS data.                           
     • Retrieves the current SystemSerialNumber from the registry.                           
     • Generates a new random SystemSerialNumber.                           
     • Updates the registry value with the new SystemSerialNumber.                           
-    • Saves the before and after log information.
-                                      
+                               
 + **Get all System informations** *[New]* - [27.05.23]                           
     • Get all System informations.
                                  
@@ -91,15 +85,14 @@ Some Lines of the CMD Version are from @LockBlock-dev
     • Opens the registry key "SOFTWARE\Microsoft\Windows NT\CurrentVersion" under the LocalMachine hive.                           
     • Retrieves the current value of the "ProductId" registry entry.                           
     • Generates a new random product ID using the RandomIdprid(20) method.                           
-    • Sets the registry value of "ProductId" to the new generated product ID.                           
-    • Logs the original and new product IDs using the SaveLogs("product", logBefore, logAfter) method.                                                    
+    • Sets the registry value of "ProductId" to the new generated product ID.                                                                       
 
 + **Display Spoofing** *[New]* (testing) - [15.06.23]                           
     • Spoofs display settings by modifying the registry.                          
     • Opens the registry key for display settings.                          
     • Generates a random display ID.                          
     • Updates the registry values for MRU0, MRU1, MRU2, MRU3, and MRU4.                          
-    • Saves the before and after log information.                            
+                       
 
 
 
