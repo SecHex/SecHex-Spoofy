@@ -95,11 +95,11 @@ Some Lines of the CMD Version are from @LockBlock-dev
     • Logs the original and new product IDs using the SaveLogs("product", logBefore, logAfter) method.                                                    
 
 + **Display Spoofing** *[New]* (testing) - [15.06.23]                           
-    • Spoofs display settings by modifying the registry.
-    • Opens the registry key for display settings.
-    • Generates a random display ID.
-    • Updates the registry values for MRU0, MRU1, MRU2, MRU3, and MRU4.
-    • Saves the before and after log information.  
+    • Spoofs display settings by modifying the registry.                          
+    • Opens the registry key for display settings.                          
+    • Generates a random display ID.                          
+    • Updates the registry values for MRU0, MRU1, MRU2, MRU3, and MRU4.                          
+    • Saves the before and after log information.                            
 
 
 
