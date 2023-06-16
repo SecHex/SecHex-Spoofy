@@ -32,7 +32,7 @@ Some Lines of the CMD Version are from @LockBlock-dev
     • Spoofs the computer name by updating various registry keys.                           
     • Retrieves the original computer name from the registry.                           
     • Generates a random new computer name.                           
-    • Updates the registry values for ComputerName, ActiveComputerName, Hostname, and • NV Hostname.                           
+    • Updates the registry values for ComputerName, ActiveComputerName, Hostname, and NV Hostname.                           
     • Saves the before and after log information.
                                               
 + **MAC ID Spoofing** - [19.05.23]                           
