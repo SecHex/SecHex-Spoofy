@@ -1,4 +1,5 @@
 using Microsoft.Win32;
+using Siticone.Desktop.UI.WinForms;
 using System.Diagnostics;
 using System.Drawing.Drawing2D;
 using System.Net.NetworkInformation;
@@ -15,29 +16,15 @@ namespace SecHex_GUI
     {
         private System.Windows.Forms.Timer timer;
         private float animationProgress = 0.0f;
-        private int steps = 170;
+        private int steps = 270;
         private Color startColor = Color.FromArgb(23, 23, 23);
         private Color middleColor = Color.FromArgb(248, 248, 248);
         private Color endColor = Color.FromArgb(23, 23, 23);
         private Color currentColor;
         private bool isDragging;
         private Point offset;
+        private bool isAnimationRunning = false;
 
-        protected override void OnPaint(PaintEventArgs e)
-        {
-            base.OnPaint(e);
-            SetRoundedCorners();
-
-            Rectangle gradientRect = new Rectangle(0, 0, this.Width, this.Height);
-            using (LinearGradientBrush brush = new LinearGradientBrush(gradientRect, startColor, currentColor, LinearGradientMode.Vertical))
-            {
-                e.Graphics.FillRectangle(brush, gradientRect);
-            }
-        }
-        //sechex.me
-        //sechex.me
-        //sechex.me
-        //sechex.me
         public Form1()
         {
             InitializeComponent();
@@ -50,10 +37,19 @@ namespace SecHex_GUI
             this.DoubleBuffered = true;
             timer.Start();
         }
-        //sechex.me
-        //sechex.me
-        //sechex.me
-        //sechex.me
+
+        protected override void OnPaint(PaintEventArgs e)
+        {
+            base.OnPaint(e);
+            SetRoundedCorners();
+
+            Rectangle gradientRect = new Rectangle(0, 0, this.Width, this.Height);
+            using (LinearGradientBrush brush = new LinearGradientBrush(gradientRect, startColor, currentColor, LinearGradientMode.Vertical))
+            {
+                e.Graphics.FillRectangle(brush, gradientRect);
+            }
+        }
+
         private void timer_Tick(object sender, EventArgs e)
         {
             int currentR, currentG, currentB;
@@ -81,10 +77,7 @@ namespace SecHex_GUI
 
             this.Invalidate();
         }
-        //sechex.me
-        //sechex.me
-        //sechex.me
-        //sechex.me
+
         private void SetRoundedCorners()
         {
             int radius = 18;
@@ -98,10 +91,7 @@ namespace SecHex_GUI
             this.Region = new Region(path);
             this.SetGraphicsQuality();
         }
-        //sechex.me
-        //sechex.me
-        //sechex.me
-        //sechex.me
+
         private void SetGraphicsQuality()
         {
             this.SetStyle(ControlStyles.AllPaintingInWmPaint | ControlStyles.UserPaint | ControlStyles.OptimizedDoubleBuffer, true);
@@ -111,6 +101,161 @@ namespace SecHex_GUI
                 g.InterpolationMode = InterpolationMode.HighQualityBicubic;
             }
         }
+
+
+
+        private async void AnimateButtonsBorderColor(params SiticoneButton[] buttons)
+        {
+            if (isAnimationRunning)
+                return;
+
+            isAnimationRunning = true;
+
+            float hue = 0;
+            float saturation = 1;
+            float value = 1;
+            int animationDuration = 500;
+            int animationSteps = 100;
+            float colorSpeed = 0.2f;
+
+            while (isAnimationRunning)
+            {
+                for (int i = 0; i <= animationSteps; i++)
+                {
+                    if (!isAnimationRunning)
+                        break;
+
+                    float progress = (float)i / animationSteps;
+                    float currentHue = hue + progress * 360 * colorSpeed;
+                    Color currentColor = ColorFromHsv(currentHue, saturation, value);
+
+                    foreach (SiticoneButton button in buttons)
+                    {
+                        button.BorderThickness = 1;
+                        button.BorderColor = currentColor;
+                    }
+
+                    await Task.Delay((int)(animationDuration / (animationSteps * colorSpeed)));
+                }
+
+                if (!isAnimationRunning)
+                    break;
+
+                Color startColor = ColorFromHsv(hue + 360 * colorSpeed, saturation, value);
+                Color endColor = Color.Red;
+
+                for (int i = 0; i <= animationSteps; i++)
+                {
+                    if (!isAnimationRunning)
+                        break;
+
+                    float progress = (float)i / animationSteps;
+                    Color currentColor = InterpolateColor(startColor, endColor, progress);
+
+                    foreach (SiticoneButton button in buttons)
+                    {
+                        button.BorderThickness = 1;
+                        button.BorderColor = currentColor;
+                    }
+
+                    await Task.Delay((int)(animationDuration / (animationSteps * colorSpeed)));
+                }
+            }
+        }
+
+        private Color ColorFromHsv(float hue, float saturation, float value)
+        {
+            int rgbMax = 255;
+            float chroma = value * saturation;
+            float huePrime = hue / 60f;
+            float x = chroma * (1 - Math.Abs(huePrime % 2 - 1));
+            float m = value - chroma;
+
+            float red = 0, green = 0, blue = 0;
+
+            if (huePrime >= 0 && huePrime < 1)
+            {
+                red = chroma;
+                green = x;
+            }
+            else if (huePrime >= 1 && huePrime < 2)
+            {
+                red = x;
+                green = chroma;
+            }
+            else if (huePrime >= 2 && huePrime < 3)
+            {
+                green = chroma;
+                blue = x;
+            }
+            else if (huePrime >= 3 && huePrime < 4)
+            {
+                green = x;
+                blue = chroma;
+            }
+            else if (huePrime >= 4 && huePrime < 5)
+            {
+                red = x;
+                blue = chroma;
+            }
+            else if (huePrime >= 5 && huePrime < 6)
+            {
+                red = chroma;
+                blue = x;
+            }
+
+            int r = (int)Math.Round((red + m) * rgbMax);
+            int g = (int)Math.Round((green + m) * rgbMax);
+            int b = (int)Math.Round((blue + m) * rgbMax);
+
+            return Color.FromArgb(r, g, b);
+        }
+
+        private Color InterpolateColor(Color startColor, Color endColor, float progress)
+        {
+            int r = (int)(startColor.R + (endColor.R - startColor.R) * progress);
+            int g = (int)(startColor.G + (endColor.G - startColor.G) * progress);
+            int b = (int)(startColor.B + (endColor.B - startColor.B) * progress);
+
+            return Color.FromArgb(r, g, b);
+        }
+
+        private void siticoneToggleSwitch1_CheckedChanged(object sender, EventArgs e)
+        {
+            SiticoneToggleSwitch toggleSwitch = (SiticoneToggleSwitch)sender;
+
+            if (toggleSwitch.Checked)
+            {
+                AnimateButtonsBorderColor(disk, winid, disk, efi, GUID, spoofall, mac, tracercl, display, pcname, backup, product, req, sm);
+            }
+            else
+            {
+                StopButtonAnimation(disk, winid, disk, efi, GUID, spoofall, mac, tracercl, display, pcname, backup, product, req, sm);
+            }
+        }
+
+        private void StopButtonAnimation(params SiticoneButton[] buttons)
+        {
+            isAnimationRunning = false;
+            timer.Stop();
+
+            foreach (SiticoneButton button in buttons)
+            {
+
+                button.BorderThickness = 1;
+                button.BorderColor = Color.White;
+            }
+        }
+
+
+
+
+
+
+
+
+
+
         //sechex.me
         //sechex.me
         //sechex.me
@@ -321,13 +466,9 @@ namespace SecHex_GUI
         }
 
 
-
-
-
-
-
-        private void disk_Click(object sender, EventArgs e)
+        private async void disk_Click(object sender, EventArgs e)
         {
+
             try
             {
                 using (RegistryKey ScsiPorts = Registry.LocalMachine.OpenSubKey("HARDWARE\\DEVICEMAP\\Scsi"))
@@ -381,6 +522,7 @@ namespace SecHex_GUI
                         return;
                     }
                 }
+
                 using (RegistryKey diskKey = Registry.LocalMachine.OpenSubKey("SYSTEM\\CurrentControlSet\\Enum\\IDE"))
                 {
                     if (diskKey != null)
@@ -414,13 +556,16 @@ namespace SecHex_GUI
                     }
                 }
 
-                ShowNotification("Disk Function executed successfully.", NotificationType.Success);
+                ShowNotification("Disk-Funktion erfolgreich ausgeführt.", NotificationType.Success);
             }
             catch (Exception ex)
             {
-                ShowNotification("An error occurred while executing the Disk Function: " + ex.Message, NotificationType.Error);
+                ShowNotification("Es ist ein Fehler bei der Ausführung der Disk-Funktion aufgetreten: " + ex.Message, NotificationType.Error);
             }
+
         }
+
+
         //sechex.me
         //sechex.me
         //sechex.me
@@ -1016,10 +1161,10 @@ namespace SecHex_GUI
         {
 
         }
-        private void siticoneButton1_Click_1(object sender, EventArgs e)
-        {
 
-        }
+
+
+
         //sechex.me
         //sechex.me
         //sechex.me

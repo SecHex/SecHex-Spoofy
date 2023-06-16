@@ -19,6 +19,7 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Siticone.Desktop.UI" Version="2.1.1" />
+    <PackageReference Include="System.Runtime.WindowsRuntime.UI.Xaml" Version="4.7.0" />
   </ItemGroup>
 
   <ItemGroup>

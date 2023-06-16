@@ -49,6 +49,8 @@
             product = new Siticone.Desktop.UI.WinForms.SiticoneButton();
             tracercl = new Siticone.Desktop.UI.WinForms.SiticoneButton();
             backup = new Siticone.Desktop.UI.WinForms.SiticoneButton();
+            siticoneToggleSwitch1 = new Siticone.Desktop.UI.WinForms.SiticoneToggleSwitch();
+            lgbtq = new Label();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             SuspendLayout();
             // 
@@ -57,8 +59,9 @@
             siticoneControlBox1.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             siticoneControlBox1.Animated = true;
             siticoneControlBox1.BackColor = Color.Transparent;
+            siticoneControlBox1.BorderColor = Color.White;
             siticoneControlBox1.BorderRadius = 12;
-            siticoneControlBox1.FillColor = Color.FromArgb(113, 113, 113);
+            siticoneControlBox1.FillColor = Color.Transparent;
             siticoneControlBox1.IconColor = Color.White;
             siticoneControlBox1.Location = new Point(567, 12);
             siticoneControlBox1.Name = "siticoneControlBox1";
@@ -70,9 +73,10 @@
             siticoneControlBox2.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             siticoneControlBox2.Animated = true;
             siticoneControlBox2.BackColor = Color.Transparent;
+            siticoneControlBox2.BorderColor = Color.White;
             siticoneControlBox2.BorderRadius = 12;
             siticoneControlBox2.ControlBoxType = Siticone.Desktop.UI.WinForms.Enums.ControlBoxType.MinimizeBox;
-            siticoneControlBox2.FillColor = Color.FromArgb(113, 113, 113);
+            siticoneControlBox2.FillColor = Color.Transparent;
             siticoneControlBox2.IconColor = Color.White;
             siticoneControlBox2.Location = new Point(513, 12);
             siticoneControlBox2.Name = "siticoneControlBox2";
@@ -92,7 +96,7 @@
             disk.DisabledState.CustomBorderColor = Color.DarkGray;
             disk.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             disk.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            disk.FillColor = Color.FromArgb(113, 113, 113);
+            disk.FillColor = Color.Transparent;
             disk.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             disk.ForeColor = Color.White;
             disk.Location = new Point(12, 67);
@@ -129,7 +133,7 @@
             mac.DisabledState.CustomBorderColor = Color.DarkGray;
             mac.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             mac.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            mac.FillColor = Color.FromArgb(113, 113, 113);
+            mac.FillColor = Color.Transparent;
             mac.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             mac.ForeColor = Color.White;
             mac.Location = new Point(12, 105);
@@ -153,7 +157,7 @@
             pcname.DisabledState.CustomBorderColor = Color.DarkGray;
             pcname.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             pcname.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            pcname.FillColor = Color.FromArgb(113, 113, 113);
+            pcname.FillColor = Color.Transparent;
             pcname.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             pcname.ForeColor = Color.White;
             pcname.Location = new Point(338, 105);
@@ -161,7 +165,7 @@
             pcname.PressedDepth = 60;
             pcname.Size = new Size(157, 32);
             pcname.TabIndex = 5;
-            pcname.Text = "PC-Name";
+            pcname.Text = "PC-NAME";
             pcname.Click += pcname_Click;
             // 
             // winid
@@ -177,7 +181,7 @@
             winid.DisabledState.CustomBorderColor = Color.DarkGray;
             winid.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             winid.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            winid.FillColor = Color.FromArgb(113, 113, 113);
+            winid.FillColor = Color.Transparent;
             winid.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             winid.ForeColor = Color.White;
             winid.Location = new Point(175, 67);
@@ -185,7 +189,7 @@
             winid.PressedDepth = 60;
             winid.Size = new Size(157, 32);
             winid.TabIndex = 6;
-            winid.Text = "Windows-ID";
+            winid.Text = "WID";
             winid.Click += winid_Click;
             // 
             // GUID
@@ -201,7 +205,7 @@
             GUID.DisabledState.CustomBorderColor = Color.DarkGray;
             GUID.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             GUID.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            GUID.FillColor = Color.FromArgb(113, 113, 113);
+            GUID.FillColor = Color.Transparent;
             GUID.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             GUID.ForeColor = Color.White;
             GUID.Location = new Point(175, 105);
@@ -225,7 +229,7 @@
             display.DisabledState.CustomBorderColor = Color.DarkGray;
             display.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             display.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            display.FillColor = Color.FromArgb(113, 113, 113);
+            display.FillColor = Color.Transparent;
             display.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             display.ForeColor = Color.White;
             display.Location = new Point(338, 67);
@@ -233,7 +237,7 @@
             display.PressedDepth = 60;
             display.Size = new Size(157, 32);
             display.TabIndex = 8;
-            display.Text = "Display ID";
+            display.Text = "DISID";
             display.Click += display_Click;
             // 
             // efi
@@ -249,7 +253,7 @@
             efi.DisabledState.CustomBorderColor = Color.DarkGray;
             efi.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             efi.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            efi.FillColor = Color.FromArgb(113, 113, 113);
+            efi.FillColor = Color.Transparent;
             efi.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             efi.ForeColor = Color.White;
             efi.Location = new Point(338, 143);
@@ -273,7 +277,7 @@
             sm.DisabledState.CustomBorderColor = Color.DarkGray;
             sm.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             sm.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            sm.FillColor = Color.FromArgb(113, 113, 113);
+            sm.FillColor = Color.Transparent;
             sm.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             sm.ForeColor = Color.White;
             sm.Location = new Point(12, 143);
@@ -297,7 +301,7 @@
             req.DisabledState.CustomBorderColor = Color.DarkGray;
             req.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             req.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            req.FillColor = Color.FromArgb(113, 113, 113);
+            req.FillColor = Color.Transparent;
             req.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             req.ForeColor = Color.White;
             req.Location = new Point(12, 220);
@@ -338,7 +342,7 @@
             label3.BackColor = Color.Transparent;
             label3.Font = new Font("Segoe UI Semibold", 8F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
             label3.ForeColor = Color.White;
-            label3.Location = new Point(551, 407);
+            label3.Location = new Point(12, 381);
             label3.Name = "label3";
             label3.Size = new Size(64, 13);
             label3.TabIndex = 15;
@@ -368,7 +372,7 @@
             spoofall.DisabledState.CustomBorderColor = Color.DarkGray;
             spoofall.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             spoofall.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            spoofall.FillColor = Color.FromArgb(113, 113, 113);
+            spoofall.FillColor = Color.Transparent;
             spoofall.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             spoofall.ForeColor = Color.White;
             spoofall.Location = new Point(12, 258);
@@ -392,7 +396,7 @@
             product.DisabledState.CustomBorderColor = Color.DarkGray;
             product.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             product.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            product.FillColor = Color.FromArgb(113, 113, 113);
+            product.FillColor = Color.Transparent;
             product.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             product.ForeColor = Color.White;
             product.Location = new Point(12, 181);
@@ -400,7 +404,7 @@
             product.PressedDepth = 60;
             product.Size = new Size(157, 32);
             product.TabIndex = 18;
-            product.Text = "Product ID";
+            product.Text = "PRODUCT ID";
             product.Click += product_Click;
             // 
             // tracercl
@@ -416,7 +420,7 @@
             tracercl.DisabledState.CustomBorderColor = Color.DarkGray;
             tracercl.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             tracercl.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            tracercl.FillColor = Color.FromArgb(113, 113, 113);
+            tracercl.FillColor = Color.Transparent;
             tracercl.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             tracercl.ForeColor = Color.White;
             tracercl.Location = new Point(175, 143);
@@ -440,7 +444,7 @@
             backup.DisabledState.CustomBorderColor = Color.DarkGray;
             backup.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             backup.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            backup.FillColor = Color.FromArgb(113, 113, 113);
+            backup.FillColor = Color.Transparent;
             backup.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             backup.ForeColor = Color.White;
             backup.Location = new Point(338, 181);
@@ -448,8 +452,37 @@
             backup.PressedDepth = 60;
             backup.Size = new Size(157, 32);
             backup.TabIndex = 19;
-            backup.Text = "Backup";
+            backup.Text = "BACKUP";
             backup.Click += backup_Click;
+            // 
+            // siticoneToggleSwitch1
+            // 
+            siticoneToggleSwitch1.BackColor = Color.Transparent;
+            siticoneToggleSwitch1.CheckedState.BorderColor = Color.White;
+            siticoneToggleSwitch1.CheckedState.FillColor = Color.Gray;
+            siticoneToggleSwitch1.CheckedState.InnerBorderColor = Color.White;
+            siticoneToggleSwitch1.CheckedState.InnerColor = Color.White;
+            siticoneToggleSwitch1.Location = new Point(578, 400);
+            siticoneToggleSwitch1.Name = "siticoneToggleSwitch1";
+            siticoneToggleSwitch1.Size = new Size(37, 20);
+            siticoneToggleSwitch1.TabIndex = 20;
+            siticoneToggleSwitch1.UncheckedState.BorderColor = Color.Transparent;
+            siticoneToggleSwitch1.UncheckedState.FillColor = Color.Gray;
+            siticoneToggleSwitch1.UncheckedState.InnerBorderColor = Color.White;
+            siticoneToggleSwitch1.UncheckedState.InnerColor = Color.White;
+            siticoneToggleSwitch1.CheckedChanged += siticoneToggleSwitch1_CheckedChanged;
+            // 
+            // lgbtq
+            // 
+            lgbtq.AutoSize = true;
+            lgbtq.BackColor = Color.Transparent;
+            lgbtq.Font = new Font("Segoe UI Semibold", 8F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
+            lgbtq.ForeColor = Color.White;
+            lgbtq.Location = new Point(506, 403);
+            lgbtq.Name = "lgbtq";
+            lgbtq.Size = new Size(71, 13);
+            lgbtq.TabIndex = 21;
+            lgbtq.Text = "LGBTQ Mode";
             // 
             // Form1
             // 
@@ -457,6 +490,8 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ActiveBorder;
             ClientSize = new Size(627, 431);
+            Controls.Add(lgbtq);
+            Controls.Add(siticoneToggleSwitch1);
             Controls.Add(backup);
             Controls.Add(product);
             Controls.Add(spoofall);
@@ -508,5 +543,7 @@
         private Siticone.Desktop.UI.WinForms.SiticoneButton product;
         private Siticone.Desktop.UI.WinForms.SiticoneButton tracercl;
         private Siticone.Desktop.UI.WinForms.SiticoneButton backup;
+        private Siticone.Desktop.UI.WinForms.SiticoneToggleSwitch siticoneToggleSwitch1;
+        private Label lgbtq;
     }
 }
