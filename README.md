@@ -80,8 +80,7 @@ Some Lines of the CMD Version are from @LockBlock-dev
 + **Backup System** *[New]* (testing) - [13.06.23]                           
     • Create a Backup as .reg
                            
-+ **Product ID Spoofing** *[New]* (testing) - [14.06.23]                           
-    • Modifies the registry values related to the Product ID for IT purposes.                           
++ **Product ID Spoofing** *[New]* (testing) - [14.06.23]                                                
     • Opens the registry key "SOFTWARE\Microsoft\Windows NT\CurrentVersion" under the LocalMachine hive.                           
     • Retrieves the current value of the "ProductId" registry entry.                           
     • Generates a new random product ID using the RandomIdprid(20) method.                           
