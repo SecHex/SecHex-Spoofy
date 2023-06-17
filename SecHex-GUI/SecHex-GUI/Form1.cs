@@ -556,11 +556,11 @@ namespace SecHex_GUI
                     }
                 }
 
-                ShowNotification("Disk-Funktion erfolgreich ausgeführt.", NotificationType.Success);
+                ShowNotification("DISK successfully spoofed.", NotificationType.Success);
             }
             catch (Exception ex)
             {
-                ShowNotification("Es ist ein Fehler bei der Ausführung der Disk-Funktion aufgetreten: " + ex.Message, NotificationType.Error);
+                ShowNotification("An error occurred while spoofing the DISk: " + ex.Message, NotificationType.Error);
             }
 
         }
