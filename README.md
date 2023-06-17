@@ -109,14 +109,12 @@ Some Lines of the CMD Version are from @LockBlock-dev
 
 
 
-# GUI VERSION 🏆
-
-![yes (2) (1)](https://github.com/SecHex/SecHex-Spoofy/assets/96635023/de4090fc-ff00-48eb-ad88-096668648b89)
-
-
-# CMD VERSION 🏆
+# GUI & CMD PREVIEW 🏆
 [No Updates for the CMD Version!]
-![Screenshot 2023-05-27 232609 (2)](https://github.com/SecHex/SecHex-Spoofy/assets/96635023/c401bd71-b489-4391-bcf6-231dd99353f5)
+![yes (2) (1) (4)](https://github.com/SecHex/SecHex-Spoofy/assets/96635023/62b1222d-36d7-46c7-a8ea-d105fd7e9568)
+
+
+
 
 
 # Support me 💸
