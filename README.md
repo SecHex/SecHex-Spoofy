@@ -117,7 +117,7 @@ Some Lines of the CMD Version are from @LockBlock-dev
 
 
 
-# Support me 💸
+# buy me a coffee 💸
 btc bc1q8dedn4a6msjm6wf7jejmf2g47twrk6wha8u0dl                                 
 eth 0xD97738045E738Cb255e2707473Dae023ef913c0A                                
 bnb bnb1yxxrkwyvde9c2c8qle6d5gzm5tndyselgjd8xy                                
