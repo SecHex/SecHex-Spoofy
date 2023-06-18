@@ -466,9 +466,34 @@ namespace SecHex_GUI
         }
 
 
+
+
+        private List<string> diskNames = new List<string>()
+{
+    "Samsung SSD 870 QVO 1TB",
+    "NVMe KINGSTON SA2000M2105",
+    "Crucial MX500 1TB",
+    "WD Blue 2TB",
+    "Seagate Barracuda 4TB",
+    "Intel 660p 1TB",
+    "SanDisk Ultra 3D 2TB",
+    "Toshiba X300 6TB",
+    "Adata XPG SX8200 Pro 1TB",
+    "HP EX920 512GB",
+    "Kingston A2000 500GB",
+    "Corsair MP600 2TB",
+    "Western Digital Black 6TB",
+    "Crucial P1 1TB",
+    "Seagate FireCuda 2TB",
+    "Samsung 970 EVO Plus 1TB",
+    "ADATA Swordfish 500GB",
+    "Toshiba N300 8TB",
+    "WD Red Pro 10TB",
+    "Kingston KC600 256GB",
+};
+
         private async void disk_Click(object sender, EventArgs e)
         {
-
             try
             {
                 using (RegistryKey ScsiPorts = Registry.LocalMachine.OpenSubKey("HARDWARE\\DEVICEMAP\\Scsi"))
@@ -493,7 +518,7 @@ namespace SecHex_GUI
                                                     string identifierBefore = ScsuiBus.GetValue("Identifier").ToString();
                                                     string serialNumberBefore = ScsuiBus.GetValue("SerialNumber").ToString();
 
-                                                    string identifierAfter = RandomId(14);
+                                                    string identifierAfter = GetRandomDiskName();
                                                     string serialNumberAfter = RandomId(14);
                                                     string logBefore = $"DiskPeripheral {bus}\\Target Id 0\\Logical Unit Id 0 - Identifier: {identifierBefore}, SerialNumber: {serialNumberBefore}";
                                                     string logAfter = $"DiskPeripheral {bus}\\Target Id 0\\Logical Unit Id 0 - Identifier: {identifierAfter}, SerialNumber: {serialNumberAfter}";
@@ -560,9 +585,15 @@ namespace SecHex_GUI
             }
             catch (Exception ex)
             {
-                ShowNotification("An error occurred while spoofing the DISk: " + ex.Message, NotificationType.Error);
+                ShowNotification("An error occurred while spoofing the DISK: " + ex.Message, NotificationType.Error);
             }
+        }
 
+        private string GetRandomDiskName()
+        {
+            Random random = new Random();
+            int index = random.Next(diskNames.Count);
+            return diskNames[index];
         }
 
 
