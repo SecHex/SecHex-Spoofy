@@ -104,7 +104,7 @@ Some Lines of the CMD Version are from @LockBlock-dev
 **20+ Stars** - ***Spoofer with GUI*** ✅       
 **50+ Stars** - ***GUI Changes + Code overhaul*** ✨         
 
-▰▰▰▰▰▰▰▰▰▰▰▱▱ 85% finish ❤️
+▰▰▰▰▰▰▰▰▰▰▱▱▱ 75% finish ❤️
 
 
 
