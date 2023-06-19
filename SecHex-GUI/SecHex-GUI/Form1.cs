@@ -678,8 +678,9 @@ namespace SecHex_GUI
                 {
                     if (HardwareGUID != null)
                     {
-                        HardwareGUID.SetValue("HwProfileGuid", $"{{{Guid.NewGuid()}}}");
                         string logBefore = "HwProfileGuid - Before: " + HardwareGUID.GetValue("HwProfileGuid");
+                        HardwareGUID.DeleteValue("HwProfileGuid");
+                        HardwareGUID.SetValue("HwProfileGuid", Guid.NewGuid().ToString());
                         string logAfter = "HwProfileGuid - After: " + HardwareGUID.GetValue("HwProfileGuid");
                         SaveLogs("guid", logBefore, logAfter);
                     }
@@ -694,8 +695,9 @@ namespace SecHex_GUI
                 {
                     if (MachineGUID != null)
                     {
-                        MachineGUID.SetValue("MachineGuid", Guid.NewGuid().ToString());
                         string logBefore = "MachineGuid - Before: " + MachineGUID.GetValue("MachineGuid");
+                        MachineGUID.DeleteValue("MachineGuid");
+                        MachineGUID.SetValue("MachineGuid", Guid.NewGuid().ToString());
                         string logAfter = "MachineGuid - After: " + MachineGUID.GetValue("MachineGuid");
                         SaveLogs("guid", logBefore, logAfter);
                     }
@@ -710,8 +712,9 @@ namespace SecHex_GUI
                 {
                     if (MachineId != null)
                     {
-                        MachineId.SetValue("MachineId", $"{{{Guid.NewGuid()}}}");
                         string logBefore = "MachineId - Before: " + MachineId.GetValue("MachineId");
+                        MachineId.DeleteValue("MachineId");
+                        MachineId.SetValue("MachineId", Guid.NewGuid().ToString());
                         string logAfter = "MachineId - After: " + MachineId.GetValue("MachineId");
                         SaveLogs("guid", logBefore, logAfter);
                     }
@@ -738,8 +741,8 @@ namespace SecHex_GUI
 
                         string randomDate = $"{monthStr}/{dayStr}/{yearStr}";
 
-                        SystemInfo.SetValue("BIOSReleaseDate", randomDate);
                         string logBefore = "BIOSReleaseDate - Before: " + SystemInfo.GetValue("BIOSReleaseDate");
+                        SystemInfo.SetValue("BIOSReleaseDate", randomDate);
                         string logAfter = "BIOSReleaseDate - After: " + SystemInfo.GetValue("BIOSReleaseDate");
                         SaveLogs("guid", logBefore, logAfter);
                     }
@@ -919,16 +922,18 @@ namespace SecHex_GUI
 
                 if (displaySettings != null)
                 {
-                    Random rnd = new Random();
-                    int displayId = rnd.Next(1, 100);
-                    displaySettings.SetValue("MRU0", $"Display{displayId}");
+                    string originalDisplayId = displaySettings.GetValue("MRU0")?.ToString();
+                    int displayId = RandomDisplayId();
                     string spoofedDisplayId = $"SpoofedDisplay{displayId}";
+
+                    displaySettings.SetValue("MRU0", spoofedDisplayId);
                     displaySettings.SetValue("MRU1", spoofedDisplayId);
                     displaySettings.SetValue("MRU2", spoofedDisplayId);
                     displaySettings.SetValue("MRU3", spoofedDisplayId);
                     displaySettings.SetValue("MRU4", spoofedDisplayId);
-                    string logBefore = "Display ID - Before: " + displayId;
-                    string logAfter = "Display ID - After: " + spoofedDisplayId;
+
+                    string logBefore = "Display ID - Before: " + originalDisplayId;
+                    string logAfter = "Display ID - After: " + displayId;
                     SaveLogs("display", logBefore, logAfter);
 
                     ShowNotification("Display Function executed successfully.", NotificationType.Success);
@@ -942,6 +947,12 @@ namespace SecHex_GUI
             {
                 ShowNotification("An error occurred while changing the display ID: " + ex.Message, NotificationType.Error);
             }
+        }
+
+        private int RandomDisplayId()
+        {
+            Random rnd = new Random();
+            return rnd.Next(1, 9);
         }
         //sechex.me
         //sechex.me
