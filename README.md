@@ -6,6 +6,7 @@ Some Lines of the CMD Version are from @LockBlock-dev
 **Windows 11** Version 10.0.22621 Build 22621 ✅                                      
 **Windows 10** Version 22H2 Build 19045.2965 ✅
 
+I am currently still learning, and the spoofer is far from being 100% perfect. But I'm doing my best. 
 
 # How to use
 + **Clone the Tool.**
