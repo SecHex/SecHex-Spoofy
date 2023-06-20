@@ -5,6 +5,10 @@ using System.Drawing.Drawing2D;
 using System.Net.NetworkInformation;
 using System.Security.Cryptography;
 using System.Text;
+using System.Runtime.InteropServices;
+
+
+
 //sechex.me
 //sechex.me
 //sechex.me
@@ -299,6 +303,8 @@ namespace SecHex_GUI
 
 
 
+        private hexhex logWindow;
+
         private void SaveLogs(string id, string logBefore, string logAfter)
         {
             string logsFolderPath = Path.Combine(Application.StartupPath, "Logs");
@@ -311,7 +317,61 @@ namespace SecHex_GUI
 
             File.AppendAllText(logFileName, logEntryBefore + Environment.NewLine);
             File.AppendAllText(logFileName, logEntryAfter + Environment.NewLine);
+
+            AppendLogEntryToWindow(logEntryBefore, logEntryAfter);
         }
+
+        private void AppendLogEntryToWindow(string logEntryBefore, string logEntryAfter)
+        {
+            if (logWindow != null && !logWindow.IsDisposed)
+            {
+                logWindow.AddLogEntry(logEntryBefore, logEntryAfter);
+            }
+        }
+
+        private void OpenLogWindow()
+        {
+            if (logWindow == null || logWindow.IsDisposed)
+            {
+                logWindow = new hexhex();
+                logWindow.Show();
+            }
+            else
+            {
+                logWindow.Show(); // Stattdessen von Hide() zu Show() wechseln
+            }
+        }
+
+        private void CloseLogWindow()
+        {
+            if (logWindow != null && !logWindow.IsDisposed)
+            {
+                logWindow.Hide();
+            }
+        }
+
+        private void logtoggle_CheckedChanged(object sender, EventArgs e)
+        {
+            if (logtoggle.Checked)
+            {
+                OpenLogWindow();
+            }
+            else
+            {
+                CloseLogWindow();
+            }
+        }
+
+
+
+
+
+
+        private void siticoneCustomCheckBox2_Click(object sender, EventArgs e)
+        {
+
+        }
+
 
 
 
@@ -620,10 +680,6 @@ namespace SecHex_GUI
                 ShowNotification("An error occurred while spoofing the MAC address: " + ex.Message, NotificationType.Error);
             }
         }
-        //sechex.me
-        //sechex.me
-        //sechex.me
-        //sechex.me
 
         private bool SpoofMAC()
         {
@@ -760,10 +816,6 @@ namespace SecHex_GUI
                 ShowNotification("An error occurred: " + ex.Message, NotificationType.Error);
             }
         }
-
-
-
-
 
 
 
@@ -914,6 +966,7 @@ namespace SecHex_GUI
         //sechex.me
         //sechex.me
         //sechex.me
+
         private void display_Click(object sender, EventArgs e)
         {
             try
@@ -954,6 +1007,7 @@ namespace SecHex_GUI
             Random rnd = new Random();
             return rnd.Next(1, 9);
         }
+
         //sechex.me
         //sechex.me
         //sechex.me
@@ -1205,11 +1259,5 @@ namespace SecHex_GUI
         }
 
 
-
-
-        //sechex.me
-        //sechex.me
-        //sechex.me
-        //sechex.me
     }
 }

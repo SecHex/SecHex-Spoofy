@@ -51,6 +51,8 @@
             backup = new Siticone.Desktop.UI.WinForms.SiticoneButton();
             siticoneToggleSwitch1 = new Siticone.Desktop.UI.WinForms.SiticoneToggleSwitch();
             lgbtq = new Label();
+            logtoggle = new Siticone.Desktop.UI.WinForms.SiticoneToggleSwitch();
+            label4 = new Label();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             SuspendLayout();
             // 
@@ -457,6 +459,7 @@
             // 
             // siticoneToggleSwitch1
             // 
+            siticoneToggleSwitch1.Animated = true;
             siticoneToggleSwitch1.BackColor = Color.Transparent;
             siticoneToggleSwitch1.CheckedState.BorderColor = Color.White;
             siticoneToggleSwitch1.CheckedState.FillColor = Color.Gray;
@@ -484,12 +487,44 @@
             lgbtq.TabIndex = 21;
             lgbtq.Text = "LGBTQ Mode";
             // 
+            // logtoggle
+            // 
+            logtoggle.Animated = true;
+            logtoggle.BackColor = Color.Transparent;
+            logtoggle.CheckedState.BorderColor = Color.White;
+            logtoggle.CheckedState.FillColor = Color.Gray;
+            logtoggle.CheckedState.InnerBorderColor = Color.White;
+            logtoggle.CheckedState.InnerColor = Color.White;
+            logtoggle.Location = new Point(578, 374);
+            logtoggle.Name = "logtoggle";
+            logtoggle.Size = new Size(37, 20);
+            logtoggle.TabIndex = 27;
+            logtoggle.UncheckedState.BorderColor = Color.Transparent;
+            logtoggle.UncheckedState.FillColor = Color.Gray;
+            logtoggle.UncheckedState.InnerBorderColor = Color.White;
+            logtoggle.UncheckedState.InnerColor = Color.White;
+            logtoggle.CheckedChanged += logtoggle_CheckedChanged;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.BackColor = Color.Transparent;
+            label4.Font = new Font("Segoe UI Semibold", 8F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
+            label4.ForeColor = Color.White;
+            label4.Location = new Point(506, 378);
+            label4.Name = "label4";
+            label4.Size = new Size(71, 13);
+            label4.TabIndex = 28;
+            label4.Text = "LOG Window";
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ActiveBorder;
             ClientSize = new Size(627, 431);
+            Controls.Add(label4);
+            Controls.Add(logtoggle);
             Controls.Add(lgbtq);
             Controls.Add(siticoneToggleSwitch1);
             Controls.Add(backup);
@@ -545,5 +580,7 @@
         private Siticone.Desktop.UI.WinForms.SiticoneButton backup;
         private Siticone.Desktop.UI.WinForms.SiticoneToggleSwitch siticoneToggleSwitch1;
         private Label lgbtq;
+        private Siticone.Desktop.UI.WinForms.SiticoneToggleSwitch logtoggle;
+        private Label label4;
     }
 }
