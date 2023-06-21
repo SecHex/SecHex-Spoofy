@@ -105,8 +105,8 @@ I am currently still learning, and the spoofer is far from being 100% perfect. B
 **20+ Stars** - ***Spoofer with GUI*** ✅       
 **50+ Stars** - ***GUI Changes + Code overhaul*** ✨         
 
-▰▰▰▰▰▰▰▰▰▰▱▱▱ 75% finish ❤️
-
+▰▰▰▰▰▰▰▰▰▰▱▱▱ 75% Finish ❤️
+▰▰▰▰▰▰▰▰▰▰▰▱▱ 85% 69/128 Stars🌟
 
 
 
