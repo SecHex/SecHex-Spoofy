@@ -104,7 +104,7 @@ I am currently still learning, and the spoofer is far from being 100% perfect. B
 **10 Stars** - ***SMBIOS***  ✅                                                                 
 **20+ Stars** - ***Spoofer with GUI*** ✅       
 **50+ Stars** - ***GUI Changes*** ✅
-**100+ Stars** - ***GUI Changes + Code overhaul and every 10 stars a update!*** ✨
+**100+ Stars** - ***GUI Changes + Code overhaul and every 10 stars a update!*** ✨                             
 
 
 
