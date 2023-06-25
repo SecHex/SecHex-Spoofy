@@ -14,12 +14,6 @@ The "Spoofer" (HWID Changer) works only for simple HWID Bans. Not for games like
 
 
 
-# How to use
-+ **Clone the Tool.**
-+ **Build the Tool.**
-+ **Run it as Admin.**
-+ **Choose your option**
-
 
 # Functions ⚡
 + **Disk Spoofing** - [18.05.23]                           
