@@ -251,15 +251,6 @@ namespace SecHex_GUI
             }
         }
 
-
-
-
-
-
-
-
-
-
         //sechex.me
         //sechex.me
         //sechex.me
@@ -303,7 +294,97 @@ namespace SecHex_GUI
 
 
 
+
+
+
+
+        private bool isLogToggleOn = false;
+        private bool isAfricaToggleOn = false;
+        private south_africa WindowSouthAfrica;
         private hexhex logWindow;
+
+        private void OpenAfrica()
+        {
+            if (WindowSouthAfrica == null || WindowSouthAfrica.IsDisposed)
+            {
+                Console.WriteLine("OpenAfrica() called");
+                WindowSouthAfrica = new south_africa();
+                WindowSouthAfrica.Show();
+            }
+            else
+            {
+                WindowSouthAfrica.Show();
+            }
+        }
+
+        private void CloseAfrica()
+        {
+            if (WindowSouthAfrica != null && !WindowSouthAfrica.IsDisposed)
+            {
+                WindowSouthAfrica.Close();
+                WindowSouthAfrica.Dispose();
+                WindowSouthAfrica = null;
+            }
+        }
+
+        private void OpenLogWindow()
+        {
+            if (logWindow == null || logWindow.IsDisposed)
+            {
+                logWindow = new hexhex();
+                logWindow.Show();
+            }
+            else
+            {
+                logWindow.Show();
+            }
+        }
+
+        private void CloseLogWindow()
+        {
+            if (logWindow != null && !logWindow.IsDisposed)
+            {
+                logWindow.Hide();
+            }
+        }
+
+        private void logtoggle_CheckedChanged(object sender, EventArgs e)
+        {
+            isLogToggleOn = logtoggle.Checked;
+            if (isLogToggleOn)
+            {
+                OpenLogWindow();
+            }
+            else
+            {
+                CloseLogWindow();
+            }
+        }
+
+        private void siticoneToggleSwitch2_CheckedChanged(object sender, EventArgs e)
+        {
+            isAfricaToggleOn = siticoneToggleSwitch2.Checked;
+            if (isAfricaToggleOn)
+            {
+                OpenAfrica();
+            }
+            else
+            {
+                CloseAfrica();
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+
+
 
         private void SaveLogs(string id, string logBefore, string logAfter)
         {
@@ -329,48 +410,9 @@ namespace SecHex_GUI
             }
         }
 
-        private void OpenLogWindow()
-        {
-            if (logWindow == null || logWindow.IsDisposed)
-            {
-                logWindow = new hexhex();
-                logWindow.Show();
-            }
-            else
-            {
-                logWindow.Show(); // Stattdessen von Hide() zu Show() wechseln
-            }
-        }
-
-        private void CloseLogWindow()
-        {
-            if (logWindow != null && !logWindow.IsDisposed)
-            {
-                logWindow.Hide();
-            }
-        }
-
-        private void logtoggle_CheckedChanged(object sender, EventArgs e)
-        {
-            if (logtoggle.Checked)
-            {
-                OpenLogWindow();
-            }
-            else
-            {
-                CloseLogWindow();
-            }
-        }
 
 
 
-
-
-
-        private void siticoneCustomCheckBox2_Click(object sender, EventArgs e)
-        {
-
-        }
 
 
 
@@ -1116,7 +1158,6 @@ namespace SecHex_GUI
         //sechex.me
         //sechex.me
         //sechex.me
-
         private void backup_Click(object sender, EventArgs e)
         {
             try
