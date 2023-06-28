@@ -53,6 +53,8 @@
             lgbtq = new Label();
             logtoggle = new Siticone.Desktop.UI.WinForms.SiticoneToggleSwitch();
             label4 = new Label();
+            siticoneToggleSwitch2 = new Siticone.Desktop.UI.WinForms.SiticoneToggleSwitch();
+            africa = new Label();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             SuspendLayout();
             // 
@@ -346,9 +348,9 @@
             label3.ForeColor = Color.White;
             label3.Location = new Point(12, 381);
             label3.Name = "label3";
-            label3.Size = new Size(64, 13);
+            label3.Size = new Size(99, 13);
             label3.TabIndex = 15;
-            label3.Text = "𝕴𝖛𝖆𝖗#5092";
+            label3.Text = "Discord -> SecHex";
             // 
             // pictureBox2
             // 
@@ -517,12 +519,44 @@
             label4.TabIndex = 28;
             label4.Text = "LOG Window";
             // 
+            // siticoneToggleSwitch2
+            // 
+            siticoneToggleSwitch2.Animated = true;
+            siticoneToggleSwitch2.BackColor = Color.Transparent;
+            siticoneToggleSwitch2.CheckedState.BorderColor = Color.White;
+            siticoneToggleSwitch2.CheckedState.FillColor = Color.Gray;
+            siticoneToggleSwitch2.CheckedState.InnerBorderColor = Color.White;
+            siticoneToggleSwitch2.CheckedState.InnerColor = Color.White;
+            siticoneToggleSwitch2.Location = new Point(578, 348);
+            siticoneToggleSwitch2.Name = "siticoneToggleSwitch2";
+            siticoneToggleSwitch2.Size = new Size(37, 20);
+            siticoneToggleSwitch2.TabIndex = 29;
+            siticoneToggleSwitch2.UncheckedState.BorderColor = Color.Transparent;
+            siticoneToggleSwitch2.UncheckedState.FillColor = Color.Gray;
+            siticoneToggleSwitch2.UncheckedState.InnerBorderColor = Color.White;
+            siticoneToggleSwitch2.UncheckedState.InnerColor = Color.White;
+            siticoneToggleSwitch2.CheckedChanged += siticoneToggleSwitch2_CheckedChanged;
+            // 
+            // africa
+            // 
+            africa.AutoSize = true;
+            africa.BackColor = Color.Transparent;
+            africa.Font = new Font("Segoe UI Semibold", 8F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
+            africa.ForeColor = Color.White;
+            africa.Location = new Point(529, 352);
+            africa.Name = "africa";
+            africa.Size = new Size(45, 13);
+            africa.TabIndex = 30;
+            africa.Text = "Cleaner";
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ActiveBorder;
             ClientSize = new Size(627, 431);
+            Controls.Add(africa);
+            Controls.Add(siticoneToggleSwitch2);
             Controls.Add(label4);
             Controls.Add(logtoggle);
             Controls.Add(lgbtq);
@@ -548,8 +582,9 @@
             Controls.Add(siticoneControlBox2);
             Controls.Add(siticoneControlBox1);
             FormBorderStyle = FormBorderStyle.None;
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "Form1";
-            Text = "Form1";
+            Text = "Spoofy [Free]";
             Load += Form1_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ResumeLayout(false);
@@ -582,5 +617,7 @@
         private Label lgbtq;
         private Siticone.Desktop.UI.WinForms.SiticoneToggleSwitch logtoggle;
         private Label label4;
+        private Siticone.Desktop.UI.WinForms.SiticoneToggleSwitch siticoneToggleSwitch2;
+        private Label africa;
     }
 }

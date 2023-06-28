@@ -8,5 +8,8 @@
     <Compile Update="hexhex.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="south africa.cs">
+      <SubType>Form</SubType>
+    </Compile>
   </ItemGroup>
 </Project>

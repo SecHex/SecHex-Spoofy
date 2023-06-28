@@ -5,23 +5,18 @@ using System.Drawing.Drawing2D;
 using System.Net.NetworkInformation;
 using System.Security.Cryptography;
 using System.Text;
+using System.Net;
 
 //sechex.me
 //sechex.me
 //sechex.me
 //sechex.me
-
-
-
 namespace SecHex_GUI
 {
-    //sechex.me
-    //sechex.me
-    //sechex.me
-    //sechex.me
 
-    public partial class hexhex : Form
-    {        //sechex.me
+    public partial class south_africa : Form
+    {
+        //sechex.me
         //sechex.me
         //sechex.me
         //sechex.me
@@ -35,13 +30,11 @@ namespace SecHex_GUI
         private bool isDragging;
         private Point offset;
         private bool isAnimationRunning = false;
-        //sechex.me
-        //sechex.me
-        //sechex.me
-        //sechex.me
-        public hexhex()
+
+        public south_africa()
         {
             InitializeComponent();
+
             SetRoundedCorners();
 
             timer = new System.Windows.Forms.Timer();
@@ -125,10 +118,7 @@ namespace SecHex_GUI
                 offset = new Point(e.X, e.Y);
             }
         }
-        //sechex.me
-        //sechex.me
-        //sechex.me
-        //sechex.me
+
         protected override void OnMouseMove(MouseEventArgs e)
         {
             base.OnMouseMove(e);
@@ -139,10 +129,7 @@ namespace SecHex_GUI
                 Location = newLocation;
             }
         }
-        //sechex.me
-        //sechex.me
-        //sechex.me
-        //sechex.me
+
         protected override void OnMouseUp(MouseEventArgs e)
         {
             base.OnMouseUp(e);
@@ -155,34 +142,141 @@ namespace SecHex_GUI
         //sechex.me
         //sechex.me
         //sechex.me
-        public void AddLogEntry(string logEntryBefore, string logEntryAfter)
-        {
-            richTextBoxLogs.SelectionColor = Color.Gray;
-            richTextBoxLogs.AppendText(logEntryBefore + Environment.NewLine);
 
-            richTextBoxLogs.SelectionColor = Color.White;
-            richTextBoxLogs.AppendText(logEntryAfter + Environment.NewLine);
+
+        // Functions 
+        private void FlushDnsCache()
+        {
+            try
+            {
+                Process process = new Process();
+                ProcessStartInfo startInfo = new ProcessStartInfo();
+
+                startInfo.FileName = "ipconfig";
+                startInfo.Arguments = "/flushdns";
+                startInfo.WindowStyle = ProcessWindowStyle.Hidden;
+
+                process.StartInfo = startInfo;
+                process.Start();
+                process.WaitForExit();
+
+                MessageBox.Show("DNS-Cache cleared.");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
+        }
+        //sechex.me
+        //sechex.me
+        //sechex.me
+        //sechex.me
+
+        private void ClearWindowsLogs()
+        {
+            try
+            {
+                Process process = new Process();
+                ProcessStartInfo startInfo = new ProcessStartInfo();
+
+                startInfo.FileName = "wevtutil";
+                startInfo.Arguments = "el";
+                startInfo.WindowStyle = ProcessWindowStyle.Hidden;
+
+                process.StartInfo = startInfo;
+                process.Start();
+                process.WaitForExit();
+
+                MessageBox.Show("Windows Logs cleared. ");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
+        }
+        //sechex.me
+        //sechex.me
+        //sechex.me
+        //sechex.me
+
+        private void ClearTemporaryCache()
+        {
+            try
+            {
+                string tempFolderPath = Path.GetTempPath();
+                DirectoryInfo tempDirectory = new DirectoryInfo(tempFolderPath);
+
+                foreach (FileInfo file in tempDirectory.GetFiles())
+                {
+                    file.Delete();
+                }
+
+                foreach (DirectoryInfo subDirectory in tempDirectory.GetDirectories())
+                {
+                    subDirectory.Delete(true);
+                }
+
+                MessageBox.Show("Temporary cache cleared.");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
+        }
+        //sechex.me
+        //sechex.me
+        //sechex.me
+        //sechex.me
+        private bool isTempClearCheckboxChecked = false;
+        private bool isWinLogCheckboxChecked = false;
+        private bool isCheckboxChecked = false;
+        private bool isDnsCheckboxChecked = false;
+
+        private void dns_CheckedChanged(object sender, EventArgs e)
+        {
+            isDnsCheckboxChecked = dns.Checked;
         }
 
-        private void richTextBoxLogs_TextChanged(object sender, EventArgs e)
+        private void winlogs_CheckedChanged(object sender, EventArgs e)
         {
+            isWinLogCheckboxChecked = winlogs.Checked;
+        }
+
+        private void tempclear_CheckedChanged(object sender, EventArgs e)
+        {
+            isTempClearCheckboxChecked = tempclear.Checked;
+        }
+
+
+
+
+        private void spoofall_Click(object sender, EventArgs e)
+        {
+            if (isCheckboxChecked)
+            {
+                FlushDnsCache();
+            }
+
+            if (isWinLogCheckboxChecked)
+            {
+                ClearWindowsLogs();
+            }
+
+            if (isTempClearCheckboxChecked)
+            {
+                ClearTemporaryCache();
+            }
+
 
         }
         //sechex.me
         //sechex.me
         //sechex.me
         //sechex.me
-        private void hexhex_Load(object sender, EventArgs e)
+        private void south_africa_Load(object sender, EventArgs e)
         {
 
         }
-        //sechex.me
-        //sechex.me
-        //sechex.me
-        //sechex.me
-        private void sechex_Click(object sender, EventArgs e)
-        {
 
-        }
     }
 }
