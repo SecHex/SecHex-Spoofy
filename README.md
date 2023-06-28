@@ -99,8 +99,8 @@ The "Spoofer" (HWID Changer) works only for simple HWID Bans. Not for games like
     • Temp Cleaner                          
     • Windows Logs                          
 
-
-
+                          
+                          
 
 **Design Update** - 20.05.23
 
