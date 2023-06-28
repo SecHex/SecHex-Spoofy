@@ -252,7 +252,7 @@ namespace SecHex_GUI
 
         private void spoofall_Click(object sender, EventArgs e)
         {
-            if (isCheckboxChecked)
+            if (isDnsCheckboxChecked)
             {
                 FlushDnsCache();
             }
