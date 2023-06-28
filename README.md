@@ -1,4 +1,4 @@
-# SecHex-Spoofy [1.5.2]
+# SecHex-Spoofy [1.5.3]
 
 Simple HWID-Changer 🔑︎
 Some Lines of the CMD Version are from @LockBlock-dev 
@@ -93,6 +93,11 @@ The "Spoofer" (HWID Changer) works only for simple HWID Bans. Not for games like
     • Generates a random display ID.                          
     • Updates the registry values for MRU0, MRU1, MRU2, MRU3, and MRU4.                          
                        
+
++ **Cache Cleaner** *[New]* (testing) - [28.06.23]                           
+    • DNS Flush                          
+    • Temp Cleaner                          
+    • Windows Logs                          
 
 
 
