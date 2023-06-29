@@ -1,4 +1,4 @@
-# SecHex-Spoofy [1.5.3]
+# SecHex-Spoofy [1.5.4]
 
 Simple HWID-Changer 🔑︎
 Some Lines of the CMD Version are from @LockBlock-dev 
