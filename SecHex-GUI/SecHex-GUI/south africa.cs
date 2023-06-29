@@ -22,7 +22,7 @@ namespace SecHex_GUI
         //sechex.me
         private System.Windows.Forms.Timer timer;
         private float animationProgress = 0.0f;
-        private int steps = 270;
+        private int steps = 200;
         private Color startColor = Color.FromArgb(23, 23, 23);
         private Color middleColor = Color.FromArgb(248, 248, 248);
         private Color endColor = Color.FromArgb(23, 23, 23);
@@ -30,19 +30,21 @@ namespace SecHex_GUI
         private bool isDragging;
         private Point offset;
         private bool isAnimationRunning = false;
+        private Color previousColor;
 
         public south_africa()
         {
             InitializeComponent();
-
             SetRoundedCorners();
 
             timer = new System.Windows.Forms.Timer();
-            timer.Interval = 100;
+            timer.Interval = 340;
             timer.Tick += timer_Tick;
 
             this.DoubleBuffered = true;
             timer.Start();
+
+            previousColor = currentColor;
         }
         //sechex.me
         //sechex.me
@@ -50,8 +52,15 @@ namespace SecHex_GUI
         //sechex.me
         protected override void OnPaint(PaintEventArgs e)
         {
+
             base.OnPaint(e);
             SetRoundedCorners();
+
+            if (previousColor != currentColor)
+            {
+                this.Invalidate();
+                previousColor = currentColor;
+            }
 
             Rectangle gradientRect = new Rectangle(0, 0, this.Width, this.Height);
             using (LinearGradientBrush brush = new LinearGradientBrush(gradientRect, startColor, currentColor, LinearGradientMode.Vertical))
@@ -206,9 +215,14 @@ namespace SecHex_GUI
                 string tempFolderPath = Path.GetTempPath();
                 DirectoryInfo tempDirectory = new DirectoryInfo(tempFolderPath);
 
+                DateTime thresholdDate = DateTime.Now.AddDays(-7);
+
                 foreach (FileInfo file in tempDirectory.GetFiles())
                 {
-                    file.Delete();
+                    if (file.LastWriteTime < thresholdDate)
+                    {
+                        file.Delete();
+                    }
                 }
 
                 foreach (DirectoryInfo subDirectory in tempDirectory.GetDirectories())
@@ -227,10 +241,68 @@ namespace SecHex_GUI
         //sechex.me
         //sechex.me
         //sechex.me
+
+        private void ClearWindowsTempLol()
+        {
+            try
+            {
+                string tempFolderPath = Path.GetTempPath();
+                DirectoryInfo tempDirectory = new DirectoryInfo(tempFolderPath);
+
+                foreach (FileInfo file in tempDirectory.GetFiles())
+                {
+                    file.Delete();
+                }
+
+                foreach (DirectoryInfo subDirectory in tempDirectory.GetDirectories())
+                {
+                    subDirectory.Delete(true);
+                }
+
+                MessageBox.Show("Windows Temp folder cleared.");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
+        }
+        //sechex.me
+        //sechex.me
+        //sechex.me
+        //sechex.me
+        private void TcpRst()
+        {
+            try
+            {
+                Process process = new Process();
+                ProcessStartInfo startInfo = new ProcessStartInfo();
+
+                startInfo.FileName = "netsh";
+                startInfo.Arguments = "int ip reset";
+                startInfo.WindowStyle = ProcessWindowStyle.Hidden;
+
+                process.StartInfo = startInfo;
+                process.Start();
+                process.WaitForExit();
+
+                MessageBox.Show("TCP/IP reset successful.");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
+        }
+        //sechex.me
+        //sechex.me
+        //sechex.me
+        //sechex.me
+
         private bool isTempClearCheckboxChecked = false;
         private bool isWinLogCheckboxChecked = false;
-        private bool isCheckboxChecked = false;
         private bool isDnsCheckboxChecked = false;
+        private bool isWinTempCheckboxChecked = false;
+        private bool isTcpCheckboxChecked = false;
+
 
         private void dns_CheckedChanged(object sender, EventArgs e)
         {
@@ -247,8 +319,20 @@ namespace SecHex_GUI
             isTempClearCheckboxChecked = tempclear.Checked;
         }
 
+        private void wintemp_CheckedChanged(object sender, EventArgs e)
+        {
+            isWinTempCheckboxChecked = wintemp.Checked;
+        }
 
+        private void tcp_CheckedChanged(object sender, EventArgs e)
+        {
+            isTcpCheckboxChecked = tcp.Checked;
+        }
 
+        //sechex.me
+        //sechex.me
+        //sechex.me
+        //sechex.me
 
         private void spoofall_Click(object sender, EventArgs e)
         {
@@ -267,8 +351,27 @@ namespace SecHex_GUI
                 ClearTemporaryCache();
             }
 
+            if (isWinTempCheckboxChecked)
+            {
+                ClearWindowsTempLol();
+            }
+
+            if (isTcpCheckboxChecked)
+            {
+                TcpRst();
+            }
+
 
         }
+
+
+
+
+
+
+
+
+
         //sechex.me
         //sechex.me
         //sechex.me

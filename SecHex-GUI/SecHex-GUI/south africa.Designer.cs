@@ -36,6 +36,8 @@
             spoofall = new Siticone.Desktop.UI.WinForms.SiticoneButton();
             winlogs = new Siticone.Desktop.UI.WinForms.SiticoneCheckBox();
             tempclear = new Siticone.Desktop.UI.WinForms.SiticoneCheckBox();
+            wintemp = new Siticone.Desktop.UI.WinForms.SiticoneCheckBox();
+            tcp = new Siticone.Desktop.UI.WinForms.SiticoneCheckBox();
             SuspendLayout();
             // 
             // siticoneControlBox2
@@ -169,12 +171,58 @@
             tempclear.UseVisualStyleBackColor = false;
             tempclear.CheckedChanged += tempclear_CheckedChanged;
             // 
+            // wintemp
+            // 
+            wintemp.AutoSize = true;
+            wintemp.BackColor = Color.Transparent;
+            wintemp.CheckedState.BorderColor = Color.Gray;
+            wintemp.CheckedState.BorderRadius = 3;
+            wintemp.CheckedState.BorderThickness = 0;
+            wintemp.CheckedState.FillColor = Color.Gray;
+            wintemp.Font = new Font("Segoe UI", 9F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
+            wintemp.ForeColor = Color.White;
+            wintemp.Location = new Point(12, 124);
+            wintemp.Name = "wintemp";
+            wintemp.Size = new Size(150, 19);
+            wintemp.TabIndex = 21;
+            wintemp.Text = "Windows Temp Folder";
+            wintemp.UncheckedState.BorderColor = Color.FromArgb(125, 137, 149);
+            wintemp.UncheckedState.BorderRadius = 3;
+            wintemp.UncheckedState.BorderThickness = 0;
+            wintemp.UncheckedState.FillColor = Color.Gray;
+            wintemp.UseVisualStyleBackColor = false;
+            wintemp.CheckedChanged += wintemp_CheckedChanged;
+            // 
+            // tcp
+            // 
+            tcp.AutoSize = true;
+            tcp.BackColor = Color.Transparent;
+            tcp.CheckedState.BorderColor = Color.Gray;
+            tcp.CheckedState.BorderRadius = 3;
+            tcp.CheckedState.BorderThickness = 0;
+            tcp.CheckedState.FillColor = Color.Gray;
+            tcp.Font = new Font("Segoe UI", 9F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
+            tcp.ForeColor = Color.White;
+            tcp.Location = new Point(12, 149);
+            tcp.Name = "tcp";
+            tcp.Size = new Size(82, 19);
+            tcp.TabIndex = 22;
+            tcp.Text = "TCP Reset";
+            tcp.UncheckedState.BorderColor = Color.FromArgb(125, 137, 149);
+            tcp.UncheckedState.BorderRadius = 3;
+            tcp.UncheckedState.BorderThickness = 0;
+            tcp.UncheckedState.FillColor = Color.Gray;
+            tcp.UseVisualStyleBackColor = false;
+            tcp.CheckedChanged += tcp_CheckedChanged;
+            // 
             // south_africa
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.AppWorkspace;
             ClientSize = new Size(403, 245);
+            Controls.Add(tcp);
+            Controls.Add(wintemp);
             Controls.Add(tempclear);
             Controls.Add(winlogs);
             Controls.Add(spoofall);
@@ -200,5 +248,7 @@
         private Siticone.Desktop.UI.WinForms.SiticoneButton spoofall;
         private Siticone.Desktop.UI.WinForms.SiticoneCheckBox winlogs;
         private Siticone.Desktop.UI.WinForms.SiticoneCheckBox tempclear;
+        private Siticone.Desktop.UI.WinForms.SiticoneCheckBox wintemp;
+        private Siticone.Desktop.UI.WinForms.SiticoneCheckBox tcp;
     }
 }
