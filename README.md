@@ -97,7 +97,9 @@ The "Spoofer" (HWID Changer) works only for simple HWID Bans. Not for games like
 + **Cache Cleaner** *[New]* (testing) - [28.06.23]                           
     • DNS Flush                          
     • Temp Cleaner                          
-    • Windows Logs                          
+    • Windows Logs
+    • Win Temp
+    • TCP Reset          
 
                           
                           
