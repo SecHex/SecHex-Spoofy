@@ -11,7 +11,7 @@ I am currently still learning, and the spoofer is far from being 100% perfect. B
 
 # ATTENTION ⚠️
 The "Spoofer" (HWID Changer) works only for simple HWID Bans. Not for games like Valorant or something! 
-
+Updates soon...
 
 
 
