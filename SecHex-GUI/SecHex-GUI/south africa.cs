@@ -35,6 +35,8 @@ namespace SecHex_GUI
         public south_africa()
         {
             InitializeComponent();
+            SetStyle(ControlStyles.DoubleBuffer | ControlStyles.UserPaint | ControlStyles.AllPaintingInWmPaint, true);
+            UpdateStyles();
             SetRoundedCorners();
 
             timer = new System.Windows.Forms.Timer();
@@ -292,6 +294,52 @@ namespace SecHex_GUI
                 MessageBox.Show("Error: " + ex.Message);
             }
         }
+
+        private void CookieRst()
+        {
+            try
+            {
+                string chromeCookiesPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Google\\Chrome\\User Data\\Default\\Cookies");
+
+                if (File.Exists(chromeCookiesPath))
+                {
+                    File.Delete(chromeCookiesPath);
+                    MessageBox.Show("Chrome cookies cleared.");
+                }
+                else
+                {
+                    MessageBox.Show("Chrome cookies not found.");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
+        }
+        //sechex.me
+        //sechex.me
+        //sechex.me
+        //sechex.me
+        private void DocsClear()
+        {
+            try
+            {
+                string recentDocumentsPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Recent), "*.*");
+                string[] recentDocuments = Directory.GetFiles(recentDocumentsPath);
+
+                foreach (string document in recentDocuments)
+                {
+                    File.Delete(document);
+                }
+
+                MessageBox.Show("Recent documents cleared.");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
+        }
+
         //sechex.me
         //sechex.me
         //sechex.me
@@ -302,6 +350,8 @@ namespace SecHex_GUI
         private bool isDnsCheckboxChecked = false;
         private bool isWinTempCheckboxChecked = false;
         private bool isTcpCheckboxChecked = false;
+        private bool isCookieCheckboxChecked = false;
+        private bool isDocsCheckboxChecked = false;
 
 
         private void dns_CheckedChanged(object sender, EventArgs e)
@@ -327,6 +377,16 @@ namespace SecHex_GUI
         private void tcp_CheckedChanged(object sender, EventArgs e)
         {
             isTcpCheckboxChecked = tcp.Checked;
+        }
+
+        private void cookie_CheckedChanged(object sender, EventArgs e)
+        {
+            isCookieCheckboxChecked = cookie.Checked;
+        }
+
+        private void docs_CheckedChanged(object sender, EventArgs e)
+        {
+            isDocsCheckboxChecked = docs.Checked;
         }
 
         //sechex.me
@@ -361,16 +421,18 @@ namespace SecHex_GUI
                 TcpRst();
             }
 
+            if (isCookieCheckboxChecked)
+            {
+                CookieRst();
+            }
+
+            if (isCookieCheckboxChecked)
+            {
+                DocsClear();
+            }
+
 
         }
-
-
-
-
-
-
-
-
 
         //sechex.me
         //sechex.me

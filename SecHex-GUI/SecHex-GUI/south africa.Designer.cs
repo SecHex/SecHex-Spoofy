@@ -38,6 +38,8 @@
             tempclear = new Siticone.Desktop.UI.WinForms.SiticoneCheckBox();
             wintemp = new Siticone.Desktop.UI.WinForms.SiticoneCheckBox();
             tcp = new Siticone.Desktop.UI.WinForms.SiticoneCheckBox();
+            cookie = new Siticone.Desktop.UI.WinForms.SiticoneCheckBox();
+            docs = new Siticone.Desktop.UI.WinForms.SiticoneCheckBox();
             SuspendLayout();
             // 
             // siticoneControlBox2
@@ -215,12 +217,58 @@
             tcp.UseVisualStyleBackColor = false;
             tcp.CheckedChanged += tcp_CheckedChanged;
             // 
+            // cookie
+            // 
+            cookie.AutoSize = true;
+            cookie.BackColor = Color.Transparent;
+            cookie.CheckedState.BorderColor = Color.Gray;
+            cookie.CheckedState.BorderRadius = 3;
+            cookie.CheckedState.BorderThickness = 0;
+            cookie.CheckedState.FillColor = Color.Gray;
+            cookie.Font = new Font("Segoe UI", 9F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
+            cookie.ForeColor = Color.White;
+            cookie.Location = new Point(235, 49);
+            cookie.Name = "cookie";
+            cookie.Size = new Size(156, 19);
+            cookie.TabIndex = 23;
+            cookie.Text = "Delete Chrome Cookies";
+            cookie.UncheckedState.BorderColor = Color.FromArgb(125, 137, 149);
+            cookie.UncheckedState.BorderRadius = 3;
+            cookie.UncheckedState.BorderThickness = 0;
+            cookie.UncheckedState.FillColor = Color.Gray;
+            cookie.UseVisualStyleBackColor = false;
+            cookie.CheckedChanged += cookie_CheckedChanged;
+            // 
+            // docs
+            // 
+            docs.AutoSize = true;
+            docs.BackColor = Color.Transparent;
+            docs.CheckedState.BorderColor = Color.Gray;
+            docs.CheckedState.BorderRadius = 3;
+            docs.CheckedState.BorderThickness = 0;
+            docs.CheckedState.FillColor = Color.Gray;
+            docs.Font = new Font("Segoe UI", 9F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
+            docs.ForeColor = Color.White;
+            docs.Location = new Point(235, 74);
+            docs.Name = "docs";
+            docs.Size = new Size(165, 19);
+            docs.TabIndex = 24;
+            docs.Text = "Delete Latest Documents";
+            docs.UncheckedState.BorderColor = Color.FromArgb(125, 137, 149);
+            docs.UncheckedState.BorderRadius = 3;
+            docs.UncheckedState.BorderThickness = 0;
+            docs.UncheckedState.FillColor = Color.Gray;
+            docs.UseVisualStyleBackColor = false;
+            docs.CheckedChanged += docs_CheckedChanged;
+            // 
             // south_africa
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.AppWorkspace;
             ClientSize = new Size(403, 245);
+            Controls.Add(docs);
+            Controls.Add(cookie);
             Controls.Add(tcp);
             Controls.Add(wintemp);
             Controls.Add(tempclear);
@@ -250,5 +298,7 @@
         private Siticone.Desktop.UI.WinForms.SiticoneCheckBox tempclear;
         private Siticone.Desktop.UI.WinForms.SiticoneCheckBox wintemp;
         private Siticone.Desktop.UI.WinForms.SiticoneCheckBox tcp;
+        private Siticone.Desktop.UI.WinForms.SiticoneCheckBox cookie;
+        private Siticone.Desktop.UI.WinForms.SiticoneCheckBox docs;
     }
 }
