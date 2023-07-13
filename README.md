@@ -94,12 +94,14 @@ Updates soon...
     • Updates the registry values for MRU0, MRU1, MRU2, MRU3, and MRU4.                          
                        
 
-+ **Cache Cleaner** *[New]* (testing) - [28.06.23]                           
++ **SecHex Cleaner** *[New]* (testing) - [28.06.23]                           
     • DNS Flush                          
     • Temp Cleaner                          
     • Windows Logs
     • Win Temp
-    • TCP Reset          
+    • TCP Reset
+    • Chrome Cookies
+    • Recent Documents
 
                           
                           
