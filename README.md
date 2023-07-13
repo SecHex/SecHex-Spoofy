@@ -98,10 +98,10 @@ Updates soon...
     • DNS Flush                          
     • Temp Cleaner                          
     • Windows Logs
-    • Win Temp
-    • TCP Reset
-    • Chrome Cookies
-    • Recent Documents
+    • Win Temp                      
+    • TCP Reset                      
+    • Chrome Cookies                      
+    • Recent Documents                      
 
                           
                           
