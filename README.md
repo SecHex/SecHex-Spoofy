@@ -1,5 +1,5 @@
 # SecHex-Spoofy [1.5.5]
-# LIKE OR BAD LUCK FOR 6 MONTHS, DONT RISK IT!
+# LIKE OR BAD LUCK FOR 6 MONTHS, DONT RISK IT! 🔥
 
 Simple HWID-Changer 🔑︎
 Some Lines of the CMD Version are from @LockBlock-dev 
