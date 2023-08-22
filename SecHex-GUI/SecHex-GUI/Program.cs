@@ -6,7 +6,7 @@ namespace SecHex_GUI
         static void Main()
         {
             ApplicationConfiguration.Initialize();
-            Application.Run(new Form1());
+            Application.Run(new Spoofy());
             Application.EnableVisualStyles();
         }
     }
