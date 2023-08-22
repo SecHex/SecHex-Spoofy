@@ -138,10 +138,9 @@ bnb bnb1yxxrkwyvde9c2c8qle6d5gzm5tndyselgjd8xy
 
 
 # Contributors ❤️
-Contributors get a special Role our discord Server. Just create a Ticket and send proof. 
-Cheers!
+Contributors get a special Role our discord Server. Just create a Ticket and send proof.                                         
+Cheers!                                            .gg/SecHex
 
-.gg/SecHex
 
 
 # Disclaimer ⚠️
