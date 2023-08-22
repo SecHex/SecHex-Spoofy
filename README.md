@@ -137,7 +137,9 @@ eth 0xD97738045E738Cb255e2707473Dae023ef913c0A
 bnb bnb1yxxrkwyvde9c2c8qle6d5gzm5tndyselgjd8xy                                
 
 
-
+# Contributors ❤️
+Contributors get a special Role our discord Server. Just create a Ticket and send proof. 
+Cheers!
 
 
 # Disclaimer ⚠️
