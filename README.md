@@ -141,6 +141,8 @@ bnb bnb1yxxrkwyvde9c2c8qle6d5gzm5tndyselgjd8xy
 Contributors get a special Role our discord Server. Just create a Ticket and send proof. 
 Cheers!
 
+.gg/SecHex
+
 
 # Disclaimer ⚠️
 Please read this disclaimer carefully before using the HWID Spoofing Tool ("Tool") available on this GitHub site. By accessing or using the Tool, you agree to be bound by this disclaimer.
