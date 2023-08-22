@@ -426,7 +426,7 @@ namespace SecHex_GUI
                 CookieRst();
             }
 
-            if (isCookieCheckboxChecked)
+            if (isDocsCheckboxChecked)
             {
                 DocsClear();
             }
