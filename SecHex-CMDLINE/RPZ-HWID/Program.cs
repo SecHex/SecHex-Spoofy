@@ -752,7 +752,7 @@ namespace HWID_Changer
             Console.WriteLine("[2] Spoof GUID                       [8] Spoof Installation ID    ");
             Console.WriteLine("[3] Spoof MAC ID                     [9] Spoof EFI                ");
             Console.WriteLine("[4] Delete UBI Cache                 [10] Spoof SMBIOS            ");
-            Console.WriteLine("[5] Delete Valoant Cache                    ");
+            Console.WriteLine("[5] Delete Valorant Cache                    ");
             Console.WriteLine("[6] Spoof GPU ID                            ");
             Console.WriteLine("                                            ");
             Console.WriteLine("[11] Check Registry Paths                   ");
