@@ -345,6 +345,117 @@ namespace SecHex_GUI
         //sechex.me
         //sechex.me
 
+        // THANKS TO Starcharms -> github.com/starcharms
+        private void rstreset()
+        {
+            try
+            {
+                RunCommand("reg", "add \"HKLM\\System\\CurrentControlSet\\Services\\BFE\" /v \"Start\" /t REG_DWORD /d \"2\" /f");
+                RunCommand("reg", "add \"HKLM\\System\\CurrentControlSet\\Services\\Dnscache\" /v \"Start\" /t REG_DWORD /d \"2\" /f");
+                RunCommand("reg", "add \"HKLM\\System\\CurrentControlSet\\Services\\MpsSvc\" /v \"Start\" /t REG_DWORD /d \"2\" /f");
+                RunCommand("reg", "add \"HKLM\\System\\CurrentControlSet\\Services\\WinHttpAutoProxySvc\" /v \"Start\" /t REG_DWORD /d \"3\" /f");
+                RunCommand("sc", "config Dhcp start= auto");
+                RunCommand("sc", "config DPS start= auto");
+                RunCommand("sc", "config lmhosts start= auto");
+                RunCommand("sc", "config NlaSvc start= auto");
+                RunCommand("sc", "config nsi start= auto");
+                RunCommand("sc", "config RmSvc start= auto");
+                RunCommand("sc", "config Wcmsvc start= auto");
+                RunCommand("sc", "config WdiServiceHost start= demand");
+                RunCommand("sc", "config Winmgmt start= auto");
+                RunCommand("sc", "config NcbService start= demand");
+                RunCommand("sc", "config Netman start= demand");
+                RunCommand("sc", "config netprofm start= demand");
+                RunCommand("sc", "config WlanSvc start= auto");
+                RunCommand("sc", "config WwanSvc start= demand");
+                RunCommand("net", "start Dhcp");
+                RunCommand("net", "start DPS");
+                RunCommand("net", "start NlaSvc");
+                RunCommand("net", "start nsi");
+                RunCommand("net", "start RmSvc");
+                RunCommand("net", "start Wcmsvc");
+
+                DisableNetworkAdapter(0);
+                DisableNetworkAdapter(1);
+                DisableNetworkAdapter(2);
+                DisableNetworkAdapter(3);
+                DisableNetworkAdapter(4);
+                DisableNetworkAdapter(5);
+
+                Thread.Sleep(6000);
+
+                EnableNetworkAdapter(0);
+                EnableNetworkAdapter(1);
+                EnableNetworkAdapter(2);
+                EnableNetworkAdapter(3);
+                EnableNetworkAdapter(4);
+                EnableNetworkAdapter(5);
+
+                RunCommand("arp", "-d *");
+                RunCommand("route", "-f");
+                RunCommand("nbtstat", "-R");
+                RunCommand("nbtstat", "-RR");
+                RunCommand("netsh", "advfirewall reset");
+                RunCommand("netcfg", "-d");
+                RunCommand("netsh", "winsock reset");
+                RunCommand("netsh", "int 6to4 reset all");
+                RunCommand("netsh", "int httpstunnel reset all");
+                RunCommand("netsh", "int ip reset");
+                RunCommand("netsh", "int isatap reset all");
+                RunCommand("netsh", "int portproxy reset all");
+                RunCommand("netsh", "int tcp reset all");
+                RunCommand("netsh", "int teredo reset all");
+                RunCommand("ipconfig", "/release");
+                RunCommand("ipconfig", "/flushdns");
+                RunCommand("ipconfig", "/flushdns");
+                RunCommand("ipconfig", "/flushdns");
+                RunCommand("ipconfig", "/renew");
+            }
+            catch
+            { }
+        }
+
+
+        static void DisableNetworkAdapter(int index)
+        {
+            string command = $"wmic path win32_networkadapter where index={index} call disable";
+            RunCommand("cmd", $"/c {command}");
+        }
+
+        static void EnableNetworkAdapter(int index)
+        {
+            string command = $"wmic path win32_networkadapter where index={index} call enable";
+            RunCommand("cmd", $"/c {command}");
+        }
+
+        static void RunCommand(string command, string arguments)
+        {
+            ProcessStartInfo startInfo = new ProcessStartInfo(command);
+            startInfo.Arguments = arguments;
+            startInfo.RedirectStandardOutput = true;
+            startInfo.RedirectStandardError = true;
+            startInfo.UseShellExecute = false;
+            startInfo.CreateNoWindow = true;
+
+            Process process = new Process();
+            process.StartInfo = startInfo;
+            process.Start();
+
+            string output = process.StandardOutput.ReadToEnd();
+            string error = process.StandardError.ReadToEnd();
+
+            process.WaitForExit();
+        }
+
+        // THANKS TO Starcharms -> github.com/starcharms
+
+        //sechex.me
+        //sechex.me
+        //sechex.me
+        //sechex.me
+
+
+
         private bool isTempClearCheckboxChecked = false;
         private bool isWinLogCheckboxChecked = false;
         private bool isDnsCheckboxChecked = false;
@@ -352,6 +463,7 @@ namespace SecHex_GUI
         private bool isTcpCheckboxChecked = false;
         private bool isCookieCheckboxChecked = false;
         private bool isDocsCheckboxChecked = false;
+        private bool isrstconnectCheckBoxChecked = false;
 
 
         private void dns_CheckedChanged(object sender, EventArgs e)
@@ -388,6 +500,13 @@ namespace SecHex_GUI
         {
             isDocsCheckboxChecked = docs.Checked;
         }
+
+        private void rstconnect_CheckedChanged(object sender, EventArgs e)
+        {
+            isrstconnectCheckBoxChecked = rstconnect.Checked;
+        }
+
+
 
         //sechex.me
         //sechex.me
@@ -431,6 +550,11 @@ namespace SecHex_GUI
                 DocsClear();
             }
 
+            if (isrstconnectCheckBoxChecked)
+            {
+                rstreset();
+            }
+
 
         }
 
@@ -442,6 +566,7 @@ namespace SecHex_GUI
         {
 
         }
+
 
     }
 }

@@ -11,5 +11,8 @@
     <Compile Update="south africa.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Spoofy.cs">
+      <SubType>Form</SubType>
+    </Compile>
   </ItemGroup>
 </Project>

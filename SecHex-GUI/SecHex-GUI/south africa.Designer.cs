@@ -40,6 +40,7 @@
             tcp = new Siticone.Desktop.UI.WinForms.SiticoneCheckBox();
             cookie = new Siticone.Desktop.UI.WinForms.SiticoneCheckBox();
             docs = new Siticone.Desktop.UI.WinForms.SiticoneCheckBox();
+            rstconnect = new Siticone.Desktop.UI.WinForms.SiticoneCheckBox();
             SuspendLayout();
             // 
             // siticoneControlBox2
@@ -261,12 +262,35 @@
             docs.UseVisualStyleBackColor = false;
             docs.CheckedChanged += docs_CheckedChanged;
             // 
+            // rstconnect
+            // 
+            rstconnect.AutoSize = true;
+            rstconnect.BackColor = Color.Transparent;
+            rstconnect.CheckedState.BorderColor = Color.Gray;
+            rstconnect.CheckedState.BorderRadius = 3;
+            rstconnect.CheckedState.BorderThickness = 0;
+            rstconnect.CheckedState.FillColor = Color.Gray;
+            rstconnect.Font = new Font("Segoe UI", 9F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
+            rstconnect.ForeColor = Color.White;
+            rstconnect.Location = new Point(235, 99);
+            rstconnect.Name = "rstconnect";
+            rstconnect.Size = new Size(123, 19);
+            rstconnect.TabIndex = 25;
+            rstconnect.Text = "Reset Connection";
+            rstconnect.UncheckedState.BorderColor = Color.FromArgb(125, 137, 149);
+            rstconnect.UncheckedState.BorderRadius = 3;
+            rstconnect.UncheckedState.BorderThickness = 0;
+            rstconnect.UncheckedState.FillColor = Color.Gray;
+            rstconnect.UseVisualStyleBackColor = false;
+            rstconnect.CheckedChanged += rstconnect_CheckedChanged;
+            // 
             // south_africa
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.AppWorkspace;
             ClientSize = new Size(403, 245);
+            Controls.Add(rstconnect);
             Controls.Add(docs);
             Controls.Add(cookie);
             Controls.Add(tcp);
@@ -300,5 +324,6 @@
         private Siticone.Desktop.UI.WinForms.SiticoneCheckBox tcp;
         private Siticone.Desktop.UI.WinForms.SiticoneCheckBox cookie;
         private Siticone.Desktop.UI.WinForms.SiticoneCheckBox docs;
+        private Siticone.Desktop.UI.WinForms.SiticoneCheckBox rstconnect;
     }
 }
