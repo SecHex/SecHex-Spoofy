@@ -15,16 +15,10 @@ using System.Text;
 
 namespace SecHex_GUI
 {
-    //sechex.me
-    //sechex.me
-    //sechex.me
-    //sechex.me
 
     public partial class hexhex : Form
-    {        //sechex.me
-        //sechex.me
-        //sechex.me
-        //sechex.me
+    {    
+
         private System.Windows.Forms.Timer timer;
         private float animationProgress = 0.0f;
         private int steps = 270;
@@ -35,10 +29,7 @@ namespace SecHex_GUI
         private bool isDragging;
         private Point offset;
         private bool isAnimationRunning = false;
-        //sechex.me
-        //sechex.me
-        //sechex.me
-        //sechex.me
+
         public hexhex()
         {
             InitializeComponent();
@@ -51,10 +42,7 @@ namespace SecHex_GUI
             this.DoubleBuffered = true;
             timer.Start();
         }
-        //sechex.me
-        //sechex.me
-        //sechex.me
-        //sechex.me
+
         protected override void OnPaint(PaintEventArgs e)
         {
             base.OnPaint(e);
@@ -66,10 +54,7 @@ namespace SecHex_GUI
                 e.Graphics.FillRectangle(brush, gradientRect);
             }
         }
-        //sechex.me
-        //sechex.me
-        //sechex.me
-        //sechex.me
+
         private void timer_Tick(object sender, EventArgs e)
         {
             int currentR, currentG, currentB;
@@ -97,10 +82,7 @@ namespace SecHex_GUI
 
             this.Invalidate();
         }
-        //sechex.me
-        //sechex.me
-        //sechex.me
-        //sechex.me
+
         private void SetRoundedCorners()
         {
             int radius = 18;
@@ -112,10 +94,7 @@ namespace SecHex_GUI
             path.CloseFigure();
             this.Region = new Region(path);
         }
-        //sechex.me
-        //sechex.me
-        //sechex.me
-        //sechex.me
+
         protected override void OnMouseDown(MouseEventArgs e)
         {
             base.OnMouseDown(e);
@@ -125,10 +104,7 @@ namespace SecHex_GUI
                 offset = new Point(e.X, e.Y);
             }
         }
-        //sechex.me
-        //sechex.me
-        //sechex.me
-        //sechex.me
+
         protected override void OnMouseMove(MouseEventArgs e)
         {
             base.OnMouseMove(e);
@@ -139,10 +115,7 @@ namespace SecHex_GUI
                 Location = newLocation;
             }
         }
-        //sechex.me
-        //sechex.me
-        //sechex.me
-        //sechex.me
+
         protected override void OnMouseUp(MouseEventArgs e)
         {
             base.OnMouseUp(e);
@@ -151,10 +124,7 @@ namespace SecHex_GUI
                 isDragging = false;
             }
         }
-        //sechex.me
-        //sechex.me
-        //sechex.me
-        //sechex.me
+
         public void AddLogEntry(string logEntryBefore, string logEntryAfter)
         {
             richTextBoxLogs.SelectionColor = Color.Gray;
@@ -168,18 +138,12 @@ namespace SecHex_GUI
         {
 
         }
-        //sechex.me
-        //sechex.me
-        //sechex.me
-        //sechex.me
+
         private void hexhex_Load(object sender, EventArgs e)
         {
 
         }
-        //sechex.me
-        //sechex.me
-        //sechex.me
-        //sechex.me
+
         private void sechex_Click(object sender, EventArgs e)
         {
 
