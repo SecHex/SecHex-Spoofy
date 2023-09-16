@@ -8,12 +8,6 @@ using System.Text;
 using System.Runtime.InteropServices;
 
 
-
-//sechex.me
-//sechex.me
-//sechex.me
-//sechex.me
-
 namespace SecHex_GUI
 {
     public partial class Spoofy : Form
@@ -251,10 +245,6 @@ namespace SecHex_GUI
             }
         }
 
-        //sechex.me
-        //sechex.me
-        //sechex.me
-        //sechex.me
         protected override void OnMouseDown(MouseEventArgs e)
         {
             base.OnMouseDown(e);
@@ -264,10 +254,6 @@ namespace SecHex_GUI
                 offset = new Point(e.X, e.Y);
             }
         }
-        //sechex.me
-        //sechex.me
-        //sechex.me
-        //sechex.me
         protected override void OnMouseMove(MouseEventArgs e)
         {
             base.OnMouseMove(e);
@@ -278,10 +264,6 @@ namespace SecHex_GUI
                 Location = newLocation;
             }
         }
-        //sechex.me
-        //sechex.me
-        //sechex.me
-        //sechex.me
         protected override void OnMouseUp(MouseEventArgs e)
         {
             base.OnMouseUp(e);
@@ -413,14 +395,6 @@ namespace SecHex_GUI
 
 
 
-
-
-
-
-        //sechex.me
-        //sechex.me
-        //sechex.me
-        //sechex.me
         public static void Enable_LocalAreaConection(string adapterId, bool enable = true)
         {
             string interfaceName = "Ethernet";
@@ -445,10 +419,7 @@ namespace SecHex_GUI
             p.Start();
             p.WaitForExit();
         }
-        //sechex.me
-        //sechex.me
-        //sechex.me
-        //sechex.me
+
 
         public static string RandomId(int length)
         {
@@ -526,11 +497,6 @@ namespace SecHex_GUI
         }
 
 
-        //sechex.me
-        //sechex.me
-        //sechex.me
-        //sechex.me
-
         public static string RandomMac()
         {
             string chars = "ABCDEF0123456789";
@@ -551,11 +517,6 @@ namespace SecHex_GUI
 
             return result;
         }
-        //sechex.me
-        //sechex.me
-        //sechex.me
-        //sechex.me
-
 
 
 
@@ -728,11 +689,6 @@ namespace SecHex_GUI
         }
 
 
-        //sechex.me
-        //sechex.me
-        //sechex.me
-        //sechex.me
-
 
 
         private void mac_Click(object sender, EventArgs e)
@@ -792,10 +748,6 @@ namespace SecHex_GUI
 
             return err;
         }
-        //sechex.me
-        //sechex.me
-        //sechex.me
-        //sechex.me
 
         private void GUID_Click(object sender, EventArgs e)
         {
@@ -891,12 +843,6 @@ namespace SecHex_GUI
 
 
 
-
-        //sechex.me
-        //sechex.me
-        //sechex.me
-        //sechex.me
-
         private void winid_Click(object sender, EventArgs e)
         {
             try
@@ -925,10 +871,7 @@ namespace SecHex_GUI
                 ShowNotification("An error occurred while changing the machine GUID: " + ex.Message, NotificationType.Error);
             }
         }
-        //sechex.me
-        //sechex.me
-        //sechex.me
-        //sechex.me
+
 
 
         private void pcname_Click(object sender, EventArgs e)
@@ -1010,10 +953,6 @@ namespace SecHex_GUI
             }
         }
 
-        //sechex.me
-        //sechex.me
-        //sechex.me
-        //sechex.me
 
         private void display_Click(object sender, EventArgs e)
         {
@@ -1056,10 +995,6 @@ namespace SecHex_GUI
             return rnd.Next(1, 9);
         }
 
-        //sechex.me
-        //sechex.me
-        //sechex.me
-        //sechex.me
 
         private void efi_Click(object sender, EventArgs e)
         {
@@ -1090,10 +1025,7 @@ namespace SecHex_GUI
                 ShowNotification("An error occurred while executing the EFI Function: " + ex.Message, NotificationType.Error);
             }
         }
-        //sechex.me
-        //sechex.me
-        //sechex.me
-        //sechex.me
+
 
         private void siticoneButton1_Click(object sender, EventArgs e)
         {
@@ -1124,10 +1056,7 @@ namespace SecHex_GUI
                 ShowNotification("An error occurred while executing the SMBIOS Function: " + ex.Message, NotificationType.Error);
             }
         }
-        //sechex.me
-        //sechex.me
-        //sechex.me
-        //sechex.me
+
 
 
         private void product_Click(object sender, EventArgs e)
@@ -1160,10 +1089,7 @@ namespace SecHex_GUI
                 ShowNotification("An error occurred while changing the Product ID: " + ex.Message, NotificationType.Error);
             }
         }
-        //sechex.me
-        //sechex.me
-        //sechex.me
-        //sechex.me
+
         private void backup_Click(object sender, EventArgs e)
         {
             try
@@ -1184,18 +1110,12 @@ namespace SecHex_GUI
             }
         }
 
-        //sechex.me
-        //sechex.me
-        //sechex.me
-        //sechex.me
+
         private void tracercl_Click(object sender, EventArgs e)
         {
             //soon...
         }
-        //sechex.me
-        //sechex.me
-        //sechex.me
-        //sechex.me
+
         private void req_Click(object sender, EventArgs e)
         {
             string[] registryEntries = new string[]
@@ -1243,10 +1163,7 @@ namespace SecHex_GUI
                 ShowNotification(Encoding.UTF8.GetString(Convert.FromBase64String("QWxsIHJlZ2lzdHJ5IGVudHJpZXMgZXhpc3Qu")), NotificationType.Success);
             }
         }
-        //sechex.me
-        //sechex.me
-        //sechex.me
-        //sechex.me
+
         private void Enable_LocalAreaConnection(string adapterId, bool enable)
         {
             using (var process = new Process())
@@ -1260,18 +1177,11 @@ namespace SecHex_GUI
             }
         }
 
-        //sechex.me
-        //sechex.me
-        //sechex.me
-        //sechex.me
+
         private void ShowNotification(string message, NotificationType type)
         {
             MessageBox.Show(message, "Spoofy [Open Source]", MessageBoxButtons.OK, GetNotificationIcon(type));
         }
-        //sechex.me
-        //sechex.me
-        //sechex.me
-        //sechex.me
         private MessageBoxIcon GetNotificationIcon(NotificationType type)
         {
             switch (type)
@@ -1286,20 +1196,14 @@ namespace SecHex_GUI
                     return MessageBoxIcon.None;
             }
         }
-        //sechex.me
-        //sechex.me
-        //sechex.me
-        //sechex.me
+ 
         private enum NotificationType
         {
             Success,
             Error,
             Warning
         }
-        //sechex.me
-        //sechex.me
-        //sechex.me
-        //sechex.me
+
         private void Form1_Load(object sender, EventArgs e)
         {
 
