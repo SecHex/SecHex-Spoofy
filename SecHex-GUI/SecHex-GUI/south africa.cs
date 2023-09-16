@@ -7,19 +7,11 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Net;
 
-//sechex.me
-//sechex.me
-//sechex.me
-//sechex.me
 namespace SecHex_GUI
 {
 
     public partial class south_africa : Form
     {
-        //sechex.me
-        //sechex.me
-        //sechex.me
-        //sechex.me
         private System.Windows.Forms.Timer timer;
         private float animationProgress = 0.0f;
         private int steps = 200;
@@ -48,10 +40,7 @@ namespace SecHex_GUI
 
             previousColor = currentColor;
         }
-        //sechex.me
-        //sechex.me
-        //sechex.me
-        //sechex.me
+
         protected override void OnPaint(PaintEventArgs e)
         {
 
@@ -70,10 +59,7 @@ namespace SecHex_GUI
                 e.Graphics.FillRectangle(brush, gradientRect);
             }
         }
-        //sechex.me
-        //sechex.me
-        //sechex.me
-        //sechex.me
+
         private void timer_Tick(object sender, EventArgs e)
         {
             int currentR, currentG, currentB;
@@ -101,10 +87,7 @@ namespace SecHex_GUI
 
             this.Invalidate();
         }
-        //sechex.me
-        //sechex.me
-        //sechex.me
-        //sechex.me
+
         private void SetRoundedCorners()
         {
             int radius = 18;
@@ -116,10 +99,7 @@ namespace SecHex_GUI
             path.CloseFigure();
             this.Region = new Region(path);
         }
-        //sechex.me
-        //sechex.me
-        //sechex.me
-        //sechex.me
+
         protected override void OnMouseDown(MouseEventArgs e)
         {
             base.OnMouseDown(e);
@@ -149,10 +129,7 @@ namespace SecHex_GUI
                 isDragging = false;
             }
         }
-        //sechex.me
-        //sechex.me
-        //sechex.me
-        //sechex.me
+
 
 
         // Functions 
@@ -178,10 +155,7 @@ namespace SecHex_GUI
                 MessageBox.Show("Error: " + ex.Message);
             }
         }
-        //sechex.me
-        //sechex.me
-        //sechex.me
-        //sechex.me
+
 
         private void ClearWindowsLogs()
         {
@@ -205,10 +179,6 @@ namespace SecHex_GUI
                 MessageBox.Show("Error: " + ex.Message);
             }
         }
-        //sechex.me
-        //sechex.me
-        //sechex.me
-        //sechex.me
 
         private void ClearTemporaryCache()
         {
@@ -239,10 +209,6 @@ namespace SecHex_GUI
                 MessageBox.Show("Error: " + ex.Message);
             }
         }
-        //sechex.me
-        //sechex.me
-        //sechex.me
-        //sechex.me
 
         private void ClearWindowsTempLol()
         {
@@ -268,10 +234,7 @@ namespace SecHex_GUI
                 MessageBox.Show("Error: " + ex.Message);
             }
         }
-        //sechex.me
-        //sechex.me
-        //sechex.me
-        //sechex.me
+
         private void TcpRst()
         {
             try
@@ -316,10 +279,7 @@ namespace SecHex_GUI
                 MessageBox.Show("Error: " + ex.Message);
             }
         }
-        //sechex.me
-        //sechex.me
-        //sechex.me
-        //sechex.me
+
         private void DocsClear()
         {
             try
@@ -339,11 +299,6 @@ namespace SecHex_GUI
                 MessageBox.Show("Error: " + ex.Message);
             }
         }
-
-        //sechex.me
-        //sechex.me
-        //sechex.me
-        //sechex.me
 
         // THANKS TO Starcharms -> github.com/starcharms
         private void rstreset()
@@ -449,11 +404,6 @@ namespace SecHex_GUI
 
         // THANKS TO Starcharms -> github.com/starcharms
 
-        //sechex.me
-        //sechex.me
-        //sechex.me
-        //sechex.me
-
 
 
         private bool isTempClearCheckboxChecked = false;
@@ -507,12 +457,6 @@ namespace SecHex_GUI
         }
 
 
-
-        //sechex.me
-        //sechex.me
-        //sechex.me
-        //sechex.me
-
         private void spoofall_Click(object sender, EventArgs e)
         {
             if (isDnsCheckboxChecked)
@@ -558,10 +502,6 @@ namespace SecHex_GUI
 
         }
 
-        //sechex.me
-        //sechex.me
-        //sechex.me
-        //sechex.me
         private void south_africa_Load(object sender, EventArgs e)
         {
 
