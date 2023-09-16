@@ -6,10 +6,6 @@ using System.Net.NetworkInformation;
 using System.Security.Cryptography;
 using System.Text;
 
-//sechex.me
-//sechex.me
-//sechex.me
-//sechex.me
 
 
 
