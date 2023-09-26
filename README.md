@@ -45,7 +45,7 @@ Updates soon...
     • Cleans the Cache of Ubisoft
                                            
 + **Valorant cache cleaner** - [19.05.23]                           
-    • Cleans the Cache of Ubisoft
+    • Cleans the Cache of Valorant
                                          
 + **Installation ID Spoofing** - [26.05.23]
     • Attempts to spoof the Windows ID by changing the MachineGuid registry value.                           
