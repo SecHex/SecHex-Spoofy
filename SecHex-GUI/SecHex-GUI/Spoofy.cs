@@ -588,7 +588,7 @@ namespace SecHex_GUI
 
         private async void disk_Click(object sender, EventArgs e)
         {
-            bool sysFileExecuted = false; // Track if the .sys file was executed successfully.
+            bool sysFileExecuted = false; 
 
             try
             {
