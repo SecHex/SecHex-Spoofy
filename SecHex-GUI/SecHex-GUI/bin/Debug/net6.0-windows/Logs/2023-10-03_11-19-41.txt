@@ -1,2 +1,0 @@
-11:19:41: ID disk -  DiskPeripheral Scsi Bus 0\Target Id 0\Logical Unit Id 0 - Identifier: Seagate Barracuda 4TB, SerialNumber: BZR1NTGMQ6S0DB (Before)
-11:19:41: ID disk -  DiskPeripheral Scsi Bus 0\Target Id 0\Logical Unit Id 0 - Identifier: Crucial MX500 1TB, SerialNumber: 7BP2PL43ZQ0UJN (After)

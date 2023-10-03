@@ -1,2 +1,0 @@
-11:23:15: ID disk -  DiskPeripheral Scsi Bus 1\Target Id 0\Logical Unit Id 0 - Identifier: WD Red Pro 10TB, SerialNumber: M1RVTZQJ794CXW (Before)
-11:23:15: ID disk -  DiskPeripheral Scsi Bus 1\Target Id 0\Logical Unit Id 0 - Identifier: Samsung SSD 870 QVO 1TB, SerialNumber: U50LUHT9NKDJSE (After)

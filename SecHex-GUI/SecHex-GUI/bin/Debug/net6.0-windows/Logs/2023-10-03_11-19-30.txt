@@ -1,2 +1,0 @@
-11:19:30: ID disk -  DiskPeripheral Scsi Bus 1\Target Id 0\Logical Unit Id 0 - Identifier: WDC     WDS250G2B0A-00SM4010, SerialNumber: 191062800201         (Before)
-11:19:30: ID disk -  DiskPeripheral Scsi Bus 1\Target Id 0\Logical Unit Id 0 - Identifier: Corsair MP600 2TB, SerialNumber: SROELUS2OX29F5 (After)
