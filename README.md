@@ -101,8 +101,8 @@ Updates soon...
     • Windows Logs
     • Win Temp                      
     • TCP Reset                      
-    • Chrome Cookies                      
-    • Recent Documents
+    • Chrome Cookies                       
+    • Recent Documents                       
     • Reset Connection (fix the mac spoofing issue)
                       
 
