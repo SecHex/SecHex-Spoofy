@@ -102,7 +102,9 @@ Updates soon...
     • Win Temp                      
     • TCP Reset                      
     • Chrome Cookies                      
-    • Recent Documents                      
+    • Recent Documents
+    • Reset Connection (fix the mac spoofing issue)
+                      
 
                           
                           
