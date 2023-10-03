@@ -1,0 +1,2 @@
+11:19:31: ID disk -  DiskPeripheral Scsi Bus 0\Target Id 0\Logical Unit Id 0 - Identifier: NVMe    CT500P1SSD8     R021, SerialNumber: 0000_0000_0000_0001_00A0_7521_3009_540E. (Before)
+11:19:31: ID disk -  DiskPeripheral Scsi Bus 0\Target Id 0\Logical Unit Id 0 - Identifier: Seagate Barracuda 4TB, SerialNumber: BZR1NTGMQ6S0DB (After)
