@@ -274,10 +274,6 @@ namespace SecHex_GUI
         }
 
 
-        // add your .sys for the disk spoof
-        string SysDiskDriver = "C:\\Pfad\\Zur\\DeinerDatei.sys";
-
-
 
 
 
@@ -588,8 +584,6 @@ namespace SecHex_GUI
 
         private async void disk_Click(object sender, EventArgs e)
         {
-            bool sysFileExecuted = false; 
-
             try
             {
                 using (RegistryKey ScsiPorts = Registry.LocalMachine.OpenSubKey("HARDWARE\\DEVICEMAP\\Scsi"))
@@ -624,17 +618,6 @@ namespace SecHex_GUI
                                                     ScsuiBus.SetValue("Identifier", identifierAfter);
                                                     ScsuiBus.SetValue("InquiryData", Encoding.UTF8.GetBytes(identifierAfter));
                                                     ScsuiBus.SetValue("SerialNumber", serialNumberAfter);
-
-
-                                                    if (File.Exists(SysDiskDriver))
-                                                    {
-                                                        Process.Start(SysDiskDriver);
-                                                        sysFileExecuted = true; 
-                                                    }
-                                                    else
-                                                    {
-                                                        ShowNotification(".sys file not found.", NotificationType.Error);
-                                                    }
                                                 }
                                             }
                                         }
