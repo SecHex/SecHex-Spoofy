@@ -41,8 +41,6 @@
             efi = new Siticone.Desktop.UI.WinForms.SiticoneButton();
             sm = new Siticone.Desktop.UI.WinForms.SiticoneButton();
             req = new Siticone.Desktop.UI.WinForms.SiticoneButton();
-            label1 = new Label();
-            label2 = new Label();
             pictureBox2 = new PictureBox();
             spoofall = new Siticone.Desktop.UI.WinForms.SiticoneButton();
             product = new Siticone.Desktop.UI.WinForms.SiticoneButton();
@@ -53,7 +51,8 @@
             logtoggle = new Siticone.Desktop.UI.WinForms.SiticoneToggleSwitch();
             label4 = new Label();
             siticoneToggleSwitch2 = new Siticone.Desktop.UI.WinForms.SiticoneToggleSwitch();
-            africa = new Label();
+            label3 = new Label();
+            label2 = new Label();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             SuspendLayout();
             // 
@@ -315,30 +314,6 @@
             req.Text = "Requirement Check";
             req.Click += req_Click;
             // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.BackColor = Color.Transparent;
-            label1.Font = new Font("Segoe UI Semibold", 8F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
-            label1.ForeColor = Color.White;
-            label1.Location = new Point(12, 407);
-            label1.Name = "label1";
-            label1.Size = new Size(124, 13);
-            label1.TabIndex = 12;
-            label1.Text = "sechex.me / sechex.net";
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.BackColor = Color.Transparent;
-            label2.Font = new Font("Segoe UI Semibold", 8F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
-            label2.ForeColor = Color.White;
-            label2.Location = new Point(12, 394);
-            label2.Name = "label2";
-            label2.Size = new Size(154, 13);
-            label2.TabIndex = 14;
-            label2.Text = "support on discord.gg/SecHex";
-            // 
             // pictureBox2
             // 
             pictureBox2.BackColor = Color.Transparent;
@@ -524,25 +499,37 @@
             siticoneToggleSwitch2.UncheckedState.InnerColor = Color.White;
             siticoneToggleSwitch2.CheckedChanged += siticoneToggleSwitch2_CheckedChanged;
             // 
-            // africa
+            // label3
             // 
-            africa.AutoSize = true;
-            africa.BackColor = Color.Transparent;
-            africa.Font = new Font("Segoe UI Semibold", 8F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
-            africa.ForeColor = Color.White;
-            africa.Location = new Point(529, 352);
-            africa.Name = "africa";
-            africa.Size = new Size(45, 13);
-            africa.TabIndex = 30;
-            africa.Text = "Cleaner";
+            label3.AutoSize = true;
+            label3.BackColor = Color.Transparent;
+            label3.Font = new Font("Segoe UI Semibold", 8F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
+            label3.ForeColor = Color.White;
+            label3.Location = new Point(437, 353);
+            label3.Name = "label3";
+            label3.Size = new Size(135, 13);
+            label3.TabIndex = 31;
+            label3.Text = "System Cleaner [Wifi Fix]";
             // 
-            // Form1
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.BackColor = Color.Transparent;
+            label2.Font = new Font("Segoe UI Semibold", 8F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
+            label2.ForeColor = Color.White;
+            label2.Location = new Point(12, 407);
+            label2.Name = "label2";
+            label2.Size = new Size(154, 13);
+            label2.TabIndex = 14;
+            label2.Text = "support on discord.gg/SecHex";
+            // 
+            // Spoofy
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ActiveBorder;
             ClientSize = new Size(627, 431);
-            Controls.Add(africa);
+            Controls.Add(label3);
             Controls.Add(siticoneToggleSwitch2);
             Controls.Add(label4);
             Controls.Add(logtoggle);
@@ -554,7 +541,6 @@
             Controls.Add(tracercl);
             Controls.Add(label2);
             Controls.Add(pictureBox2);
-            Controls.Add(label1);
             Controls.Add(req);
             Controls.Add(sm);
             Controls.Add(efi);
@@ -569,7 +555,7 @@
             Controls.Add(siticoneControlBox1);
             FormBorderStyle = FormBorderStyle.None;
             Icon = (Icon)resources.GetObject("$this.Icon");
-            Name = "Form1";
+            Name = "Spoofy";
             Text = "Spoofy [Free]";
             Load += Form1_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
@@ -591,8 +577,6 @@
         private Siticone.Desktop.UI.WinForms.SiticoneButton efi;
         private Siticone.Desktop.UI.WinForms.SiticoneButton sm;
         private Siticone.Desktop.UI.WinForms.SiticoneButton req;
-        private Label label1;
-        private Label label2;
         private PictureBox pictureBox2;
         private Siticone.Desktop.UI.WinForms.SiticoneButton spoofall;
         private Siticone.Desktop.UI.WinForms.SiticoneButton product;
@@ -603,6 +587,7 @@
         private Siticone.Desktop.UI.WinForms.SiticoneToggleSwitch logtoggle;
         private Label label4;
         private Siticone.Desktop.UI.WinForms.SiticoneToggleSwitch siticoneToggleSwitch2;
-        private Label africa;
+        private Label label3;
+        private Label label2;
     }
 }

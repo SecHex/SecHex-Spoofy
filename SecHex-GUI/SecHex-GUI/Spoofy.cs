@@ -281,7 +281,7 @@ namespace SecHex_GUI
         private bool isLogToggleOn = false;
         private bool isAfricaToggleOn = false;
         private south_africa WindowSouthAfrica;
-        private hexhex logWindow;
+        private logs logWindow;
 
         private void OpenAfrica()
         {
@@ -311,7 +311,7 @@ namespace SecHex_GUI
         {
             if (logWindow == null || logWindow.IsDisposed)
             {
-                logWindow = new hexhex();
+                logWindow = new logs();
                 logWindow.Show();
             }
             else
@@ -1194,7 +1194,7 @@ namespace SecHex_GUI
                     return MessageBoxIcon.None;
             }
         }
- 
+
         private enum NotificationType
         {
             Success,
