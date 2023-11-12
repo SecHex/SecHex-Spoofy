@@ -29,10 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Spoofy));
-            siticoneControlBox1 = new Siticone.Desktop.UI.WinForms.SiticoneControlBox();
-            siticoneControlBox2 = new Siticone.Desktop.UI.WinForms.SiticoneControlBox();
             disk = new Siticone.Desktop.UI.WinForms.SiticoneButton();
-            sechex = new Label();
             mac = new Siticone.Desktop.UI.WinForms.SiticoneButton();
             pcname = new Siticone.Desktop.UI.WinForms.SiticoneButton();
             winid = new Siticone.Desktop.UI.WinForms.SiticoneButton();
@@ -41,50 +38,14 @@
             efi = new Siticone.Desktop.UI.WinForms.SiticoneButton();
             sm = new Siticone.Desktop.UI.WinForms.SiticoneButton();
             req = new Siticone.Desktop.UI.WinForms.SiticoneButton();
-            label1 = new Label();
-            label2 = new Label();
-            pictureBox2 = new PictureBox();
             spoofall = new Siticone.Desktop.UI.WinForms.SiticoneButton();
             product = new Siticone.Desktop.UI.WinForms.SiticoneButton();
             tracercl = new Siticone.Desktop.UI.WinForms.SiticoneButton();
             backup = new Siticone.Desktop.UI.WinForms.SiticoneButton();
-            siticoneToggleSwitch1 = new Siticone.Desktop.UI.WinForms.SiticoneToggleSwitch();
-            lgbtq = new Label();
-            logtoggle = new Siticone.Desktop.UI.WinForms.SiticoneToggleSwitch();
-            label4 = new Label();
-            siticoneToggleSwitch2 = new Siticone.Desktop.UI.WinForms.SiticoneToggleSwitch();
-            africa = new Label();
-            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
+            systemcleaner = new MetroFramework.Controls.MetroCheckBox();
+            logwind = new MetroFramework.Controls.MetroCheckBox();
+            lgbt = new MetroFramework.Controls.MetroCheckBox();
             SuspendLayout();
-            // 
-            // siticoneControlBox1
-            // 
-            siticoneControlBox1.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            siticoneControlBox1.Animated = true;
-            siticoneControlBox1.BackColor = Color.Transparent;
-            siticoneControlBox1.BorderColor = Color.White;
-            siticoneControlBox1.BorderRadius = 12;
-            siticoneControlBox1.FillColor = Color.Transparent;
-            siticoneControlBox1.IconColor = Color.White;
-            siticoneControlBox1.Location = new Point(567, 12);
-            siticoneControlBox1.Name = "siticoneControlBox1";
-            siticoneControlBox1.Size = new Size(48, 29);
-            siticoneControlBox1.TabIndex = 0;
-            // 
-            // siticoneControlBox2
-            // 
-            siticoneControlBox2.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            siticoneControlBox2.Animated = true;
-            siticoneControlBox2.BackColor = Color.Transparent;
-            siticoneControlBox2.BorderColor = Color.White;
-            siticoneControlBox2.BorderRadius = 12;
-            siticoneControlBox2.ControlBoxType = Siticone.Desktop.UI.WinForms.Enums.ControlBoxType.MinimizeBox;
-            siticoneControlBox2.FillColor = Color.Transparent;
-            siticoneControlBox2.IconColor = Color.White;
-            siticoneControlBox2.Location = new Point(513, 12);
-            siticoneControlBox2.Name = "siticoneControlBox2";
-            siticoneControlBox2.Size = new Size(48, 29);
-            siticoneControlBox2.TabIndex = 1;
             // 
             // disk
             // 
@@ -102,7 +63,7 @@
             disk.FillColor = Color.Transparent;
             disk.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             disk.ForeColor = Color.White;
-            disk.Location = new Point(12, 67);
+            disk.Location = new Point(12, 83);
             disk.Name = "disk";
             disk.PressedDepth = 60;
             disk.ShadowDecoration.Depth = 50;
@@ -110,18 +71,6 @@
             disk.TabIndex = 2;
             disk.Text = "DISK";
             disk.Click += disk_Click;
-            // 
-            // sechex
-            // 
-            sechex.AutoSize = true;
-            sechex.BackColor = Color.Transparent;
-            sechex.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
-            sechex.ForeColor = Color.White;
-            sechex.Location = new Point(12, 9);
-            sechex.Name = "sechex";
-            sechex.Size = new Size(119, 21);
-            sechex.TabIndex = 3;
-            sechex.Text = "SecHex- Spoofy";
             // 
             // mac
             // 
@@ -139,7 +88,7 @@
             mac.FillColor = Color.Transparent;
             mac.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             mac.ForeColor = Color.White;
-            mac.Location = new Point(12, 105);
+            mac.Location = new Point(12, 121);
             mac.Name = "mac";
             mac.PressedDepth = 60;
             mac.Size = new Size(157, 32);
@@ -163,7 +112,7 @@
             pcname.FillColor = Color.Transparent;
             pcname.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             pcname.ForeColor = Color.White;
-            pcname.Location = new Point(338, 105);
+            pcname.Location = new Point(338, 121);
             pcname.Name = "pcname";
             pcname.PressedDepth = 60;
             pcname.Size = new Size(157, 32);
@@ -187,7 +136,7 @@
             winid.FillColor = Color.Transparent;
             winid.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             winid.ForeColor = Color.White;
-            winid.Location = new Point(175, 67);
+            winid.Location = new Point(175, 83);
             winid.Name = "winid";
             winid.PressedDepth = 60;
             winid.Size = new Size(157, 32);
@@ -211,7 +160,7 @@
             GUID.FillColor = Color.Transparent;
             GUID.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             GUID.ForeColor = Color.White;
-            GUID.Location = new Point(175, 105);
+            GUID.Location = new Point(175, 121);
             GUID.Name = "GUID";
             GUID.PressedDepth = 60;
             GUID.Size = new Size(157, 32);
@@ -235,7 +184,7 @@
             display.FillColor = Color.Transparent;
             display.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             display.ForeColor = Color.White;
-            display.Location = new Point(338, 67);
+            display.Location = new Point(338, 83);
             display.Name = "display";
             display.PressedDepth = 60;
             display.Size = new Size(157, 32);
@@ -259,7 +208,7 @@
             efi.FillColor = Color.Transparent;
             efi.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             efi.ForeColor = Color.White;
-            efi.Location = new Point(338, 143);
+            efi.Location = new Point(338, 159);
             efi.Name = "efi";
             efi.PressedDepth = 60;
             efi.Size = new Size(157, 32);
@@ -283,7 +232,7 @@
             sm.FillColor = Color.Transparent;
             sm.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             sm.ForeColor = Color.White;
-            sm.Location = new Point(12, 143);
+            sm.Location = new Point(12, 159);
             sm.Name = "sm";
             sm.PressedDepth = 60;
             sm.Size = new Size(157, 32);
@@ -307,48 +256,13 @@
             req.FillColor = Color.Transparent;
             req.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             req.ForeColor = Color.White;
-            req.Location = new Point(12, 220);
+            req.Location = new Point(12, 236);
             req.Name = "req";
             req.PressedDepth = 60;
             req.Size = new Size(483, 32);
             req.TabIndex = 11;
             req.Text = "Requirement Check";
             req.Click += req_Click;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.BackColor = Color.Transparent;
-            label1.Font = new Font("Segoe UI Semibold", 8F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
-            label1.ForeColor = Color.White;
-            label1.Location = new Point(12, 407);
-            label1.Name = "label1";
-            label1.Size = new Size(124, 13);
-            label1.TabIndex = 12;
-            label1.Text = "sechex.me / sechex.net";
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.BackColor = Color.Transparent;
-            label2.Font = new Font("Segoe UI Semibold", 8F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
-            label2.ForeColor = Color.White;
-            label2.Location = new Point(12, 394);
-            label2.Name = "label2";
-            label2.Size = new Size(154, 13);
-            label2.TabIndex = 14;
-            label2.Text = "support on discord.gg/SecHex";
-            // 
-            // pictureBox2
-            // 
-            pictureBox2.BackColor = Color.Transparent;
-            pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
-            pictureBox2.Location = new Point(175, 388);
-            pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(34, 32);
-            pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox2.TabIndex = 13;
-            pictureBox2.TabStop = false;
             // 
             // spoofall
             // 
@@ -366,7 +280,7 @@
             spoofall.FillColor = Color.Transparent;
             spoofall.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             spoofall.ForeColor = Color.White;
-            spoofall.Location = new Point(12, 258);
+            spoofall.Location = new Point(12, 274);
             spoofall.Name = "spoofall";
             spoofall.PressedDepth = 60;
             spoofall.Size = new Size(483, 32);
@@ -390,7 +304,7 @@
             product.FillColor = Color.Transparent;
             product.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             product.ForeColor = Color.White;
-            product.Location = new Point(12, 181);
+            product.Location = new Point(12, 197);
             product.Name = "product";
             product.PressedDepth = 60;
             product.Size = new Size(157, 32);
@@ -414,7 +328,7 @@
             tracercl.FillColor = Color.Transparent;
             tracercl.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             tracercl.ForeColor = Color.White;
-            tracercl.Location = new Point(175, 143);
+            tracercl.Location = new Point(175, 159);
             tracercl.Name = "tracercl";
             tracercl.PressedDepth = 60;
             tracercl.Size = new Size(157, 32);
@@ -438,7 +352,7 @@
             backup.FillColor = Color.Transparent;
             backup.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             backup.ForeColor = Color.White;
-            backup.Location = new Point(338, 181);
+            backup.Location = new Point(338, 197);
             backup.Name = "backup";
             backup.PressedDepth = 60;
             backup.Size = new Size(157, 32);
@@ -446,115 +360,59 @@
             backup.Text = "BACKUP";
             backup.Click += backup_Click;
             // 
-            // siticoneToggleSwitch1
+            // systemcleaner
             // 
-            siticoneToggleSwitch1.Animated = true;
-            siticoneToggleSwitch1.BackColor = Color.Transparent;
-            siticoneToggleSwitch1.CheckedState.BorderColor = Color.White;
-            siticoneToggleSwitch1.CheckedState.FillColor = Color.Gray;
-            siticoneToggleSwitch1.CheckedState.InnerBorderColor = Color.White;
-            siticoneToggleSwitch1.CheckedState.InnerColor = Color.White;
-            siticoneToggleSwitch1.Location = new Point(578, 400);
-            siticoneToggleSwitch1.Name = "siticoneToggleSwitch1";
-            siticoneToggleSwitch1.Size = new Size(37, 20);
-            siticoneToggleSwitch1.TabIndex = 20;
-            siticoneToggleSwitch1.UncheckedState.BorderColor = Color.Transparent;
-            siticoneToggleSwitch1.UncheckedState.FillColor = Color.Gray;
-            siticoneToggleSwitch1.UncheckedState.InnerBorderColor = Color.White;
-            siticoneToggleSwitch1.UncheckedState.InnerColor = Color.White;
-            siticoneToggleSwitch1.CheckedChanged += siticoneToggleSwitch1_CheckedChanged;
+            systemcleaner.AutoSize = true;
+            systemcleaner.Location = new Point(12, 343);
+            systemcleaner.Name = "systemcleaner";
+            systemcleaner.Size = new Size(234, 15);
+            systemcleaner.Style = MetroFramework.MetroColorStyle.Magenta;
+            systemcleaner.TabIndex = 33;
+            systemcleaner.Text = "System Cleaner + Anti Cheat Terminator";
+            systemcleaner.Theme = MetroFramework.MetroThemeStyle.Dark;
+            systemcleaner.UseVisualStyleBackColor = true;
+            systemcleaner.CheckedChanged += systemcleaner_CheckedChanged;
             // 
-            // lgbtq
+            // logwind
             // 
-            lgbtq.AutoSize = true;
-            lgbtq.BackColor = Color.Transparent;
-            lgbtq.Font = new Font("Segoe UI Semibold", 8F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
-            lgbtq.ForeColor = Color.White;
-            lgbtq.Location = new Point(506, 403);
-            lgbtq.Name = "lgbtq";
-            lgbtq.Size = new Size(71, 13);
-            lgbtq.TabIndex = 21;
-            lgbtq.Text = "LGBTQ Mode";
+            logwind.AutoSize = true;
+            logwind.Location = new Point(12, 364);
+            logwind.Name = "logwind";
+            logwind.Size = new Size(93, 15);
+            logwind.Style = MetroFramework.MetroColorStyle.Magenta;
+            logwind.TabIndex = 34;
+            logwind.Text = "LOG Window";
+            logwind.Theme = MetroFramework.MetroThemeStyle.Dark;
+            logwind.UseVisualStyleBackColor = true;
+            logwind.CheckedChanged += logwind_CheckedChanged;
             // 
-            // logtoggle
+            // lgbt
             // 
-            logtoggle.Animated = true;
-            logtoggle.BackColor = Color.Transparent;
-            logtoggle.CheckedState.BorderColor = Color.White;
-            logtoggle.CheckedState.FillColor = Color.Gray;
-            logtoggle.CheckedState.InnerBorderColor = Color.White;
-            logtoggle.CheckedState.InnerColor = Color.White;
-            logtoggle.Location = new Point(578, 374);
-            logtoggle.Name = "logtoggle";
-            logtoggle.Size = new Size(37, 20);
-            logtoggle.TabIndex = 27;
-            logtoggle.UncheckedState.BorderColor = Color.Transparent;
-            logtoggle.UncheckedState.FillColor = Color.Gray;
-            logtoggle.UncheckedState.InnerBorderColor = Color.White;
-            logtoggle.UncheckedState.InnerColor = Color.White;
-            logtoggle.CheckedChanged += logtoggle_CheckedChanged;
+            lgbt.AutoSize = true;
+            lgbt.Location = new Point(12, 385);
+            lgbt.Name = "lgbt";
+            lgbt.Size = new Size(100, 15);
+            lgbt.Style = MetroFramework.MetroColorStyle.Magenta;
+            lgbt.TabIndex = 35;
+            lgbt.Text = "LGBTQ+ Mode";
+            lgbt.TextAlign = ContentAlignment.TopLeft;
+            lgbt.Theme = MetroFramework.MetroThemeStyle.Dark;
+            lgbt.UseVisualStyleBackColor = true;
+            lgbt.CheckedChanged += lgbt_CheckedChanged;
             // 
-            // label4
-            // 
-            label4.AutoSize = true;
-            label4.BackColor = Color.Transparent;
-            label4.Font = new Font("Segoe UI Semibold", 8F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
-            label4.ForeColor = Color.White;
-            label4.Location = new Point(506, 378);
-            label4.Name = "label4";
-            label4.Size = new Size(71, 13);
-            label4.TabIndex = 28;
-            label4.Text = "LOG Window";
-            // 
-            // siticoneToggleSwitch2
-            // 
-            siticoneToggleSwitch2.Animated = true;
-            siticoneToggleSwitch2.BackColor = Color.Transparent;
-            siticoneToggleSwitch2.CheckedState.BorderColor = Color.White;
-            siticoneToggleSwitch2.CheckedState.FillColor = Color.Gray;
-            siticoneToggleSwitch2.CheckedState.InnerBorderColor = Color.White;
-            siticoneToggleSwitch2.CheckedState.InnerColor = Color.White;
-            siticoneToggleSwitch2.Location = new Point(578, 348);
-            siticoneToggleSwitch2.Name = "siticoneToggleSwitch2";
-            siticoneToggleSwitch2.Size = new Size(37, 20);
-            siticoneToggleSwitch2.TabIndex = 29;
-            siticoneToggleSwitch2.UncheckedState.BorderColor = Color.Transparent;
-            siticoneToggleSwitch2.UncheckedState.FillColor = Color.Gray;
-            siticoneToggleSwitch2.UncheckedState.InnerBorderColor = Color.White;
-            siticoneToggleSwitch2.UncheckedState.InnerColor = Color.White;
-            siticoneToggleSwitch2.CheckedChanged += siticoneToggleSwitch2_CheckedChanged;
-            // 
-            // africa
-            // 
-            africa.AutoSize = true;
-            africa.BackColor = Color.Transparent;
-            africa.Font = new Font("Segoe UI Semibold", 8F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
-            africa.ForeColor = Color.White;
-            africa.Location = new Point(529, 352);
-            africa.Name = "africa";
-            africa.Size = new Size(45, 13);
-            africa.TabIndex = 30;
-            africa.Text = "Cleaner";
-            // 
-            // Form1
+            // Spoofy
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = SystemColors.ActiveBorder;
-            ClientSize = new Size(627, 431);
-            Controls.Add(africa);
-            Controls.Add(siticoneToggleSwitch2);
-            Controls.Add(label4);
-            Controls.Add(logtoggle);
-            Controls.Add(lgbtq);
-            Controls.Add(siticoneToggleSwitch1);
+            BackColor = Color.FromArgb(17, 17, 17);
+            ClientSize = new Size(634, 423);
+            Controls.Add(lgbt);
+            Controls.Add(logwind);
+            Controls.Add(systemcleaner);
             Controls.Add(backup);
             Controls.Add(product);
             Controls.Add(spoofall);
             Controls.Add(tracercl);
-            Controls.Add(label2);
-            Controls.Add(pictureBox2);
-            Controls.Add(label1);
             Controls.Add(req);
             Controls.Add(sm);
             Controls.Add(efi);
@@ -563,26 +421,21 @@
             Controls.Add(winid);
             Controls.Add(pcname);
             Controls.Add(mac);
-            Controls.Add(sechex);
             Controls.Add(disk);
-            Controls.Add(siticoneControlBox2);
-            Controls.Add(siticoneControlBox1);
-            FormBorderStyle = FormBorderStyle.None;
             Icon = (Icon)resources.GetObject("$this.Icon");
-            Name = "Form1";
-            Text = "Spoofy [Free]";
+            Name = "Spoofy";
+            Resizable = false;
+            ShadowType = MetroFormShadowType.DropShadow;
+            Style = MetroFramework.MetroColorStyle.Magenta;
+            Text = "SecHex - Spoofy V1.5.7";
+            Theme = MetroFramework.MetroThemeStyle.Dark;
             Load += Form1_Load;
-            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
-
-        private Siticone.Desktop.UI.WinForms.SiticoneControlBox siticoneControlBox1;
-        private Siticone.Desktop.UI.WinForms.SiticoneControlBox siticoneControlBox2;
         private Siticone.Desktop.UI.WinForms.SiticoneButton disk;
-        private Label sechex;
         private Siticone.Desktop.UI.WinForms.SiticoneButton mac;
         private Siticone.Desktop.UI.WinForms.SiticoneButton pcname;
         private Siticone.Desktop.UI.WinForms.SiticoneButton winid;
@@ -591,18 +444,12 @@
         private Siticone.Desktop.UI.WinForms.SiticoneButton efi;
         private Siticone.Desktop.UI.WinForms.SiticoneButton sm;
         private Siticone.Desktop.UI.WinForms.SiticoneButton req;
-        private Label label1;
-        private Label label2;
-        private PictureBox pictureBox2;
         private Siticone.Desktop.UI.WinForms.SiticoneButton spoofall;
         private Siticone.Desktop.UI.WinForms.SiticoneButton product;
         private Siticone.Desktop.UI.WinForms.SiticoneButton tracercl;
         private Siticone.Desktop.UI.WinForms.SiticoneButton backup;
-        private Siticone.Desktop.UI.WinForms.SiticoneToggleSwitch siticoneToggleSwitch1;
-        private Label lgbtq;
-        private Siticone.Desktop.UI.WinForms.SiticoneToggleSwitch logtoggle;
-        private Label label4;
-        private Siticone.Desktop.UI.WinForms.SiticoneToggleSwitch siticoneToggleSwitch2;
-        private Label africa;
+        private MetroFramework.Controls.MetroCheckBox systemcleaner;
+        private MetroFramework.Controls.MetroCheckBox logwind;
+        private MetroFramework.Controls.MetroCheckBox lgbt;
     }
 }

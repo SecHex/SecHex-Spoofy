@@ -6,100 +6,26 @@ using System.Net.NetworkInformation;
 using System.Security.Cryptography;
 using System.Text;
 using System.Runtime.InteropServices;
+using MetroFramework.Controls;
 
 
 namespace SecHex_GUI
 {
-    public partial class Spoofy : Form
+    public partial class Spoofy : MetroFramework.Forms.MetroForm
     {
         private System.Windows.Forms.Timer timer;
-        private float animationProgress = 0.0f;
-        private int steps = 270;
-        private Color startColor = Color.FromArgb(23, 23, 23);
-        private Color middleColor = Color.FromArgb(248, 248, 248);
-        private Color endColor = Color.FromArgb(23, 23, 23);
-        private Color currentColor;
-        private bool isDragging;
-        private Point offset;
         private bool isAnimationRunning = false;
 
         public Spoofy()
         {
             InitializeComponent();
-            SetRoundedCorners();
 
             timer = new System.Windows.Forms.Timer();
             timer.Interval = 100;
-            timer.Tick += timer_Tick;
 
             this.DoubleBuffered = true;
             timer.Start();
         }
-
-        protected override void OnPaint(PaintEventArgs e)
-        {
-            base.OnPaint(e);
-            SetRoundedCorners();
-
-            Rectangle gradientRect = new Rectangle(0, 0, this.Width, this.Height);
-            using (LinearGradientBrush brush = new LinearGradientBrush(gradientRect, startColor, currentColor, LinearGradientMode.Vertical))
-            {
-                e.Graphics.FillRectangle(brush, gradientRect);
-            }
-        }
-
-        private void timer_Tick(object sender, EventArgs e)
-        {
-            int currentR, currentG, currentB;
-            if (animationProgress < 0.5f)
-            {
-                float subProgress = animationProgress * 2;
-                currentR = (int)(startColor.R + (middleColor.R - startColor.R) * subProgress);
-                currentG = (int)(startColor.G + (middleColor.G - startColor.G) * subProgress);
-                currentB = (int)(startColor.B + (middleColor.B - startColor.B) * subProgress);
-            }
-            else
-            {
-                float subProgress = (animationProgress - 0.5f) * 2;
-                currentR = (int)(middleColor.R + (endColor.R - middleColor.R) * subProgress);
-                currentG = (int)(middleColor.G + (endColor.G - middleColor.G) * subProgress);
-                currentB = (int)(middleColor.B + (endColor.B - middleColor.B) * subProgress);
-            }
-            currentColor = Color.FromArgb(currentR, currentG, currentB);
-
-            animationProgress += 1.0f / steps;
-            if (animationProgress >= 1.0f)
-            {
-                animationProgress = 0.0f;
-            }
-
-            this.Invalidate();
-        }
-
-        private void SetRoundedCorners()
-        {
-            int radius = 18;
-            GraphicsPath path = new GraphicsPath();
-            path.AddArc(0, 0, radius, radius, 180, 90);
-            path.AddArc(this.Width - radius, 0, radius, radius, 270, 90);
-            path.AddArc(this.Width - radius, this.Height - radius, radius, radius, 0, 90);
-            path.AddArc(0, this.Height - radius, radius, radius, 90, 90);
-            path.CloseFigure();
-            this.SetStyle(ControlStyles.ResizeRedraw, true);
-            this.Region = new Region(path);
-            this.SetGraphicsQuality();
-        }
-
-        private void SetGraphicsQuality()
-        {
-            this.SetStyle(ControlStyles.AllPaintingInWmPaint | ControlStyles.UserPaint | ControlStyles.OptimizedDoubleBuffer, true);
-            using (Graphics g = this.CreateGraphics())
-            {
-                g.SmoothingMode = SmoothingMode.AntiAlias;
-                g.InterpolationMode = InterpolationMode.HighQualityBicubic;
-            }
-        }
-
 
 
         private async void AnimateButtonsBorderColor(params SiticoneButton[] buttons)
@@ -245,47 +171,11 @@ namespace SecHex_GUI
             }
         }
 
-        protected override void OnMouseDown(MouseEventArgs e)
-        {
-            base.OnMouseDown(e);
-            if (e.Button == MouseButtons.Left)
-            {
-                isDragging = true;
-                offset = new Point(e.X, e.Y);
-            }
-        }
-        protected override void OnMouseMove(MouseEventArgs e)
-        {
-            base.OnMouseMove(e);
-            if (isDragging)
-            {
-                Point newLocation = PointToScreen(new Point(e.X, e.Y));
-                newLocation.Offset(-offset.X, -offset.Y);
-                Location = newLocation;
-            }
-        }
-        protected override void OnMouseUp(MouseEventArgs e)
-        {
-            base.OnMouseUp(e);
-            if (e.Button == MouseButtons.Left)
-            {
-                isDragging = false;
-            }
-        }
-
-
-        // add your .sys for the disk spoof
-        string SysDiskDriver = "C:\\Pfad\\Zur\\DeinerDatei.sys";
-
-
-
-
-
 
         private bool isLogToggleOn = false;
         private bool isAfricaToggleOn = false;
         private south_africa WindowSouthAfrica;
-        private hexhex logWindow;
+        private logs logWindow;
 
         private void OpenAfrica()
         {
@@ -315,7 +205,7 @@ namespace SecHex_GUI
         {
             if (logWindow == null || logWindow.IsDisposed)
             {
-                logWindow = new hexhex();
+                logWindow = new logs();
                 logWindow.Show();
             }
             else
@@ -331,39 +221,6 @@ namespace SecHex_GUI
                 logWindow.Hide();
             }
         }
-
-        private void logtoggle_CheckedChanged(object sender, EventArgs e)
-        {
-            isLogToggleOn = logtoggle.Checked;
-            if (isLogToggleOn)
-            {
-                OpenLogWindow();
-            }
-            else
-            {
-                CloseLogWindow();
-            }
-        }
-
-        private void siticoneToggleSwitch2_CheckedChanged(object sender, EventArgs e)
-        {
-            isAfricaToggleOn = siticoneToggleSwitch2.Checked;
-            if (isAfricaToggleOn)
-            {
-                OpenAfrica();
-            }
-            else
-            {
-                CloseAfrica();
-            }
-        }
-
-
-
-
-
-
-
 
 
 
@@ -588,8 +445,6 @@ namespace SecHex_GUI
 
         private async void disk_Click(object sender, EventArgs e)
         {
-            bool sysFileExecuted = false; 
-
             try
             {
                 using (RegistryKey ScsiPorts = Registry.LocalMachine.OpenSubKey("HARDWARE\\DEVICEMAP\\Scsi"))
@@ -624,17 +479,6 @@ namespace SecHex_GUI
                                                     ScsuiBus.SetValue("Identifier", identifierAfter);
                                                     ScsuiBus.SetValue("InquiryData", Encoding.UTF8.GetBytes(identifierAfter));
                                                     ScsuiBus.SetValue("SerialNumber", serialNumberAfter);
-
-
-                                                    if (File.Exists(SysDiskDriver))
-                                                    {
-                                                        Process.Start(SysDiskDriver);
-                                                        sysFileExecuted = true; 
-                                                    }
-                                                    else
-                                                    {
-                                                        ShowNotification(".sys file not found.", NotificationType.Error);
-                                                    }
                                                 }
                                             }
                                         }
@@ -1211,7 +1055,7 @@ namespace SecHex_GUI
                     return MessageBoxIcon.None;
             }
         }
- 
+
         private enum NotificationType
         {
             Success,
@@ -1223,6 +1067,47 @@ namespace SecHex_GUI
         {
 
         }
+
+        private void systemcleaner_CheckedChanged(object sender, EventArgs e)
+        {
+            isAfricaToggleOn = systemcleaner.Checked;
+            if (isAfricaToggleOn)
+            {
+                OpenAfrica();
+            }
+            else
+            {
+                CloseAfrica();
+            }
+        }
+
+        private void logwind_CheckedChanged(object sender, EventArgs e)
+        {
+            if (logWindow == null || logWindow.IsDisposed)
+            {
+                logWindow = new logs();
+                logWindow.Show();
+            }
+            else
+            {
+                logWindow.Show();
+            }
+        }
+
+        private void lgbt_CheckedChanged(object sender, EventArgs e)
+        {
+            MetroCheckBox checkBox = (MetroCheckBox)sender;
+
+            if (checkBox.Checked)
+            {
+                AnimateButtonsBorderColor(disk, winid, disk, efi, GUID, spoofall, mac, tracercl, display, pcname, backup, product, req, sm);
+            }
+            else
+            {
+                StopButtonAnimation(disk, winid, disk, efi, GUID, spoofall, mac, tracercl, display, pcname, backup, product, req, sm);
+            }
+        }
+
 
 
     }
