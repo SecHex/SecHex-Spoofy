@@ -45,7 +45,7 @@ Updates soon...
     • Cleans the Cache of Ubisoft
                                            
 + **Valorant cache cleaner** - [19.05.23]                           
-    • Cleans the Cache of Ubisoft
+    • Cleans the Cache of Riot Games
                                          
 + **Installation ID Spoofing** - [26.05.23]
     • Attempts to spoof the Windows ID by changing the MachineGuid registry value.                           
@@ -104,7 +104,7 @@ Updates soon...
     • Chrome Cookies                       
     • Recent Documents                       
     • Reset Connection (fix the mac spoofing issue)
-                      
+    • Trace Cleaner                    
 
                           
                           
