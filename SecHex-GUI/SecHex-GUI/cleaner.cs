@@ -522,6 +522,9 @@ namespace SecHex_GUI
 
 
         // THANKS TO Starcharms -> github.com/starcharms
+
+
+        // Currently updating...
         private int directoriesDeleted = 0;
         private void CleanAnticheatTraces()
         {
