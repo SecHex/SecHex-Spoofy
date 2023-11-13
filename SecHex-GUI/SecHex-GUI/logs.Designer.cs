@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(logs));
             siticoneControlBox2 = new Siticone.Desktop.UI.WinForms.SiticoneControlBox();
             siticoneControlBox1 = new Siticone.Desktop.UI.WinForms.SiticoneControlBox();
             sechex = new Label();
@@ -78,7 +79,7 @@
             // 
             // richTextBoxLogs
             // 
-            richTextBoxLogs.BackColor = Color.FromArgb(23, 23, 23);
+            richTextBoxLogs.BackColor = Color.FromArgb(17, 17, 17);
             richTextBoxLogs.BorderStyle = BorderStyle.None;
             richTextBoxLogs.Location = new Point(12, 47);
             richTextBoxLogs.Name = "richTextBoxLogs";
@@ -88,18 +89,20 @@
             richTextBoxLogs.Text = "";
             richTextBoxLogs.TextChanged += richTextBoxLogs_TextChanged;
             // 
-            // hexhex
+            // logs
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = SystemColors.ActiveCaptionText;
+            BackColor = Color.FromArgb(17, 17, 17);
             ClientSize = new Size(530, 387);
             Controls.Add(richTextBoxLogs);
             Controls.Add(sechex);
             Controls.Add(siticoneControlBox1);
             Controls.Add(siticoneControlBox2);
+            ForeColor = Color.FromArgb(17, 17, 17);
             FormBorderStyle = FormBorderStyle.None;
-            Name = "hexhex";
+            Icon = (Icon)resources.GetObject("$this.Icon");
+            Name = "logs";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "hexhex";
             Load += hexhex_Load;

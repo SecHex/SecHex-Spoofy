@@ -6,11 +6,12 @@ using System.Net.NetworkInformation;
 using System.Security.Cryptography;
 using System.Text;
 using System.Net;
+using System.ServiceProcess;
 
 namespace SecHex_GUI
 {
 
-    public partial class south_africa : Form
+    public partial class south_africa : MetroFramework.Forms.MetroForm
     {
         private System.Windows.Forms.Timer timer;
         private float animationProgress = 0.0f;
@@ -29,11 +30,10 @@ namespace SecHex_GUI
             InitializeComponent();
             SetStyle(ControlStyles.DoubleBuffer | ControlStyles.UserPaint | ControlStyles.AllPaintingInWmPaint, true);
             UpdateStyles();
-            SetRoundedCorners();
 
             timer = new System.Windows.Forms.Timer();
             timer.Interval = 340;
-            timer.Tick += timer_Tick;
+
 
             this.DoubleBuffered = true;
             timer.Start();
@@ -41,94 +41,6 @@ namespace SecHex_GUI
             previousColor = currentColor;
         }
 
-        protected override void OnPaint(PaintEventArgs e)
-        {
-
-            base.OnPaint(e);
-            SetRoundedCorners();
-
-            if (previousColor != currentColor)
-            {
-                this.Invalidate();
-                previousColor = currentColor;
-            }
-
-            Rectangle gradientRect = new Rectangle(0, 0, this.Width, this.Height);
-            using (LinearGradientBrush brush = new LinearGradientBrush(gradientRect, startColor, currentColor, LinearGradientMode.Vertical))
-            {
-                e.Graphics.FillRectangle(brush, gradientRect);
-            }
-        }
-
-        private void timer_Tick(object sender, EventArgs e)
-        {
-            int currentR, currentG, currentB;
-            if (animationProgress < 0.5f)
-            {
-                float subProgress = animationProgress * 2;
-                currentR = (int)(startColor.R + (middleColor.R - startColor.R) * subProgress);
-                currentG = (int)(startColor.G + (middleColor.G - startColor.G) * subProgress);
-                currentB = (int)(startColor.B + (middleColor.B - startColor.B) * subProgress);
-            }
-            else
-            {
-                float subProgress = (animationProgress - 0.5f) * 2;
-                currentR = (int)(middleColor.R + (endColor.R - middleColor.R) * subProgress);
-                currentG = (int)(middleColor.G + (endColor.G - middleColor.G) * subProgress);
-                currentB = (int)(middleColor.B + (endColor.B - middleColor.B) * subProgress);
-            }
-            currentColor = Color.FromArgb(currentR, currentG, currentB);
-
-            animationProgress += 1.0f / steps;
-            if (animationProgress >= 1.0f)
-            {
-                animationProgress = 0.0f;
-            }
-
-            this.Invalidate();
-        }
-
-        private void SetRoundedCorners()
-        {
-            int radius = 18;
-            GraphicsPath path = new GraphicsPath();
-            path.AddArc(0, 0, radius, radius, 180, 90);
-            path.AddArc(this.Width - radius, 0, radius, radius, 270, 90);
-            path.AddArc(this.Width - radius, this.Height - radius, radius, radius, 0, 90);
-            path.AddArc(0, this.Height - radius, radius, radius, 90, 90);
-            path.CloseFigure();
-            this.Region = new Region(path);
-        }
-
-        protected override void OnMouseDown(MouseEventArgs e)
-        {
-            base.OnMouseDown(e);
-            if (e.Button == MouseButtons.Left)
-            {
-                isDragging = true;
-                offset = new Point(e.X, e.Y);
-            }
-        }
-
-        protected override void OnMouseMove(MouseEventArgs e)
-        {
-            base.OnMouseMove(e);
-            if (isDragging)
-            {
-                Point newLocation = PointToScreen(new Point(e.X, e.Y));
-                newLocation.Offset(-offset.X, -offset.Y);
-                Location = newLocation;
-            }
-        }
-
-        protected override void OnMouseUp(MouseEventArgs e)
-        {
-            base.OnMouseUp(e);
-            if (e.Button == MouseButtons.Left)
-            {
-                isDragging = false;
-            }
-        }
 
 
 
@@ -280,6 +192,44 @@ namespace SecHex_GUI
             }
         }
 
+        private void FirefoxCookieReset()
+        {
+            try
+            {
+                string firefoxCookiesPath = Path.Combine(
+                    Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
+                    "Mozilla\\Firefox\\Profiles");
+
+                string[] profileFolders = Directory.GetDirectories(firefoxCookiesPath);
+
+                if (profileFolders.Length > 0)
+                {
+                    string selectedProfileFolder = profileFolders[0];
+
+                    string cookiesFilePath = Path.Combine(selectedProfileFolder, "cookies.sqlite");
+
+                    if (File.Exists(cookiesFilePath))
+                    {
+                        File.Delete(cookiesFilePath);
+                        MessageBox.Show("Firefox cookies cleared.");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Firefox cookies not found.");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("No Firefox profiles found.");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
+        }
+
+
         private void DocsClear()
         {
             try
@@ -404,6 +354,271 @@ namespace SecHex_GUI
 
         // THANKS TO Starcharms -> github.com/starcharms
 
+        // Anti Cheat Terminator
+        static void KillProcess(string processName)
+        {
+            Process[] processes = Process.GetProcessesByName(processName);
+            foreach (Process process in processes)
+            {
+                process.Kill();
+            }
+        }
+        static void StopService(string serviceName)
+        {
+            ServiceController service = new ServiceController(serviceName);
+            if (service.Status == ServiceControllerStatus.Running)
+            {
+                service.Stop();
+                service.WaitForStatus(ServiceControllerStatus.Stopped);
+            }
+        }
+        // THANKS TO Starcharms -> github.com/starcharms
+
+        private void Fortnite()
+        {
+            try
+            {
+                KillProcess("epicgameslauncher.exe");
+                KillProcess("FortniteClient-Win64-Shipping_EAC.exe");
+                KillProcess("FortniteClient-Win64-Shipping.exe");
+                KillProcess("FortniteClient-Win64-Shipping_BE.exe");
+                KillProcess("FortniteLauncher.exe");
+                KillProcess("EpicGamesLauncher.exe");
+                KillProcess("FortniteClient-Win64-Shipping.exe");
+                KillProcess("EpicGamesLauncher.exe");
+                KillProcess("EasyAntiCheat_Setup.exe");
+                KillProcess("FortniteLauncher.exe");
+                KillProcess("EpicWebHelper.exe");
+                KillProcess("FortniteClient-Win64-Shipping.exe");
+                KillProcess("EasyAntiCheat.exe");
+                KillProcess("BEService_x64.exe");
+                KillProcess("EpicGamesLauncher.exe");
+                KillProcess("FortniteClient-Win64-Shipping_BE.exe");
+                KillProcess("FortniteClient-Win64-Shipping_EAC.exe");
+                KillProcess("EasyAntiCheat.exe");
+                KillProcess("dnf.exe");
+                KillProcess("DNF.exe");
+                KillProcess("BattleEye.exe");
+                KillProcess("BEService.exe");
+                KillProcess("BEServices.exe");
+                StopService("BEService");
+                StopService("EasyAntiCheat");
+
+                MessageBox.Show("Fortnite ANTI Cheat successfully terminated.");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
+        }
+
+        // THANKS TO Starcharms -> github.com/starcharms
+
+        private void FiveM()
+        {
+            try
+            {
+                KillProcess("FiveM.exe");
+                KillProcess("FiveM_b2802_DumpServer.exe");
+                KillProcess("FiveM_b2802_GTAProcess.exe");
+                KillProcess("FiveM_ChromeBrowser.exe");
+                KillProcess("FiveM_ROSLauncher.exe");
+                KillProcess("FiveM_FiveM_ROSService.exe");
+                KillProcess("Steam.exe");
+                KillProcess("steam.exe");
+                KillProcess("EpicGamesLauncher.exe");
+                KillProcess("EpicGamesLauncher.exe");
+                KillProcess("EpicWebHelper.exe");
+                KillProcess("EpicGamesLauncher.exe");
+                KillProcess("smartscreen.exe");
+                KillProcess("dnf.exe");
+                KillProcess("DNF.exe");
+                KillProcess("CrossProxy.exe");
+                KillProcess("tensafe_1.exe");
+                KillProcess("TenSafe_1.exe");
+                KillProcess("tensafe_2.exe");
+                KillProcess("tencentdl.exe");
+                KillProcess("TenioDL.exe");
+                KillProcess("uishell.exe");
+                KillProcess("BackgroundDownloader.exe");
+                KillProcess("conime.exe");
+                KillProcess("QQDL.EXE");
+                KillProcess("qqlogin.exe");
+                KillProcess("dnfchina.exe");
+                KillProcess("dnfchinatest.exe");
+                KillProcess("dnf.exe");
+                KillProcess("txplatform.exe");
+                KillProcess("TXPlatform.exe");
+                KillProcess("Launcher.exe");
+                KillProcess("LauncherPatcher.exe");
+                KillProcess("SocialClubHelper.exe");
+                KillProcess("RockstarErrorHandler.exe");
+                KillProcess("RockstarService.exe");
+                StopService("Steam");
+                StopService("Rockstar Games");
+                StopService("FiveM");
+
+                MessageBox.Show("FiveM ANTI Cheat successfully terminated.");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
+        }
+
+        private void Valoranto()
+        {
+            try
+            {
+                KillProcess("EasyAntiCheat_Setup.exe");
+                KillProcess("EasyAntiCheat.exe");
+                KillProcess("BEService_x64.exe");
+                KillProcess("smartscreen.exe");
+                KillProcess("EasyAntiCheat.exe");
+                KillProcess("dnf.exe");
+                KillProcess("DNF.exe");
+                KillProcess("CrossProxy.exe");
+                KillProcess("tensafe_1.exe");
+                KillProcess("TenSafe_1.exe");
+                KillProcess("tensafe_2.exe");
+                KillProcess("tencentdl.exe");
+                KillProcess("TenioDL.exe");
+                KillProcess("uishell.exe");
+                KillProcess("BackgroundDownloader.exe");
+                KillProcess("conime.exe");
+                KillProcess("QQDL.EXE");
+                KillProcess("qqlogin.exe");
+                KillProcess("dnfchina.exe");
+                KillProcess("dnfchinatest.exe");
+                KillProcess("dnf.exe");
+                KillProcess("txplatform.exe");
+                KillProcess("TXPlatform.exe");
+                KillProcess("Launcher.exe");
+                KillProcess("LauncherPatcher.exe");
+                KillProcess("OriginWebHelperService.exe");
+                KillProcess("Origin.exe");
+                KillProcess("OriginClientService.exe");
+                KillProcess("OriginER.exe");
+                KillProcess("OriginThinSetupInternal.exe");
+                KillProcess("OriginLegacyCLI.exe");
+                KillProcess("Agent.exe");
+                KillProcess("Client.exe");
+                KillProcess("BattleEye.exe");
+                KillProcess("BEService.exe");
+                KillProcess("BEServices.exe");
+                StopService("BEService");
+                StopService("EasyAntiCheat");
+                StopService("PunkBuster");
+                StopService("Vanguard");
+                StopService("ricocheat");
+
+                MessageBox.Show("Valorant ANTI Cheat successfully terminated.");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
+        }
+
+
+        // THANKS TO Starcharms -> github.com/starcharms
+        private int directoriesDeleted = 0;
+        private void CleanAnticheatTraces()
+        {
+            try
+            {
+                DeleteDirectory(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "documents\\Call of Duty Modern Warfare"));
+                DeleteDirectory(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Battle.net"));
+                DeleteDirectory(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Blizzard Entertainment"));
+                DeleteDirectory(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Battle.net"));
+                DeleteDirectory(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData), "Battle.net"));
+                DeleteDirectory(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData), "Blizzard Entertainment"));
+
+                DeleteDirectory(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "Documents\\Call of Duty Black Ops Cold War\\report"));
+                DeleteDirectory(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "Documents\\Call of Duty Black Ops Cold War"));
+
+                DeleteDirectory(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Battle.net\\BrowserCache"));
+                DeleteDirectory(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Battle.net\\BrowserCache\\GPUCache"));
+                DeleteDirectory(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Battle.net\\BrowserCache\\GPUCache\\data_0.dcache"));
+                DeleteDirectory(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Battle.net\\BrowserCache\\GPUCache\\data_1.dcache"));
+                DeleteDirectory(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Battle.net\\BrowserCache\\GPUCache\\data_2.dcache"));
+                DeleteDirectory(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Battle.net\\BrowserCache\\GPUCache\\data_3.dcache"));
+                DeleteDirectory(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Battle.net\\BrowserCache\\GPUCache\\f_000001.dcache"));
+                DeleteDirectory(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Battle.net\\BrowserCache\\GPUCache\\index.dcache"));
+                DeleteDirectory(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Battle.net\\BrowserCache\\Cache\\index"));
+
+                //thats boring to code. hust.
+
+                DeleteDirectory(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Battle.net\\BrowserCache\\GPUCache\\data_0"));
+                DeleteDirectory(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Battle.net\\BrowserCache\\GPUCache\\data_1"));
+                DeleteDirectory(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Battle.net\\BrowserCache\\GPUCache\\data_2"));
+                DeleteDirectory(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Battle.net\\BrowserCache\\GPUCache\\data_3"));
+                DeleteDirectory(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Battle.net\\BrowserCache\\GPUCache\\f_000001"));
+                DeleteDirectory(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Battle.net\\BrowserCache\\GPUCache\\index"));
+                DeleteDirectory(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Battle.net\\BrowserCache\\Cache\\index.dcache"));
+                DeleteDirectory(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Battle.net\\BrowserCache\\Cache\\data_0.dcache"));
+                DeleteDirectory(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Battle.net\\BrowserCache\\Cache\\data_1.dcache"));
+                DeleteDirectory(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Battle.net\\BrowserCache\\Cache\\data_2.dcache"));
+                DeleteDirectory(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Battle.net\\BrowserCache\\Cache\\data_3.dcache"));
+                DeleteDirectory(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Battle.net\\BrowserCache\\Cache\\data_0"));
+                DeleteDirectory(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Battle.net\\BrowserCache\\Cache\\data_1"));
+                DeleteDirectory(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Battle.net\\BrowserCache\\Cache\\data_2"));
+                DeleteDirectory(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Battle.net\\BrowserCache\\Cache\\data_3"));
+                DeleteDirectory(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Battle.net\\Cache"));
+                DeleteDirectory(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Battle.net\\Logs"));
+                DeleteDirectory(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Battle.net\\WidevineCdm"));
+                DeleteDirectory(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Battle.net\\CachedData"));
+                DeleteDirectory(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Blizzard Entertainment"));
+                DeleteDirectory(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Roaming\\Battle.net"));
+                DeleteDirectory(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles), "Battle.net"));
+                DeleteDirectory(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ProgramFilesX86), "Blizzard Entertainment"));
+
+                DeleteRegistryKey("SOFTWARE\\WOW6432Node\\EasyAntiCheat");
+                DeleteRegistryKey("SYSTEM\\ControlSet001\\Services\\EasyAntiCheat");
+                DeleteRegistryKey("SYSTEM\\ControlSet001\\Services\\EasyAntiCheat\\Security");
+                DeleteRegistryKey("SOFTWARE\\WOW6432Node\\EasyAntiCheat");
+                DeleteRegistryKey("SYSTEM\\ControlSet001\\Services\\EasyAntiCheat");
+                DeleteRegistryKey("SOFTWARE\\WOW6432Node\\EasyAntiCheat");
+
+                MessageBox.Show("All Anti-Cheat traces have been successfully deleted!");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error cleaning Anti-Cheat traces: " + ex.Message);
+            }
+        }
+
+        private void DeleteDirectory(string path)
+        {
+            try
+            {
+                if (Directory.Exists(path))
+                {
+                    Directory.Delete(path, true);
+                    directoriesDeleted++;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error deleting directory '{path}': {ex.Message}");
+            }
+        }
+
+        private void DeleteRegistryKey(string keyPath)
+        {
+            using (RegistryKey key = Registry.LocalMachine.OpenSubKey(keyPath, true))
+            {
+                if (key != null)
+                {
+                    foreach (string subKeyName in key.GetSubKeyNames())
+                    {
+                        key.DeleteSubKeyTree(subKeyName);
+                    }
+                    Registry.LocalMachine.DeleteSubKey(keyPath, false);
+                }
+            }
+        }
+
 
 
         private bool isTempClearCheckboxChecked = false;
@@ -414,48 +629,87 @@ namespace SecHex_GUI
         private bool isCookieCheckboxChecked = false;
         private bool isDocsCheckboxChecked = false;
         private bool isrstconnectCheckBoxChecked = false;
+        private bool isFirefoxCookieResetChecked = false;
 
 
-        private void dns_CheckedChanged(object sender, EventArgs e)
+        // Anti Cheat Terminator 
+        private bool isfortniteChecked = false;
+        private bool isfivemChecked = false;
+        private bool isValorantChecked = false;
+        private bool isAntiCheatTracerChecked = false;
+
+
+
+
+
+
+        private void dnsflush_CheckedChanged(object sender, EventArgs e)
         {
-            isDnsCheckboxChecked = dns.Checked;
+            isDnsCheckboxChecked = dnsflush.Checked;
         }
 
-        private void winlogs_CheckedChanged(object sender, EventArgs e)
+        private void tcpp_CheckedChanged(object sender, EventArgs e)
         {
-            isWinLogCheckboxChecked = winlogs.Checked;
+            isTcpCheckboxChecked = tcpp.Checked;
         }
 
-        private void tempclear_CheckedChanged(object sender, EventArgs e)
+        private void wifireset_CheckedChanged(object sender, EventArgs e)
         {
-            isTempClearCheckboxChecked = tempclear.Checked;
+            isrstconnectCheckBoxChecked = wifireset.Checked;
         }
 
-        private void wintemp_CheckedChanged(object sender, EventArgs e)
+        private void windowslogs_CheckedChanged(object sender, EventArgs e)
         {
-            isWinTempCheckboxChecked = wintemp.Checked;
+            isWinLogCheckboxChecked = windowslogs.Checked;
+
         }
 
-        private void tcp_CheckedChanged(object sender, EventArgs e)
+        private void tempfi_CheckedChanged(object sender, EventArgs e)
         {
-            isTcpCheckboxChecked = tcp.Checked;
+            isTempClearCheckboxChecked = tempfi.Checked;
         }
 
-        private void cookie_CheckedChanged(object sender, EventArgs e)
+        private void wintempp_CheckedChanged(object sender, EventArgs e)
         {
-            isCookieCheckboxChecked = cookie.Checked;
+            isWinTempCheckboxChecked = wintempp.Checked;
         }
 
-        private void docs_CheckedChanged(object sender, EventArgs e)
+        private void latestdocs_CheckedChanged(object sender, EventArgs e)
         {
-            isDocsCheckboxChecked = docs.Checked;
+            isDocsCheckboxChecked = latestdocs.Checked;
         }
 
-        private void rstconnect_CheckedChanged(object sender, EventArgs e)
+        private void chromecookies_CheckedChanged(object sender, EventArgs e)
         {
-            isrstconnectCheckBoxChecked = rstconnect.Checked;
+            isCookieCheckboxChecked = chromecookies.Checked;
         }
 
+        private void firefoxcookies_CheckedChanged(object sender, EventArgs e)
+        {
+            isFirefoxCookieResetChecked = firefoxcookies.Checked;
+        }
+
+
+        // Anti Cheat Terminator
+
+        private void fortnite_CheckedChanged(object sender, EventArgs e)
+        {
+            isfortniteChecked = fortnite.Checked;
+        }
+
+        private void fivemm_CheckedChanged(object sender, EventArgs e)
+        {
+            isfivemChecked = fivemm.Checked;
+        }
+
+        private void valorant_CheckedChanged(object sender, EventArgs e)
+        {
+            isValorantChecked = valorant.Checked;
+        }
+        private void antishittracer_CheckedChanged(object sender, EventArgs e)
+        {
+            isAntiCheatTracerChecked = antishittracer.Checked;
+        }
 
         private void spoofall_Click(object sender, EventArgs e)
         {
@@ -499,14 +753,36 @@ namespace SecHex_GUI
                 rstreset();
             }
 
+            if (isFirefoxCookieResetChecked)
+            {
+                FirefoxCookieReset();
+            }
 
+            if (isfortniteChecked)
+            {
+                Fortnite();
+            }
+
+            if (isfivemChecked)
+            {
+                FiveM();
+            }
+
+            if (isValorantChecked)
+            {
+                Valoranto();
+            }
+
+            if (isAntiCheatTracerChecked)
+            {
+                CleanAnticheatTraces();
+            }
         }
 
         private void south_africa_Load(object sender, EventArgs e)
         {
 
         }
-
 
     }
 }

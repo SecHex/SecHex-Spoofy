@@ -1,19 +1,19 @@
-﻿using Microsoft.Win32;
+﻿using MetroFramework.Drawing;
+using Microsoft.Win32;
 using Siticone.Desktop.UI.WinForms;
 using System.Diagnostics;
 using System.Drawing.Drawing2D;
 using System.Net.NetworkInformation;
 using System.Security.Cryptography;
 using System.Text;
-
-
+using MetroFramework.Controls;
 
 
 namespace SecHex_GUI
 {
 
     public partial class logs : Form
-    {    
+    {
 
         private System.Windows.Forms.Timer timer;
         private float animationProgress = 0.0f;
@@ -29,7 +29,7 @@ namespace SecHex_GUI
         public logs()
         {
             InitializeComponent();
-            SetRoundedCorners();
+
 
             timer = new System.Windows.Forms.Timer();
             timer.Interval = 100;
@@ -39,17 +39,7 @@ namespace SecHex_GUI
             timer.Start();
         }
 
-        protected override void OnPaint(PaintEventArgs e)
-        {
-            base.OnPaint(e);
-            SetRoundedCorners();
 
-            Rectangle gradientRect = new Rectangle(0, 0, this.Width, this.Height);
-            using (LinearGradientBrush brush = new LinearGradientBrush(gradientRect, startColor, currentColor, LinearGradientMode.Vertical))
-            {
-                e.Graphics.FillRectangle(brush, gradientRect);
-            }
-        }
 
         private void timer_Tick(object sender, EventArgs e)
         {
@@ -79,17 +69,8 @@ namespace SecHex_GUI
             this.Invalidate();
         }
 
-        private void SetRoundedCorners()
-        {
-            int radius = 18;
-            GraphicsPath path = new GraphicsPath();
-            path.AddArc(0, 0, radius, radius, 180, 90);
-            path.AddArc(this.Width - radius, 0, radius, radius, 270, 90);
-            path.AddArc(this.Width - radius, this.Height - radius, radius, radius, 0, 90);
-            path.AddArc(0, this.Height - radius, radius, radius, 90, 90);
-            path.CloseFigure();
-            this.Region = new Region(path);
-        }
+
+
 
         protected override void OnMouseDown(MouseEventArgs e)
         {
