@@ -1,4 +1,4 @@
-# SecHex-Spoofy [1.5.6]
+# SecHex-Spoofy [1.5.7]
 # LIKE OR BAD LUCK FOR 6 MONTHS, DONT RISK IT! 🔥
 
 Simple HWID-Changer 🔑︎
