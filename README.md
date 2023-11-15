@@ -144,6 +144,8 @@ Contributors get a special Role our discord Server. Just create a Ticket and sen
 Cheers!                                            .gg/SecHex
 
 
+<iframe style="width:100%;height:auto;min-width:600px;min-height:400px;" src="https://star-history.com/embed?secret=#SecHex/SecHex-Spoofy&Timeline" frameBorder="0"></iframe>
+
 
 # Disclaimer ⚠️
 Please read this disclaimer carefully before using the HWID Spoofing Tool ("Tool") available on this GitHub site. By accessing or using the Tool, you agree to be bound by this disclaimer.
