@@ -596,7 +596,7 @@ namespace HWID_Changer
             switch (input)
             {
                 case "1":
-                    // Spoof disks
+                    SpoofDisks();
                     Console.WriteLine("\n  [+] Disks spoofed");
                     ClearConsoleAfterDelay();
 
@@ -604,42 +604,41 @@ namespace HWID_Changer
                     break;
 
                 case "2":
-                    // Spoof GUIDs
+                    SpoofGUIDs();
                     Console.WriteLine("\n  [+] GUIDs spoofed");
                     ClearConsoleAfterDelay();
                     Menu();
                     break;
 
                 case "3":
-                    // Spoof MAC address
+                    SpoofMAC();
                     Console.WriteLine("  [+] MAC address spoofed");
                     ClearConsoleAfterDelay();
                     Menu();
                     break;
 
                 case "4":
-                    // Delete Ubisoft cache
+                    UbisoftCache();
                     Console.WriteLine("\n  [+] Ubisoft Cache deleted");
                     ClearConsoleAfterDelay();
                     Menu();
                     break;
 
                 case "5":
-                    // Delete Valorant cache
+                    DeleteValorantCache();
                     Console.WriteLine("\n  [+] Valorant Cache deleted");
                     ClearConsoleAfterDelay();
                     Menu();
                     break;
 
                 case "6":
-                    // Spoof GPU ID
+                    SpoofGPU();
                     Console.WriteLine("\n  [+] GPU ID Spoofed");
                     ClearConsoleAfterDelay();
                     Menu();
                     break;
 
                 case "7":
-                    // Spoof PC Name
                     SpoofPCName();
                     Console.WriteLine("\n  [+] PC name spoofed");
                     ClearConsoleAfterDelay();
