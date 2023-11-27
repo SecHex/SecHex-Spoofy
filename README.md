@@ -2,7 +2,7 @@
 # LIKE OR BAD LUCK FOR 6 MONTHS, DONT RISK IT! 🔥
 
 Simple HWID-Changer 🔑︎
-Some Lines of the CMD Version are from @LockBlock-dev 
+Some Lines of the CLI Version are from @LockBlock-dev 
 
 **Windows 11** Version 10.0.22621 Build 22621 ✅                                      
 **Windows 10** Version 22H2 Build 19045.2965 ✅
