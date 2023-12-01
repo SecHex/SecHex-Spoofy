@@ -1,4 +1,4 @@
-# SecHex-Spoofy [1.5.7]
+# SecHex-Spoofy [1.5.8]
 
 Simple HWID-Changer 🔑︎
 Some Lines of the CLI Version are from @LockBlock-dev 
