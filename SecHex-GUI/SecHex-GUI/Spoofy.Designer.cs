@@ -453,7 +453,7 @@
             Resizable = false;
             ShadowType = MetroFormShadowType.DropShadow;
             Style = MetroFramework.MetroColorStyle.Magenta;
-            Text = "SecHex - Spoofy V1.5.7";
+            Text = "SecHex - Spoofy V1.5.8";
             Theme = MetroFramework.MetroThemeStyle.Dark;
             Load += Form1_Load;
             ResumeLayout(false);

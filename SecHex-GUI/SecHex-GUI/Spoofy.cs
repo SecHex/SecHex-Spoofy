@@ -522,7 +522,6 @@ namespace SecHex_GUI
 
 
 
-
         private void mac_Click(object sender, EventArgs e)
         {
             try
@@ -579,14 +578,6 @@ namespace SecHex_GUI
 
             return err;
         }
-
-
-
-
-
-
-
-
 
         private void GUID_Click(object sender, EventArgs e)
         {
@@ -671,6 +662,7 @@ namespace SecHex_GUI
                         systemInfoKey.SetValue("BIOSReleaseDate", randomDate);
                         string logAfter = "BIOSReleaseDate - After: " + systemInfoKey.GetValue("BIOSReleaseDate");
                         SaveLogs("bios_release", logBefore, logAfter);
+                        ShowNotification("BiosRelease successfully updated.", NotificationType.Success);
                     }
                     else
                     {
@@ -701,6 +693,7 @@ namespace SecHex_GUI
                         string logBefore = $"Machine GUID - Before: {machineGuidBefore}";
                         string logAfter = $"Machine GUID - After: {newMachineGuid}";
                         SaveLogs("ChangeMachineGuid", logBefore, logAfter);
+                        ShowNotification("Machine GUID successfully updated.", NotificationType.Success);
                     }
                     else
                     {
@@ -721,7 +714,7 @@ namespace SecHex_GUI
             try
             {
                 string originalName;
-                string newName = RandomId(8);
+                string newName = "SecHex-" + RandomId(7);
                 using (RegistryKey computerNameKey = Registry.LocalMachine.OpenSubKey("SYSTEM\\CurrentControlSet\\Control\\ComputerName\\ComputerName", true))
                 {
                     if (computerNameKey != null)
@@ -752,7 +745,6 @@ namespace SecHex_GUI
                         return;
                     }
                 }
-
                 using (RegistryKey hostnameKey = Registry.LocalMachine.OpenSubKey("SYSTEM\\CurrentControlSet\\Services\\Tcpip\\Parameters", true))
                 {
                     if (hostnameKey != null)
@@ -783,11 +775,12 @@ namespace SecHex_GUI
                         }
                     }
                 }
+
                 string logBefore = "ComputerName - Before: " + originalName;
                 string logAfter = "ComputerName - After: " + newName;
                 SaveLogs("pcname", logBefore, logAfter);
+                ShowNotification("PC-Name executed successfully.", NotificationType.Success);
 
-                ShowNotification("PC name spoofed successfully.", NotificationType.Success);
             }
             catch (Exception ex)
             {
@@ -1012,7 +1005,7 @@ namespace SecHex_GUI
         }
 
 
-        private void ShowNotification(string message, NotificationType type)
+        public void ShowNotification(string message, NotificationType type)
         {
             MessageBox.Show(message, "Spoofy [Open Source]", MessageBoxButtons.OK, GetNotificationIcon(type));
         }

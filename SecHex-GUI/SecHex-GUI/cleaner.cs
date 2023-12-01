@@ -299,57 +299,6 @@ namespace SecHex_GUI
             { }
         }
 
-        static void DisableNetworkAdapter(int index)
-        {
-            string command = $"wmic path win32_networkadapter where index={index} call disable";
-            RunCommand("cmd", $"/c {command}");
-        }
-
-        static void EnableNetworkAdapter(int index)
-        {
-            string command = $"wmic path win32_networkadapter where index={index} call enable";
-            RunCommand("cmd", $"/c {command}");
-        }
-
-        static void RunCommand(string command, string arguments)
-        {
-            ProcessStartInfo startInfo = new ProcessStartInfo(command);
-            startInfo.Arguments = arguments;
-            startInfo.RedirectStandardOutput = true;
-            startInfo.RedirectStandardError = true;
-            startInfo.UseShellExecute = false;
-            startInfo.CreateNoWindow = true;
-
-            Process process = new Process();
-            process.StartInfo = startInfo;
-            process.Start();
-
-            string output = process.StandardOutput.ReadToEnd();
-            string error = process.StandardError.ReadToEnd();
-
-            process.WaitForExit();
-        }
-
-        // THANKS TO Starcharms -> github.com/starcharms
-
-        // Anti Cheat Terminator
-        static void KillProcess(string processName)
-        {
-            Process[] processes = Process.GetProcessesByName(processName);
-            foreach (Process process in processes)
-            {
-                process.Kill();
-            }
-        }
-        static void StopService(string serviceName)
-        {
-            ServiceController service = new ServiceController(serviceName);
-            if (service.Status == ServiceControllerStatus.Running)
-            {
-                service.Stop();
-                service.WaitForStatus(ServiceControllerStatus.Stopped);
-            }
-        }
         // THANKS TO Starcharms -> github.com/starcharms
 
         private void Fortnite()
@@ -569,6 +518,164 @@ namespace SecHex_GUI
             }
         }
 
+        // THANKS TO Starcharms -> github.com/starcharms
+        private void UnlinkXbox()
+        {
+            try
+            {
+                ShellTankstelle("Get-AppxPackage -AllUsers xbox | Remove-AppxPackage");
+                StopAndDeleteService("XblAuthManager");
+                StopAndDeleteService("XblGameSave");
+                StopAndDeleteService("XboxNetApiSvc");
+                StopAndDeleteService("XboxGipSvc");
+                DeleteRegistryKey(@"HKLM\SYSTEM\CurrentControlSet\Services\xbgm");
+                ScheduledTask("Microsoft\\XblGameSave\\XblGameSaveTask");
+                ScheduledTask("Microsoft\\XblGameSave\\XblGameSaveTaskLogon");
+                ModifyHosts("xboxlive.com", "127.0.0.1");
+                ModifyHosts("user.auth.xboxlive.com", "127.0.0.1");
+                ModifyHosts("presence-heartbeat.xboxlive.com", "127.0.0.1");
+
+                MessageBox.Show("Xbox successfully terminated.");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
+        }
+
+        private void UnlinkDiscord()
+        {
+            try
+            {
+                string IODJwadsioamvdosas = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Discord", "app-1.0.9015", "modules", "discord_rpc-1");
+                string dwaNIOdsmadiowaios = "SecHex_Was_Here";
+                RenameDir(IODJwadsioamvdosas, dwaNIOdsmadiowaios);
+                MessageBox.Show("Xbox successfully terminated.");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
+        }
+
+        // THANKS TO Starcharms -> github.com/starcharms
+
+
+
+        private void RenameDir(string IODJwadsioamvdosas, string dwaNIOdsmadiowaios)
+        {
+            try
+            {
+                if (Directory.Exists(IODJwadsioamvdosas))
+                {
+                    string DIWAJNEWNDOWAS = Path.Combine(Path.GetDirectoryName(IODJwadsioamvdosas), dwaNIOdsmadiowaios);
+                    Directory.Move(IODJwadsioamvdosas, DIWAJNEWNDOWAS);
+                }
+            }
+            catch (Exception ex)
+            {
+                ShowNotification("An error occurred while unlinking discord: " + ex.Message, NotificationType.Error);
+            }
+        }
+
+        private static void ScheduledTask(string taskName)
+        {
+            RunCommand("schtasks", $"/Change /TN \"{taskName}\" /disable");
+        }
+
+        private static void StopAndDeleteService(string serviceName)
+        {
+            RunCommand("sc", $"stop {serviceName}");
+            RunCommand("sc", $"delete {serviceName}");
+        }
+
+        private static void ModifyHosts(string domain, string ipAddress)
+        {
+            string hostsPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.System), "drivers", "etc", "hosts");
+            string lineToAdd = $"{ipAddress} {domain}";
+
+            File.AppendAllText(hostsPath, lineToAdd + Environment.NewLine);
+        }
+
+        private static void ShellTankstelle(string command)
+        {
+            var processInfo = new ProcessStartInfo("powershell.exe")
+            {
+                RedirectStandardError = true,
+                RedirectStandardOutput = true,
+                CreateNoWindow = true,
+                UseShellExecute = false,
+                Arguments = $"-ExecutionPolicy Bypass -NoProfile -Command \"{command}\""
+            };
+
+            using (var process = new Process())
+            {
+                process.StartInfo = processInfo;
+                process.Start();
+
+                process.WaitForExit();
+
+                string output = process.StandardOutput.ReadToEnd();
+                string error = process.StandardError.ReadToEnd();
+
+                if (!string.IsNullOrEmpty(error))
+                {
+                    throw new Exception("PowerShell Error: " + error);
+                }
+            }
+        }
+
+        static void DisableNetworkAdapter(int index)
+        {
+            string command = $"wmic path win32_networkadapter where index={index} call disable";
+            RunCommand("cmd", $"/c {command}");
+        }
+
+        static void EnableNetworkAdapter(int index)
+        {
+            string command = $"wmic path win32_networkadapter where index={index} call enable";
+            RunCommand("cmd", $"/c {command}");
+        }
+
+        static void RunCommand(string command, string arguments)
+        {
+            ProcessStartInfo startInfo = new ProcessStartInfo(command);
+            startInfo.Arguments = arguments;
+            startInfo.RedirectStandardOutput = true;
+            startInfo.RedirectStandardError = true;
+            startInfo.UseShellExecute = false;
+            startInfo.CreateNoWindow = true;
+
+            Process process = new Process();
+            process.StartInfo = startInfo;
+            process.Start();
+
+            string output = process.StandardOutput.ReadToEnd();
+            string error = process.StandardError.ReadToEnd();
+
+            process.WaitForExit();
+        }
+
+
+        // Kill a specifg Windows Task
+        static void KillProcess(string processName)
+        {
+            Process[] processes = Process.GetProcessesByName(processName);
+            foreach (Process process in processes)
+            {
+                process.Kill();
+            }
+        }
+        static void StopService(string serviceName)
+        {
+            ServiceController service = new ServiceController(serviceName);
+            if (service.Status == ServiceControllerStatus.Running)
+            {
+                service.Stop();
+                service.WaitForStatus(ServiceControllerStatus.Stopped);
+            }
+        }
+
         private void DeleteDirectory(string path)
         {
             try
@@ -600,8 +707,34 @@ namespace SecHex_GUI
             }
         }
 
+        private void ShowNotification(string message, NotificationType type)
+        {
+            MessageBox.Show(message, "Spoofy [Open Source]", MessageBoxButtons.OK, GetNotificationIcon(type));
+        }
+        private MessageBoxIcon GetNotificationIcon(NotificationType type)
+        {
+            switch (type)
+            {
+                case NotificationType.Success:
+                    return MessageBoxIcon.Information;
+                case NotificationType.Error:
+                    return MessageBoxIcon.Error;
+                case NotificationType.Warning:
+                    return MessageBoxIcon.Warning;
+                default:
+                    return MessageBoxIcon.None;
+            }
+        }
+
+        private enum NotificationType
+        {
+            Success,
+            Error,
+            Warning
+        }
 
 
+        // Cleaning Functions
         private bool isTempClearCheckboxChecked = false;
         private bool isWinLogCheckboxChecked = false;
         private bool isDnsCheckboxChecked = false;
@@ -620,9 +753,9 @@ namespace SecHex_GUI
         private bool isAntiCheatTracerChecked = false;
 
 
-
-
-
+        //Unlink Functions
+        private bool isXboxChecked = false;
+        private bool isDiscordChecked = false;
 
         private void dnsflush_CheckedChanged(object sender, EventArgs e)
         {
@@ -687,6 +820,20 @@ namespace SecHex_GUI
             isAntiCheatTracerChecked = antishittracer.Checked;
         }
 
+
+
+        // Unlink Functions
+
+        private void unlinkxbox_CheckedChanged(object sender, EventArgs e)
+        {
+            isXboxChecked = unlinkxbox.Checked;
+        }
+        private void unlinkdc_CheckedChanged(object sender, EventArgs e)
+        {
+            isDiscordChecked = unlinkdc.Checked;
+        }
+
+
         private void spoofall_Click(object sender, EventArgs e)
         {
             if (isDnsCheckboxChecked)
@@ -748,6 +895,17 @@ namespace SecHex_GUI
             {
                 CleanAnticheatTraces();
             }
+
+            if (isXboxChecked)
+            {
+                UnlinkXbox();
+            }
+
+            if (isDiscordChecked)
+            {
+                UnlinkDiscord();
+            }
+
         }
 
         private void south_africa_Load(object sender, EventArgs e)

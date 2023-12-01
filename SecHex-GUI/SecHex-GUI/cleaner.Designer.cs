@@ -46,6 +46,9 @@
             fivemm = new MetroFramework.Controls.MetroCheckBox();
             valorant = new MetroFramework.Controls.MetroCheckBox();
             antishittracer = new MetroFramework.Controls.MetroCheckBox();
+            metroLabel5 = new MetroFramework.Controls.MetroLabel();
+            unlinkxbox = new MetroFramework.Controls.MetroCheckBox();
+            unlinkdc = new MetroFramework.Controls.MetroCheckBox();
             SuspendLayout();
             // 
             // spoofall
@@ -272,12 +275,52 @@
             antishittracer.UseVisualStyleBackColor = true;
             antishittracer.CheckedChanged += antishittracer_CheckedChanged;
             // 
+            // metroLabel5
+            // 
+            metroLabel5.AutoSize = true;
+            metroLabel5.Location = new Point(340, 199);
+            metroLabel5.Name = "metroLabel5";
+            metroLabel5.Size = new Size(131, 19);
+            metroLabel5.Style = MetroFramework.MetroColorStyle.Magenta;
+            metroLabel5.TabIndex = 43;
+            metroLabel5.Text = "UNLINK FUNCTIONS";
+            metroLabel5.Theme = MetroFramework.MetroThemeStyle.Dark;
+            // 
+            // unlinkxbox
+            // 
+            unlinkxbox.AutoSize = true;
+            unlinkxbox.Location = new Point(345, 225);
+            unlinkxbox.Name = "unlinkxbox";
+            unlinkxbox.Size = new Size(87, 15);
+            unlinkxbox.Style = MetroFramework.MetroColorStyle.Magenta;
+            unlinkxbox.TabIndex = 44;
+            unlinkxbox.Text = "Unlink Xbox";
+            unlinkxbox.Theme = MetroFramework.MetroThemeStyle.Dark;
+            unlinkxbox.UseVisualStyleBackColor = true;
+            unlinkxbox.CheckedChanged += unlinkxbox_CheckedChanged;
+            // 
+            // unlinkdc
+            // 
+            unlinkdc.AutoSize = true;
+            unlinkdc.Location = new Point(345, 246);
+            unlinkdc.Name = "unlinkdc";
+            unlinkdc.Size = new Size(100, 15);
+            unlinkdc.Style = MetroFramework.MetroColorStyle.Magenta;
+            unlinkdc.TabIndex = 45;
+            unlinkdc.Text = "Unlink Discord";
+            unlinkdc.Theme = MetroFramework.MetroThemeStyle.Dark;
+            unlinkdc.UseVisualStyleBackColor = true;
+            unlinkdc.CheckedChanged += unlinkdc_CheckedChanged;
+            // 
             // south_africa
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(17, 17, 17);
-            ClientSize = new Size(540, 352);
+            ClientSize = new Size(572, 352);
+            Controls.Add(unlinkdc);
+            Controls.Add(unlinkxbox);
+            Controls.Add(metroLabel5);
             Controls.Add(antishittracer);
             Controls.Add(valorant);
             Controls.Add(fivemm);
@@ -325,5 +368,8 @@
         private MetroFramework.Controls.MetroCheckBox fivemm;
         private MetroFramework.Controls.MetroCheckBox valorant;
         private MetroFramework.Controls.MetroCheckBox antishittracer;
+        private MetroFramework.Controls.MetroLabel metroLabel5;
+        private MetroFramework.Controls.MetroCheckBox unlinkxbox;
+        private MetroFramework.Controls.MetroCheckBox unlinkdc;
     }
 }
