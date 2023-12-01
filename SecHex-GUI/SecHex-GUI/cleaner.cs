@@ -229,27 +229,6 @@ namespace SecHex_GUI
             }
         }
 
-
-        private void DocsClear()
-        {
-            try
-            {
-                string recentDocumentsPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Recent), "*.*");
-                string[] recentDocuments = Directory.GetFiles(recentDocumentsPath);
-
-                foreach (string document in recentDocuments)
-                {
-                    File.Delete(document);
-                }
-
-                MessageBox.Show("Recent documents cleared.");
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error: " + ex.Message);
-            }
-        }
-
         // THANKS TO Starcharms -> github.com/starcharms
         private void rstreset()
         {
@@ -319,7 +298,6 @@ namespace SecHex_GUI
             catch
             { }
         }
-
 
         static void DisableNetworkAdapter(int index)
         {
@@ -677,11 +655,6 @@ namespace SecHex_GUI
             isWinTempCheckboxChecked = wintempp.Checked;
         }
 
-        private void latestdocs_CheckedChanged(object sender, EventArgs e)
-        {
-            isDocsCheckboxChecked = latestdocs.Checked;
-        }
-
         private void chromecookies_CheckedChanged(object sender, EventArgs e)
         {
             isCookieCheckboxChecked = chromecookies.Checked;
@@ -744,11 +717,6 @@ namespace SecHex_GUI
             if (isCookieCheckboxChecked)
             {
                 CookieRst();
-            }
-
-            if (isDocsCheckboxChecked)
-            {
-                DocsClear();
             }
 
             if (isrstconnectCheckBoxChecked)

@@ -144,19 +144,6 @@ namespace SecHex_GUI
             return Color.FromArgb(r, g, b);
         }
 
-        private void siticoneToggleSwitch1_CheckedChanged(object sender, EventArgs e)
-        {
-            SiticoneToggleSwitch toggleSwitch = (SiticoneToggleSwitch)sender;
-
-            if (toggleSwitch.Checked)
-            {
-                AnimateButtonsBorderColor(disk, winid, disk, efi, GUID, spoofall, mac, tracercl, display, pcname, backup, product, req, sm);
-            }
-            else
-            {
-                StopButtonAnimation(disk, winid, disk, efi, GUID, spoofall, mac, tracercl, display, pcname, backup, product, req, sm);
-            }
-        }
 
         private void StopButtonAnimation(params SiticoneButton[] buttons)
         {
@@ -171,8 +158,6 @@ namespace SecHex_GUI
             }
         }
 
-
-        private bool isLogToggleOn = false;
         private bool isAfricaToggleOn = false;
         private south_africa WindowSouthAfrica;
         private logs logWindow;
@@ -221,11 +206,6 @@ namespace SecHex_GUI
                 logWindow.Hide();
             }
         }
-
-
-
-
-
 
         private void SaveLogs(string id, string logBefore, string logAfter)
         {
@@ -375,10 +355,6 @@ namespace SecHex_GUI
         }
 
 
-
-
-
-
         private void spoofall_Click(object sender, EventArgs e)
         {
             bool registryEntriesExist = false;
@@ -404,6 +380,8 @@ namespace SecHex_GUI
                 efi_Click(sender, e);
                 siticoneButton1_Click(sender, e);
                 product_Click(sender, e);
+                BIOSReleaseDate_Click(sender, e);
+                MachineId_Click(sender, e);
 
                 ShowNotification("All functions executed successfully.", NotificationType.Success);
             }
@@ -412,8 +390,6 @@ namespace SecHex_GUI
                 ShowNotification("Error: One or more required registry entries are missing.", NotificationType.Error);
             }
         }
-
-
 
 
         private List<string> diskNames = new List<string>()
@@ -605,6 +581,13 @@ namespace SecHex_GUI
         }
 
 
+
+
+
+
+
+
+
         private void GUID_Click(object sender, EventArgs e)
         {
             try
@@ -626,23 +609,19 @@ namespace SecHex_GUI
                     }
                 }
 
-                using (RegistryKey MachineGUID = Registry.LocalMachine.OpenSubKey("SOFTWARE\\Microsoft\\Cryptography", true))
-                {
-                    if (MachineGUID != null)
-                    {
-                        string logBefore = "MachineGuid - Before: " + MachineGUID.GetValue("MachineGuid");
-                        MachineGUID.DeleteValue("MachineGuid");
-                        MachineGUID.SetValue("MachineGuid", Guid.NewGuid().ToString());
-                        string logAfter = "MachineGuid - After: " + MachineGUID.GetValue("MachineGuid");
-                        SaveLogs("guid", logBefore, logAfter);
-                    }
-                    else
-                    {
-                        ShowNotification("MachineGUID key not found.", NotificationType.Error);
-                        return;
-                    }
-                }
+                ShowNotification("GUIDs successfully generated.", NotificationType.Success);
+            }
+            catch (Exception ex)
+            {
+                ShowNotification("An error occurred: " + ex.Message, NotificationType.Error);
+            }
+        }
 
+
+        private void MachineId_Click(object sender, EventArgs e)
+        {
+            try
+            {
                 using (RegistryKey MachineId = Registry.LocalMachine.OpenSubKey("SOFTWARE\\Microsoft\\SQMClient", true))
                 {
                     if (MachineId != null)
@@ -652,17 +631,29 @@ namespace SecHex_GUI
                         MachineId.SetValue("MachineId", Guid.NewGuid().ToString());
                         string logAfter = "MachineId - After: " + MachineId.GetValue("MachineId");
                         SaveLogs("guid", logBefore, logAfter);
+
+                        ShowNotification("MachineId successfully updated.", NotificationType.Success);
                     }
                     else
                     {
                         ShowNotification("MachineId key not found.", NotificationType.Error);
-                        return;
                     }
                 }
+            }
+            catch (Exception ex)
+            {
+                ShowNotification("An error occurred: " + ex.Message, NotificationType.Error);
+            }
+        }
 
-                using (RegistryKey SystemInfo = Registry.LocalMachine.OpenSubKey("SYSTEM\\CurrentControlSet\\Control\\SystemInformation", true))
+
+        private void BIOSReleaseDate_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                using (RegistryKey systemInfoKey = Registry.LocalMachine.OpenSubKey("SYSTEM\\CurrentControlSet\\Control\\SystemInformation", true))
                 {
-                    if (SystemInfo != null)
+                    if (systemInfoKey != null)
                     {
                         Random rnd = new Random();
                         int day = rnd.Next(1, 31);
@@ -676,27 +667,22 @@ namespace SecHex_GUI
 
                         string randomDate = $"{monthStr}/{dayStr}/{yearStr}";
 
-                        string logBefore = "BIOSReleaseDate - Before: " + SystemInfo.GetValue("BIOSReleaseDate");
-                        SystemInfo.SetValue("BIOSReleaseDate", randomDate);
-                        string logAfter = "BIOSReleaseDate - After: " + SystemInfo.GetValue("BIOSReleaseDate");
-                        SaveLogs("guid", logBefore, logAfter);
+                        string logBefore = "BIOSReleaseDate - Before: " + systemInfoKey.GetValue("BIOSReleaseDate");
+                        systemInfoKey.SetValue("BIOSReleaseDate", randomDate);
+                        string logAfter = "BIOSReleaseDate - After: " + systemInfoKey.GetValue("BIOSReleaseDate");
+                        SaveLogs("bios_release", logBefore, logAfter);
                     }
                     else
                     {
                         ShowNotification("SystemInformation key not found.", NotificationType.Error);
-                        return;
                     }
                 }
-
-                ShowNotification("GUIDs successfully generated.", NotificationType.Success);
             }
             catch (Exception ex)
             {
                 ShowNotification("An error occurred: " + ex.Message, NotificationType.Error);
             }
         }
-
-
 
 
         private void winid_Click(object sender, EventArgs e)
@@ -913,8 +899,6 @@ namespace SecHex_GUI
             }
         }
 
-
-
         private void product_Click(object sender, EventArgs e)
         {
             try
@@ -964,12 +948,6 @@ namespace SecHex_GUI
             {
                 MessageBox.Show("An error occurred while creating the registry backup: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }
-
-
-        private void tracercl_Click(object sender, EventArgs e)
-        {
-            //soon...
         }
 
         private void req_Click(object sender, EventArgs e)
@@ -1060,11 +1038,6 @@ namespace SecHex_GUI
             Warning
         }
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void systemcleaner_CheckedChanged(object sender, EventArgs e)
         {
             isAfricaToggleOn = systemcleaner.Checked;
@@ -1097,15 +1070,17 @@ namespace SecHex_GUI
 
             if (checkBox.Checked)
             {
-                AnimateButtonsBorderColor(disk, winid, disk, efi, GUID, spoofall, mac, tracercl, display, pcname, backup, product, req, sm);
+                AnimateButtonsBorderColor(disk, winid, disk, efi, HwProfile, spoofall, mac, display, pcname, backup, product, req, sm);
             }
             else
             {
-                StopButtonAnimation(disk, winid, disk, efi, GUID, spoofall, mac, tracercl, display, pcname, backup, product, req, sm);
+                StopButtonAnimation(disk, winid, disk, efi, HwProfile, spoofall, mac, display, pcname, backup, product, req, sm);
             }
         }
 
+        private void Form1_Load(object sender, EventArgs e)
+        {
 
-
+        }
     }
 }

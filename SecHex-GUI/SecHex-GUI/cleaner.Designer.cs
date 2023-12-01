@@ -38,7 +38,6 @@
             metroLabel1 = new MetroFramework.Controls.MetroLabel();
             wifireset = new MetroFramework.Controls.MetroCheckBox();
             metroLabel2 = new MetroFramework.Controls.MetroLabel();
-            latestdocs = new MetroFramework.Controls.MetroCheckBox();
             metroLabel3 = new MetroFramework.Controls.MetroLabel();
             chromecookies = new MetroFramework.Controls.MetroCheckBox();
             firefoxcookies = new MetroFramework.Controls.MetroCheckBox();
@@ -173,19 +172,6 @@
             metroLabel2.Text = "FILE FUNCTIONS";
             metroLabel2.Theme = MetroFramework.MetroThemeStyle.Dark;
             // 
-            // latestdocs
-            // 
-            latestdocs.AutoSize = true;
-            latestdocs.Location = new Point(184, 150);
-            latestdocs.Name = "latestdocs";
-            latestdocs.Size = new Size(118, 15);
-            latestdocs.Style = MetroFramework.MetroColorStyle.Magenta;
-            latestdocs.TabIndex = 34;
-            latestdocs.Text = "Latest Documents";
-            latestdocs.Theme = MetroFramework.MetroThemeStyle.Dark;
-            latestdocs.UseVisualStyleBackColor = true;
-            latestdocs.CheckedChanged += latestdocs_CheckedChanged;
-            // 
             // metroLabel3
             // 
             metroLabel3.AutoSize = true;
@@ -300,7 +286,6 @@
             Controls.Add(firefoxcookies);
             Controls.Add(chromecookies);
             Controls.Add(metroLabel3);
-            Controls.Add(latestdocs);
             Controls.Add(metroLabel2);
             Controls.Add(wifireset);
             Controls.Add(metroLabel1);
@@ -332,7 +317,6 @@
         private MetroFramework.Controls.MetroLabel metroLabel1;
         private MetroFramework.Controls.MetroCheckBox wifireset;
         private MetroFramework.Controls.MetroLabel metroLabel2;
-        private MetroFramework.Controls.MetroCheckBox latestdocs;
         private MetroFramework.Controls.MetroLabel metroLabel3;
         private MetroFramework.Controls.MetroCheckBox chromecookies;
         private MetroFramework.Controls.MetroCheckBox firefoxcookies;
