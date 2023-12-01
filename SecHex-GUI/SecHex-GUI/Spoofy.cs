@@ -1005,7 +1005,7 @@ namespace SecHex_GUI
         }
 
 
-        public void ShowNotification(string message, NotificationType type)
+        private void ShowNotification(string message, NotificationType type)
         {
             MessageBox.Show(message, "Spoofy [Open Source]", MessageBoxButtons.OK, GetNotificationIcon(type));
         }
