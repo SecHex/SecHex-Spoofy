@@ -1,2 +1,0 @@
-14:28:05: ID bios_release -  BIOSReleaseDate - Before: 12/16/2021 (Before)
-14:28:05: ID bios_release -  BIOSReleaseDate - After: 09/11/2012 (After)

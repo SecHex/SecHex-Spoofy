@@ -1,2 +1,0 @@
-14:28:00: ID pcname -  ComputerName - Before: SecHex-YYD6RXQ (Before)
-14:28:00: ID pcname -  ComputerName - After: SecHex-IBM255R (After)
