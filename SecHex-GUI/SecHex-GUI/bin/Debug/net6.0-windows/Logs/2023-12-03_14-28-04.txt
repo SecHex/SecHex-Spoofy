@@ -1,0 +1,2 @@
+14:28:04: ID guid -  HwProfileGuid - Before: 81aff0bf-b40e-456f-8c4d-031403d95501 (Before)
+14:28:04: ID guid -  HwProfileGuid - After: 69e239ee-617d-4789-b7a1-b9ddf78bd02a (After)

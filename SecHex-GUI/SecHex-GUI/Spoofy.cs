@@ -7,7 +7,8 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Runtime.InteropServices;
 using MetroFramework.Controls;
-
+using Microsoft.Toolkit.Uwp.Notifications;
+using System.Media;
 
 namespace SecHex_GUI
 {
@@ -600,7 +601,7 @@ namespace SecHex_GUI
                     }
                 }
 
-                ShowNotification("GUIDs successfully generated.", NotificationType.Success);
+                ShowNotification("HwProfile successfully spoofed.", NotificationType.Success);
             }
             catch (Exception ex)
             {
@@ -623,7 +624,7 @@ namespace SecHex_GUI
                         string logAfter = "MachineId - After: " + MachineId.GetValue("MachineId");
                         SaveLogs("guid", logBefore, logAfter);
 
-                        ShowNotification("MachineId successfully updated.", NotificationType.Success);
+                        ShowNotification("MachineID successfully spoofed.", NotificationType.Success);
                     }
                     else
                     {
@@ -662,7 +663,7 @@ namespace SecHex_GUI
                         systemInfoKey.SetValue("BIOSReleaseDate", randomDate);
                         string logAfter = "BIOSReleaseDate - After: " + systemInfoKey.GetValue("BIOSReleaseDate");
                         SaveLogs("bios_release", logBefore, logAfter);
-                        ShowNotification("BiosRelease successfully updated.", NotificationType.Success);
+                        ShowNotification("BiosRelease successfully spoofed.", NotificationType.Success);
                     }
                     else
                     {
@@ -693,7 +694,7 @@ namespace SecHex_GUI
                         string logBefore = $"Machine GUID - Before: {machineGuidBefore}";
                         string logAfter = $"Machine GUID - After: {newMachineGuid}";
                         SaveLogs("ChangeMachineGuid", logBefore, logAfter);
-                        ShowNotification("Machine GUID successfully updated.", NotificationType.Success);
+                        ShowNotification("Machine GUID successfully spoofed.", NotificationType.Success);
                     }
                     else
                     {
@@ -779,7 +780,7 @@ namespace SecHex_GUI
                 string logBefore = "ComputerName - Before: " + originalName;
                 string logAfter = "ComputerName - After: " + newName;
                 SaveLogs("pcname", logBefore, logAfter);
-                ShowNotification("PC-Name executed successfully.", NotificationType.Success);
+                ShowNotification("PC-Name successfully spoofed.", NotificationType.Success);
 
             }
             catch (Exception ex)
@@ -811,7 +812,7 @@ namespace SecHex_GUI
                     string logAfter = "Display ID - After: " + displayId;
                     SaveLogs("display", logBefore, logAfter);
 
-                    ShowNotification("Display Function executed successfully.", NotificationType.Success);
+                    ShowNotification("Display successfully spoofed.", NotificationType.Success);
                 }
                 else
                 {
@@ -847,7 +848,7 @@ namespace SecHex_GUI
                         string logAfter = "EFI Variable ID - After: " + newEfiVariableId;
                         SaveLogs("efi", logBefore, logAfter);
 
-                        ShowNotification("EFI Function executed successfully.", NotificationType.Success);
+                        ShowNotification("EFI successfully spoofed.", NotificationType.Success);
                     }
                     else
                     {
@@ -878,7 +879,7 @@ namespace SecHex_GUI
                         string logAfter = "SMBIOS SystemSerialNumber - After: " + newSerialNumber;
                         SaveLogs("smbios", logBefore, logAfter);
 
-                        ShowNotification("SMBIOS Function executed successfully.", NotificationType.Success);
+                        ShowNotification("SMBIOS successfully spoofed.", NotificationType.Success);
                     }
                     else
                     {
@@ -909,7 +910,7 @@ namespace SecHex_GUI
                         string logAfter = "Product ID - After: " + newProductId;
                         SaveLogs("product", logBefore, logAfter);
 
-                        ShowNotification("Product Function executed successfully.", NotificationType.Success);
+                        ShowNotification("Product ID successfully spoofed.", NotificationType.Success);
                     }
                     else
                     {
@@ -1005,10 +1006,56 @@ namespace SecHex_GUI
         }
 
 
-        private void ShowNotification(string message, NotificationType type)
+        private bool isAnimationRunnin = false;
+
+        private async void ShowNotification(string message, NotificationType type)
         {
-            MessageBox.Show(message, "Spoofy [Open Source]", MessageBoxButtons.OK, GetNotificationIcon(type));
+            if (isAnimationRunnin)
+            {
+                while (isAnimationRunnin)
+                {
+                    await Task.Delay(20);
+                }
+            }
+
+            SystemSounds.Exclamation.Play();
+            isAnimationRunnin = true;
+
+            string originalMessage = label1.Text;
+            Color originalColor = label1.ForeColor;
+            bool originalVisibility = label1.Visible;
+
+            label1.Text = message;
+
+            Color startColor = Color.Magenta;
+            Color targetColor = Color.FromArgb(255, 16, 16, 17);
+
+            await ChangeColor(label1, startColor, targetColor, 300);
+
+            label1.Text = originalMessage;
+            label1.ForeColor = originalColor;
+            label1.Visible = originalVisibility;
+
+            isAnimationRunnin = false;
         }
+
+        private async Task ChangeColor(Label label, Color startColor, Color targetColor, int duration)
+        {
+            int steps = 70;
+            int delay = duration / steps;
+
+            for (int i = 0; i <= steps; i++)
+            {
+                int currentR = startColor.R + (int)Math.Round((double)i / steps * (targetColor.R - startColor.R));
+                int currentG = startColor.G + (int)Math.Round((double)i / steps * (targetColor.G - startColor.G));
+                int currentB = startColor.B + (int)Math.Round((double)i / steps * (targetColor.B - startColor.B));
+
+                label.ForeColor = Color.FromArgb(255, currentR, currentG, currentB);
+                await Task.Delay(delay);
+            }
+        }
+
+        //temp 
         private MessageBoxIcon GetNotificationIcon(NotificationType type)
         {
             switch (type)
@@ -1063,11 +1110,11 @@ namespace SecHex_GUI
 
             if (checkBox.Checked)
             {
-                AnimateButtonsBorderColor(disk, winid, disk, efi, HwProfile, spoofall, mac, display, pcname, backup, product, req, sm);
+                AnimateButtonsBorderColor(disk, winid, disk, efi, HwProfile, spoofall, mac, display, pcname, backup, product, req, sm, BIOSReleaseDate, MachineId);
             }
             else
             {
-                StopButtonAnimation(disk, winid, disk, efi, HwProfile, spoofall, mac, display, pcname, backup, product, req, sm);
+                StopButtonAnimation(disk, winid, disk, efi, HwProfile, spoofall, mac, display, pcname, backup, product, req, sm, BIOSReleaseDate, MachineId);
             }
         }
 

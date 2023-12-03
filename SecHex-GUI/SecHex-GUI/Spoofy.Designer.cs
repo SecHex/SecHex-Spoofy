@@ -46,6 +46,7 @@
             lgbt = new MetroFramework.Controls.MetroCheckBox();
             BIOSReleaseDate = new Siticone.Desktop.UI.WinForms.SiticoneButton();
             MachineId = new Siticone.Desktop.UI.WinForms.SiticoneButton();
+            label1 = new Label();
             SuspendLayout();
             // 
             // disk
@@ -425,12 +426,22 @@
             MachineId.Text = "Machine ID";
             MachineId.Click += MachineId_Click;
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.ForeColor = Color.FromArgb(192, 0, 192);
+            label1.Location = new Point(435, 385);
+            label1.Name = "label1";
+            label1.Size = new Size(0, 15);
+            label1.TabIndex = 38;
+            // 
             // Spoofy
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(17, 17, 17);
             ClientSize = new Size(634, 423);
+            Controls.Add(label1);
             Controls.Add(MachineId);
             Controls.Add(BIOSReleaseDate);
             Controls.Add(lgbt);
@@ -478,5 +489,6 @@
         private MetroFramework.Controls.MetroCheckBox lgbt;
         private Siticone.Desktop.UI.WinForms.SiticoneButton BIOSReleaseDate;
         private Siticone.Desktop.UI.WinForms.SiticoneButton MachineId;
+        private Label label1;
     }
 }
