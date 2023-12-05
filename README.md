@@ -102,8 +102,11 @@ Updates soon...
     • TCP Reset                      
     • Chrome Cookies                       
     • Recent Documents                       
-    • Reset Connection (fix the mac spoofing issue)
+    • Reset Connection (fix the mac spoofing issue)                    
     • Trace Cleaner                    
+    • Anti-Cheat-Terminator [Fortnite, Valorant, FiveM...]                    
+    • Unlink Xbox                    
+    • Unlink Discord                              
 
                           
                           
@@ -127,7 +130,6 @@ Updates soon...
 # GUI & CMD PREVIEW 🏆
 [No Updates for the CMD Version!]
 ![yes (2) (1) (4)](https://github.com/SecHex/SecHex-Spoofy/assets/96635023/62b1222d-36d7-46c7-a8ea-d105fd7e9568)
-
 
 
 
