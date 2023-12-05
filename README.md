@@ -4,7 +4,7 @@ Simple HWID-Changer 🔑︎
 Some Lines of the CLI Version are from @LockBlock-dev 
 
 [![Github All Releases](https://img.shields.io/github/downloads/SecHex/SecHex-Spoofy/total)]()
-https://img.shields.io/github/downloads/SecHex/SecHex-Spoofy/total
+
 
 **Windows 11** Version 10.0.22621 Build 22621 ✅                                      
 **Windows 10** Version 22H2 Build 19045.2965 ✅
