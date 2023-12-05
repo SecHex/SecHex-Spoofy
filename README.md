@@ -136,7 +136,6 @@ Updates soon...
 
 # Learn how to Reverse with @GuidedHacking 💸
 https://www.youtube.com/watch?v=ClqPkffPx5M&pp=ygUUUmV2ZXJzZSBId2lkIHNwb29mZXI%3D
-![maxresdefault (2)](https://github.com/SecHex/SecHex-Spoofy/assets/96635023/1210e165-9a07-4b8b-8466-43a528020ead)
 
 
 
