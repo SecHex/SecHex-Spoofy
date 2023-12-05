@@ -135,8 +135,7 @@ Updates soon...
 
 
 # Learn how to Reverse with @GuidedHacking 💸
-https://www.youtube.com/watch?v=ClqPkffPx5M&pp=ygUUUmV2ZXJzZSBId2lkIHNwb29mZXI%3D
-
+[1]: https://en.wikipedia.org/wiki/Hobbit#Lifestyle](https://www.youtube.com/watch?v=ClqPkffPx5M&pp=ygUUUmV2ZXJzZSBId2lkIHNwb29mZXI%3D 'Reverse Engineering a HWID Spoofer'
 
 
 # Contributors ❤️
