@@ -134,10 +134,10 @@ Updates soon...
 
 
 
-# buy me a coffee 💸
-btc bc1q8dedn4a6msjm6wf7jejmf2g47twrk6wha8u0dl                                 
-eth 0xD97738045E738Cb255e2707473Dae023ef913c0A                                
-bnb bnb1yxxrkwyvde9c2c8qle6d5gzm5tndyselgjd8xy                                
+# Learn how to Reverse with @GuidedHacking 💸
+https://www.youtube.com/watch?v=ClqPkffPx5M&pp=ygUUUmV2ZXJzZSBId2lkIHNwb29mZXI%3D
+![maxresdefault (2)](https://github.com/SecHex/SecHex-Spoofy/assets/96635023/1210e165-9a07-4b8b-8466-43a528020ead)
+
 
 
 # Contributors ❤️
