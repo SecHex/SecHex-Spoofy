@@ -133,10 +133,6 @@ Updates soon...
 
 
 
-
-# Learn how to Reverse with @GuidedHacking 💸
-Reverse Engineering a HWID Spoofer (YouTube(https://www.youtube.com/watch?v=ClqPkffPx5M&pp=ygUUUmV2ZXJzZSBId2lkIHNwb29mZXI%3D)
-
 # Contributors ❤️
 Contributors get a special Role our discord Server. Just create a Ticket and send proof.                                         
 Cheers!                                            .gg/SecHex
