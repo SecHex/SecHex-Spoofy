@@ -1,6 +1,6 @@
 # SecHex-Spoofy [1.5.8]
 
-Simple HWID-Changer 🔑︎
+Simple HWID-Changer 🔑︎ [![Github All Releases](https://img.shields.io/github/downloads/<-- SecHex-->/<-- SecHex-Spoofy-->/total.svg)]()
 Some Lines of the CLI Version are from @LockBlock-dev 
 
 **Windows 11** Version 10.0.22621 Build 22621 ✅                                      
