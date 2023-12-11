@@ -130,8 +130,9 @@ Updates soon...
 
 
 # GUI & CMD PREVIEW 🏆
-[No Updates for the CMD Version!]
-![yes (2) (1) (4)](https://github.com/SecHex/SecHex-Spoofy/assets/96635023/62b1222d-36d7-46c7-a8ea-d105fd7e9568)
+[No Updates for the CLI Version!]
+![Screenshot 2023-12-11 191951 (1)](https://github.com/SecHex/SecHex-Spoofy/assets/96635023/22ad94a2-f003-49cb-b0ef-fea0160bd093)
+
 
 
 
