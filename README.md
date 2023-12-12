@@ -11,12 +11,6 @@ Some Lines of the CLI Version are from @LockBlock-dev
 I am currently still learning, and the spoofer is far from being 100% perfect. But I'm doing my best. 
 
 
-# ATTENTION ⚠️
-The "Spoofer" (HWID Changer) works only for simple HWID Bans. Not for games like Valorant or something! 
-Updates soon...
-
-
-
 # Functions ⚡
 + **Disk Spoofing** - [18.05.23]                           
     • Retrieves SCSI ports and buses information from the Windows registry.                           
