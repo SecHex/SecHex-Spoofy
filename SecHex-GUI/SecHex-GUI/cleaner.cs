@@ -437,12 +437,14 @@ namespace SecHex_GUI
                 StopService("PunkBuster");
                 StopService("Vanguard");
                 StopService("ricocheat");
-
-                MessageBox.Show("Valorant ANTI Cheat successfully terminated.");
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error: " + ex.Message);
+            }
+            finally
+            {
+                MessageBox.Show("Valorant ANTI Cheat successfully terminated.");
             }
         }
 
