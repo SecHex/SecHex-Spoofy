@@ -11,8 +11,8 @@ Some Lines of the CLI Version are from @LockBlock-dev
 I am currently still learning, and the spoofer is far from being 100% perfect. But I'm doing my best. 
 
 # How to Use ⚡🏆
-For the Release: Run the .exe with admin rights.
-For Self Compiling: Compile the projekt... and run the .exe with admin rights
+For the Release: Run the .exe with admin rights.                                      
+For Self Compiling: Compile the projekt... and run the .exe with admin rights                                      
 
 
 
