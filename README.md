@@ -12,7 +12,7 @@ I am currently still learning, and the spoofer is far from being 100% perfect. B
 
 # How to Use ⚡🏆
 For the Release: Run the .exe with admin rights.                                      
-For Self Compiling: Compile the projekt... and run the .exe with admin rights                                      
+For Self Compiling: Compile the projekt... and run the .exe with admin rights.                                      
 
 
 
