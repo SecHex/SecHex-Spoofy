@@ -120,7 +120,7 @@ For Self Compiling: Compile the projekt... and run the .exe with admin rights.
 **20+ Stars** - ***Spoofer with GUI*** ✅       
 **50+ Stars** - ***GUI Changes*** ✅                        
 **100+ Stars** - ***GUI Changes + Code overhaul and every 10 stars a update!*** ✅                             
-**500+ Stars** - ***Kernel Integration*** ❌      
+**500+ Stars** - ***Kernel Integration*** ❌  (soon...)    
 
 
 ▰▰▰▰▰▰▰▰▰▰▱▱▱ 75% Finish ❤️                          
