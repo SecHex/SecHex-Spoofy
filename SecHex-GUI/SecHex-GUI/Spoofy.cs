@@ -2,6 +2,7 @@ using Microsoft.Win32;
 using Siticone.Desktop.UI.WinForms;
 using System.Diagnostics;
 using System.Drawing.Drawing2D;
+using System.Globalization;
 using System.Net.NetworkInformation;
 using System.Security.Cryptography;
 using System.Text;
@@ -639,6 +640,28 @@ namespace SecHex_GUI
         }
 
 
+        private static readonly DateTime UnixEpoch = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
+        private static readonly Random random = new Random();
+
+        private static long ConvertToUnixTimestamp(DateTime dateTime)
+        {
+            return (long)(dateTime - UnixEpoch).TotalSeconds;
+        }
+        
+        private static DateTime GetRandomDateTime(int maxDateYears = 6)
+        {
+            DateTime now = DateTime.UtcNow;
+            DateTime minTime = now.AddYears(-maxDateYears);
+            
+            long maxUnixTime = ConvertToUnixTimestamp(now);
+            long minUnixTime = ConvertToUnixTimestamp(minTime);
+
+            long randomUnixTime = minUnixTime + (long)(random.NextDouble() * (maxUnixTime - minUnixTime));
+
+            return UnixEpoch.AddSeconds(randomUnixTime);
+        }
+        
+        
         private void BIOSReleaseDate_Click(object sender, EventArgs e)
         {
             try
@@ -647,23 +670,13 @@ namespace SecHex_GUI
                 {
                     if (systemInfoKey != null)
                     {
-                        Random rnd = new Random();
-                        int day = rnd.Next(1, 31);
-                        string dayStr = (day < 10) ? $"0{day}" : day.ToString();
-
-                        int month = rnd.Next(1, 13);
-                        string monthStr = (month < 10) ? $"0{month}" : month.ToString();
-
-                        int year = rnd.Next(1990, 2023);
-                        string yearStr = year.ToString();
-
-                        string randomDate = $"{monthStr}/{dayStr}/{yearStr}";
+                        var dateTimeBebe = GetRandomDateTime();
 
                         string logBefore = "BIOSReleaseDate - Before: " + systemInfoKey.GetValue("BIOSReleaseDate");
-                        systemInfoKey.SetValue("BIOSReleaseDate", randomDate);
+                        systemInfoKey.SetValue("BIOSReleaseDate", dateTimeBebe.ToString("dd/MM/yyyy", CultureInfo.InvariantCulture));
                         string logAfter = "BIOSReleaseDate - After: " + systemInfoKey.GetValue("BIOSReleaseDate");
                         SaveLogs("bios_release", logBefore, logAfter);
-                        ShowNotification("BiosRelease successfully spoofed.", NotificationType.Success);
+                        ShowNotification("BiosRelease successfully updated.", NotificationType.Success);
                     }
                     else
                     {
