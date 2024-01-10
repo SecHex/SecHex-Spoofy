@@ -115,8 +115,8 @@ I am currently still learning, and the spoofer is far from being 100% perfect. B
 **20+ Stars** - ***Spoofer with GUI*** ✅       
 **50+ Stars** - ***GUI Changes*** ✅                        
 **100+ Stars** - ***GUI Changes + Code overhaul and every 10 stars a update!*** ✅                             
-**500+ Stars** - ***Kernel Integration*** ❌  (soon...)    
-
+**500+ Stars** - ***Kernel Integration*** ❌ 
+↳ (Currently, @toto, @Starcharms, and I are working on the Kernel Integration. However, this process takes time. We are not merely adding an DMIEDIT edit executed by the spoofer; instead, we are developing a complete driver that communicates with Spoofy, supporting both Win10 and Win11.)
 
 ▰▰▰▰▰▰▰▰▰▰▱▱▱ 75% Finish ❤️                          
             
