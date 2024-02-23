@@ -47,6 +47,8 @@
             BIOSReleaseDate = new Siticone.Desktop.UI.WinForms.SiticoneButton();
             MachineId = new Siticone.Desktop.UI.WinForms.SiticoneButton();
             label1 = new Label();
+            metroLabel1 = new MetroFramework.Controls.MetroLabel();
+            autostart = new Siticone.Desktop.UI.WinForms.SiticoneToggleSwitch();
             SuspendLayout();
             // 
             // disk
@@ -430,10 +432,49 @@
             // 
             label1.AutoSize = true;
             label1.ForeColor = Color.FromArgb(192, 0, 192);
-            label1.Location = new Point(435, 385);
+            label1.Location = new Point(360, 363);
             label1.Name = "label1";
             label1.Size = new Size(0, 15);
             label1.TabIndex = 38;
+            // 
+            // metroLabel1
+            // 
+            metroLabel1.AutoSize = true;
+            metroLabel1.CustomForeColor = true;
+            metroLabel1.ForeColor = SystemColors.Control;
+            metroLabel1.Location = new Point(360, 384);
+            metroLabel1.Name = "metroLabel1";
+            metroLabel1.Size = new Size(71, 19);
+            metroLabel1.Style = MetroFramework.MetroColorStyle.White;
+            metroLabel1.TabIndex = 41;
+            metroLabel1.Text = "Auto-Start";
+            metroLabel1.Theme = MetroFramework.MetroThemeStyle.Dark;
+            // 
+            // autostart
+            // 
+            autostart.Animated = true;
+            autostart.AutoRoundedCorners = true;
+            autostart.CheckedState.BorderColor = Color.Fuchsia;
+            autostart.CheckedState.BorderRadius = 8;
+            autostart.CheckedState.BorderThickness = 1;
+            autostart.CheckedState.FillColor = Color.FromArgb(23, 23, 23);
+            autostart.CheckedState.InnerBorderColor = Color.White;
+            autostart.CheckedState.InnerBorderRadius = 4;
+            autostart.CheckedState.InnerColor = Color.White;
+            autostart.Location = new Point(437, 385);
+            autostart.Name = "autostart";
+            autostart.ShadowDecoration.BorderRadius = 9;
+            autostart.ShadowDecoration.Color = Color.Fuchsia;
+            autostart.Size = new Size(37, 18);
+            autostart.TabIndex = 40;
+            autostart.UncheckedState.BorderColor = Color.Fuchsia;
+            autostart.UncheckedState.BorderRadius = 8;
+            autostart.UncheckedState.BorderThickness = 1;
+            autostart.UncheckedState.FillColor = Color.FromArgb(23, 23, 23);
+            autostart.UncheckedState.InnerBorderColor = Color.White;
+            autostart.UncheckedState.InnerBorderRadius = 4;
+            autostart.UncheckedState.InnerColor = Color.White;
+            autostart.CheckedChanged += autostart_CheckedChanged;
             // 
             // Spoofy
             // 
@@ -441,6 +482,8 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(17, 17, 17);
             ClientSize = new Size(634, 423);
+            Controls.Add(metroLabel1);
+            Controls.Add(autostart);
             Controls.Add(label1);
             Controls.Add(MachineId);
             Controls.Add(BIOSReleaseDate);
@@ -490,5 +533,7 @@
         private Siticone.Desktop.UI.WinForms.SiticoneButton BIOSReleaseDate;
         private Siticone.Desktop.UI.WinForms.SiticoneButton MachineId;
         private Label label1;
+        private MetroFramework.Controls.MetroLabel metroLabel1;
+        private Siticone.Desktop.UI.WinForms.SiticoneToggleSwitch autostart;
     }
 }

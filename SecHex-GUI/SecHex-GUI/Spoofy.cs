@@ -216,8 +216,8 @@ namespace SecHex_GUI
                 Directory.CreateDirectory(logsFolderPath);
 
             string logFileName = Path.Combine(logsFolderPath, $"{DateTime.Now:yyyy-MM-dd_HH-mm-ss}.txt");
-            string logEntryBefore = $"{DateTime.Now:HH:mm:ss}: ID {id} -  {logBefore} (Before)";
-            string logEntryAfter = $"{DateTime.Now:HH:mm:ss}: ID {id} -  {logAfter} (After)";
+            string logEntryBefore = $"{DateTime.Now:HH:mm:ss}: ID {id} -  {logBefore}";
+            string logEntryAfter = $"{DateTime.Now:HH:mm:ss}: ID {id} -  {logAfter}";
 
             File.AppendAllText(logFileName, logEntryBefore + Environment.NewLine);
             File.AppendAllText(logFileName, logEntryAfter + Environment.NewLine);
@@ -540,6 +540,8 @@ namespace SecHex_GUI
                 ShowNotification("An error occurred while spoofing the MAC address: " + ex.Message, NotificationType.Error);
             }
         }
+
+
         private bool SpoofMAC()
         {
             bool err = false;
@@ -562,10 +564,8 @@ namespace SecHex_GUI
                                     string logBefore = $"MAC Address {adapterId} - Before: {macBefore}";
                                     string logAfter = $"MAC Address {adapterId} - After: {macAfter}";
                                     SaveLogs("mac", logBefore, logAfter);
-
                                     NetworkAdapter.SetValue("NetworkAddress", macAfter);
-                                    LocalAreaConection(adapterId, false);
-                                    LocalAreaConection(adapterId, true);
+                                    RestartNetworkAdapter(adapterId);
                                 }
                             }
                         }
@@ -580,6 +580,24 @@ namespace SecHex_GUI
 
             return err;
         }
+
+        private void RestartNetworkAdapter(string adapterId)
+        {
+            string logBefore = $"MAC Address: Restarting NetAdapter...";
+
+            ProcessStartInfo psi = new ProcessStartInfo();
+            psi.FileName = "powershell.exe";
+            psi.Arguments = $"-Command \"Disable-NetAdapter -Name '{adapterId}'; Start-Sleep -Seconds 5; Enable-NetAdapter -Name '{adapterId}'\"";
+            psi.WindowStyle = ProcessWindowStyle.Hidden;
+            psi.UseShellExecute = true;
+            psi.Verb = "runas";
+            string logAfter = $"MAC Address: NetAdapter restartet.";
+
+            SaveLogs("mac", logBefore, logAfter);
+
+            Process.Start(psi);
+        }
+
 
         private void GUID_Click(object sender, EventArgs e)
         {
@@ -647,12 +665,12 @@ namespace SecHex_GUI
         {
             return (long)(dateTime - UnixEpoch).TotalSeconds;
         }
-        
+
         private static DateTime GetRandomDateTime(int maxDateYears = 6)
         {
             DateTime now = DateTime.UtcNow;
             DateTime minTime = now.AddYears(-maxDateYears);
-            
+
             long maxUnixTime = ConvertToUnixTimestamp(now);
             long minUnixTime = ConvertToUnixTimestamp(minTime);
 
@@ -660,8 +678,8 @@ namespace SecHex_GUI
 
             return UnixEpoch.AddSeconds(randomUnixTime);
         }
-        
-        
+
+
         private void BIOSReleaseDate_Click(object sender, EventArgs e)
         {
             try
@@ -1091,6 +1109,25 @@ namespace SecHex_GUI
             Warning
         }
 
+        private void autostart_CheckedChanged(object sender, EventArgs e)
+        {
+            const string appName = "SecHex - Spoofy";
+            string runKey = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Run";
+            RegistryKey startupKey = Registry.CurrentUser.OpenSubKey(runKey, true);
+
+            if (autostart.Checked)
+            {
+                startupKey.SetValue(appName, Application.ExecutablePath);
+            }
+            else
+            {
+                startupKey.DeleteValue(appName, false);
+            }
+
+            startupKey.Close();
+        }
+
+
         private void systemcleaner_CheckedChanged(object sender, EventArgs e)
         {
             isAfricaToggleOn = systemcleaner.Checked;
@@ -1135,5 +1172,6 @@ namespace SecHex_GUI
         {
 
         }
+
     }
 }

@@ -10,12 +10,12 @@
     <Company>SecHex</Company>
     <Product>Spoofy</Product>
     <Authors>Spoofy</Authors>
-    <ApplicationIcon>settings.ico</ApplicationIcon>
+    <ApplicationIcon>sechex.ico</ApplicationIcon>
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Include="settings.ico" />
+    <Content Include="sechex.ico" />
   </ItemGroup>
 
   <ItemGroup>
