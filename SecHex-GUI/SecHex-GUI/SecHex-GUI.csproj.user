@@ -11,5 +11,8 @@
     <Compile Update="Spoofy.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="SRC\NetworkAdapter.cs">
+      <SubType>Component</SubType>
+    </Compile>
   </ItemGroup>
 </Project>
