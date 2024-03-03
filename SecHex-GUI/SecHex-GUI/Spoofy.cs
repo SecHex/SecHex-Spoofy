@@ -10,6 +10,8 @@ using System.Runtime.InteropServices;
 using MetroFramework.Controls;
 using Microsoft.Toolkit.Uwp.Notifications;
 using System.Media;
+using System.Management;
+using SecHex_GUI.SRC;
 
 namespace SecHex_GUI
 {
@@ -544,35 +546,44 @@ namespace SecHex_GUI
 
         private bool SpoofMAC()
         {
-            bool err = false;
+            bool err = false;            
 
             using (RegistryKey NetworkAdapters = Registry.LocalMachine.OpenSubKey("SYSTEM\\CurrentControlSet\\Control\\Class\\{4d36e972-e325-11ce-bfc1-08002be10318}"))
             {
                 foreach (string adapter in NetworkAdapters.GetSubKeyNames())
-                {
+                {                   
+
                     if (adapter != "Properties")
                     {
+                        string logBefore = string.Empty;
+                        string logAfter = string.Empty;
+                        string adapterId = string.Empty;
+
                         try
                         {
                             using (RegistryKey NetworkAdapter = Registry.LocalMachine.OpenSubKey($"SYSTEM\\CurrentControlSet\\Control\\Class\\{{4d36e972-e325-11ce-bfc1-08002be10318}}\\{adapter}", true))
                             {
                                 if (NetworkAdapter.GetValue("BusType") != null)
                                 {
-                                    string adapterId = NetworkAdapter.GetValue("NetCfgInstanceId").ToString();
+                                    adapterId = NetworkAdapter.GetValue("NetCfgInstanceId").ToString();
                                     string macBefore = NetworkAdapter.GetValue("NetworkAddress")?.ToString();
                                     string macAfter = RandomMac();
-                                    string logBefore = $"MAC Address {adapterId} - Before: {macBefore}";
-                                    string logAfter = $"MAC Address {adapterId} - After: {macAfter}";
-                                    SaveLogs("mac", logBefore, logAfter);
+                                    logBefore = $"MAC Address {adapterId} - Before: {macBefore}";
                                     NetworkAdapter.SetValue("NetworkAddress", macAfter);
-                                    RestartNetworkAdapter(adapterId);
+                                    logAfter = $"MAC Address {adapterId} - After: {macAfter}";
+                                    NetworkAdaptersUtils.RestartNetworkAdapter(adapterId);
                                 }
                             }
                         }
                         catch (System.Security.SecurityException)
                         {
                             err = true;
+                            logAfter = $"Error: MAC Address {adapterId} can not be changed";
                             break;
+                        }
+                        finally
+                        {
+                            SaveLogs("mac", logBefore, logAfter);
                         }
                     }
                 }
